@@ -1,0 +1,35 @@
+
+body{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-family: Helvetica , sans-serif;
+}
+
+header nav ul li ,h1,nav{
+    display: inline-block;
+}
+
+header {
+    border-bottom: 2px solid black;
+}
+
+header nav {
+    margin-left: 60px;
+}
+
+header nav ul li{
+    margin-right: 15px;
+}
+
+header nav ul li a{
+    text-decoration: none;
+    color: green;
+    font-size: small;
+}
+
+main p{
+    font-size: 19px;
+}
+

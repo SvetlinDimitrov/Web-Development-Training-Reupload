@@ -1,0 +1,8 @@
+#wrapper{
+    background-color: #dddddd;
+    width: 300px;
+    border: 1px solid #000000;
+}
+#wrapper ol{
+    color: rgb(149, 25, 26);
+}

@@ -1,0 +1,34 @@
+@media screen and (max-width:600px) {
+    #main-menu ul{
+        display: none;
+    }
+   #main-menu{
+    display: flex;
+    justify-content: center;
+   }
+   main{
+    display: flex;
+    flex-direction: column;
+   }
+   #left-aside{
+    display: flex;
+    justify-content: space-around;
+
+   }
+   #news,#news article{
+    width: 100%;
+   }
+   #right-aside{
+    width: 100%;
+   }
+   footer{
+    display: flex;
+    flex-direction: column;
+   }
+   footer ul{
+    width: 100%;
+   }
+   #left-aside article{
+    border: none;
+   }
+}

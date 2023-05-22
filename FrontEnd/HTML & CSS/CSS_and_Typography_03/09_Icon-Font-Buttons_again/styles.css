@@ -1,0 +1,30 @@
+body{
+    font-family: Arial , serif;
+    line-height: 3;
+    font-size: 18px;
+}
+body p a{
+    text-decoration: none;
+    color: #eee;
+    border-radius: 5.40px;
+    padding-left:27px ;
+    padding-top:12.6px ;
+    padding-right:27px ;
+    padding-bottom:12.6px ;
+}
+body p a:hover{
+    color: #eee;
+}
+
+body p a i{
+    padding-right: 5.40px;
+}
+
+.green{
+    background-color: green;
+}
+
+.orange{
+    background-color: orange;
+}
+

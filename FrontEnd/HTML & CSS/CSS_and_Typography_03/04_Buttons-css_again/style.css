@@ -1,0 +1,10 @@
+body a{ 
+    border: solid 1px black;
+    padding: 10px;
+    text-decoration: none;
+    background-color: white(rgb(251, 251, 251));
+    color: black;
+    border-radius: 600px;
+    width: 50px;
+    
+}

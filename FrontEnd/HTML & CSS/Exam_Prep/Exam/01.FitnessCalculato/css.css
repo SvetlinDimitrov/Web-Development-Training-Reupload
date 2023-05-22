@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+.section{
+    position: absolute;
+    margin: 0 auto;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    overflow: hidden;
+
+}
+.section--img{
+    width: 50%;
+    height: 100%;
+    background-color: black;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    opacity: 0.6;
+}
+.section--text{
+    display: flex;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border: #acadad 2px solid;
+    background-color: #f6f7f8;
+}
+.section--text--h2{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.buttons--h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+    
+}
+.buttons--h2--1,
+.buttons--h2--2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+}
+.buttons--h2--2{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.buttons--h2--1{
+    background-color: #86d862;
+}
+.section--text-span{
+    background-color: #05a2d3;
+    font-size: 19px;
+    border-radius: 25px;
+    color: white;
+    width: 85%;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+.weight{
+    width: 66%;
+    padding: 5px;
+    border-radius: 1px;
+}
+.buttons--Height{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 40px;
+    width: 90%;
+    padding-bottom: 65px;
+}
+.Height{
+    width: 40%;
+    border-radius: 8px;
+    padding: 5px;
+}
+.buttons--gender{
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    
+}
+.genderr{
+    border-radius: 1px;
+}

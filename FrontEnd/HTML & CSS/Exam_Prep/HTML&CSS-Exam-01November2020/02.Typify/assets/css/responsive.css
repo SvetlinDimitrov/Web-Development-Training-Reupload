@@ -1,0 +1,55 @@
+@media screen and (max-width:600px) {
+    body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .banner{
+        padding: 3rem;
+    }
+    .banner h2{
+        width: 80%;
+        font-size:1.6rem;
+    }
+    .banner p{
+        font-size: 1.2rem;
+    }
+    ul.actions li:last-child{
+        width: 80%;
+        background-color: #009a9c;
+    }
+    .features {
+        width: 55%;
+        margin: 0 auto;
+        
+    }
+    .feature{
+        width: 80%;
+    }
+    .wrapper.style2{
+        width: -webkit-fill-available;
+    }
+    .wrapper > .inner.narrow{
+        width: 100%;
+    }
+    .grid-form{
+        flex-direction: column;
+        
+    }
+    .grid-form .form-control.narrow{
+        width: 100%;
+        margin: 0 auto;
+        
+    }
+    .wrapper.style2 input[type="submit"]{
+        width: 100%;
+    }
+    input[type="text"], input[type="email"], textarea{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .footer{
+        width: -webkit-fill-available;
+    }
+}
