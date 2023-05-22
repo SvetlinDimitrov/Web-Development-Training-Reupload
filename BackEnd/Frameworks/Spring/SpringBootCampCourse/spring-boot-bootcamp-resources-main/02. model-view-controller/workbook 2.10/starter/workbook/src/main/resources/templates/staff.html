@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table</title>
+    </head>
+    <body>
+        <h2>Staff List</h2>
+        <table th:each = "employee : ${employees}" border = "1px solid black" border-collapse ="collapse">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td th:text ="${employee.name}"></td>
+                <td th:text ="${employee.age}"></td>
+                <td th:text ="${employee.role}"></td>
+            </tr>
+
+        </table>
+    </body>
+</html>

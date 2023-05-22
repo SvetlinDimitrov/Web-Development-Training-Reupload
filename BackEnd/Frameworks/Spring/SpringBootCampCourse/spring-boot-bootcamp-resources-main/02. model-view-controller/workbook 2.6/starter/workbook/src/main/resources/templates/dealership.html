@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dealership</title>
+    </head>
+    <body>
+        <h3>Dealership</h3>
+        <div th:if = "${budget} >= 5000">
+            <div th:switch = "${make}">
+                <p th:case = "'Toyota' && budget >= 5000 ? 'Toyota Corolla: $5,000' : ''"></p>
+            </div>
+        </div>
+        <p th:if = "${budget} < 5000> Sorry, we dont have any cars below 5000</p>
+    </body>
+</html>
