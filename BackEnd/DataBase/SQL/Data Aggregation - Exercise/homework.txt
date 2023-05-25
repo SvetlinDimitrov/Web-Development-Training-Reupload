@@ -84,5 +84,71 @@ group by `deposit_group`, `is_deposit_expired`
 order by deposit_group desc ,is_deposit_expired ;
 
 12. Employees Minimum Salaries
+select department_id ,
+min(salary) as minimum_salary
+from employees
+where department_id in (2,5,7)
+group by department_id
+order by department_id;
+
+13. Employees Average Salaries
+select department_id ,
+avg( IF(department_id = 1, salary + 5000, salary)) as avg_salary
+from employees
+where salary > 30000 and manager_id != 42
+group by department_id
+order by department_id;
+
+14. Employees Maximum Salaries
+select department_id ,
+max(salary) as max_salary
+from employees
+group by department_id
+having max_salary not between 30000 and 70000
+order by department_id;
+
+15. Employees Count Salaries
+select count(*) 
+from employees
+where manager_id is null;
+
+16. 3rd Highest Salary
+select e2.department_id,
+(
+	select distinct salary 
+	from employees as e1
+    where e1.department_id = e2.department_id
+    order by e1.salary desc
+    limit 1 offset 2
+
+) as third_hifhest_salary
+from employees as e2 
+group by e2.department_id
+having third_hifhest_salary is not null
+order by department_id;
+
+17. Salary Challenge
+select first_name,
+last_name,
+department_id
+from employees as e1
+where (
+
+	select avg(salary)
+    from employees as e2
+    where e2.department_id = e1.department_id
+    group by e2.department_id
+
+) < salary
+order by department_id , employee_id
+limit 10;
+
+18. Departments Total Salaries
+select 
+department_id,
+sum(salary)
+from employees
+group by department_id
+order by department_id;
 
 
