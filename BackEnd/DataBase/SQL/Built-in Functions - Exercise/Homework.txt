@@ -1,0 +1,40 @@
+1 Find Names of All Employees by First Name
+
+select first_name , last_name
+from employees
+where first_name like 'Sa%'
+order by employee_id;
+
+2 Find Names of All Employees by Last Name
+
+select first_name , last_name
+from employees
+where last_name like '%ei%'
+order by employee_id;
+
+3 Find First Names of All Employees
+
+select first_name 
+from employees
+where department_id in (3 ,10) and 
+Year(hire_date) between 1995 and 2005 
+order by employee_id;
+
+4 Find All Employees Except Engineers
+
+select first_name , last_name
+from employees
+where job_title not like '%engineer%' 
+order by employee_id;
+
+5 Find Towns with Name Length
+
+select name 
+from towns
+where char_length(name) in (5 ,6)
+order by name;
+
+6 Find Towns Starting With
+
+
+
