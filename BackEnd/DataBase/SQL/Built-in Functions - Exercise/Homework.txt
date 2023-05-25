@@ -36,5 +36,94 @@ order by name;
 
 6 Find Towns Starting With
 
+select * 
+from towns
+where substring(name , 1 ,1) in ('m','k','b','e')
+order by name;
+
+7 Find Towns Not Starting With
+
+select * 
+from towns
+where substring(name , 1 ,1) not in ('r','b','d')
+order by name;
+
+8 Create View Employees Hired After 2000 Year
+
+CREATE VIEW v_employees_hired_after_2000 as
+SELECT first_name, last_name
+FROM employees
+WHERE year(hire_date) > 2000;
+
+9 Length of Last Name
+select first_name , last_name
+from employees
+where char_length(last_name) = 5;
+
+10 Countries Holding 'A' 3 or More Times
+
+select country_name , iso_code
+from countries
+where country_name like '%a%a%a%'
+order by iso_code;
+
+11 Mix of Peak and River Names
+
+select p.peak_name , r.river_name ,
+concat(LOWER(p.peak_name) , lower(substring(r.river_name , 2))) as mix
+from peaks as p , rivers as r
+where RIGHT(p.peak_name , 1) = Left(r.river_name , 1)
+order by mix;
+
+12 Games from 2011 and 2012 Year
+
+select name ,
+date_format(start ,"%Y-%m-%d") as start
+from games
+where year(start) in (2011 , 2012)
+order by start
+limit 50;
+
+13. User Email Providers
+
+select user_name ,
+concat(substring(email, LOCATE('@' , email) + 1)) as 'email provider'
+from users
+order by substring(email, LOCATE('@' , email) + 1) , user_name;
+
+14. Get Users with IP Address Like Pattern
+
+select user_name ,
+ip_address
+from users
+where ip_address like '___.1%.%.___'
+order by user_name;
+
+15. Show All Games with Duration and Part of the Day
+
+select name ,
+CASE
+    WHEN hour(start) >= 0 and hour(start) < 12 THEN 'Morning'
+    WHEN hour(start) >= 12 and hour(start) < 18 THEN 'Afternoon'
+    ELSE 'Evening'
+END as 'Part of the Day' ,
+CASE
+    WHEN duration <= 3  THEN 'Extra Short'
+    WHEN duration > 3 and duration <= 6 THEN 'Short'
+    WHEN duration > 6 and duration <= 10 THEN 'Long'
+    ELSE 'Extra Long'
+END as 'Duration' 
+from games;
+
+16. Orders Table
+
+select product_name ,
+order_date,
+DATE_ADD(order_date , interval 3 day) as 'pay_due',
+DATE_ADD(order_date , interval 1 month) as 'deliver_due'
+from orders;
+
+
+
 
 
