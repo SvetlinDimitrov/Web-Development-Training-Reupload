@@ -138,5 +138,62 @@ limit 1;
 
 
 12. Highest Peaks in Bulgaria
+select 
+mc.country_code,
+m.mountain_range,
+p.peak_name,
+p.elevation
+from peaks as p
+join mountains as m on m.id = p.mountain_id
+join mountains_countries as mc on mc.mountain_id = m.id
+where country_code = 'BG' and p.elevation  > 2835
+order by p.elevation desc;
+
+13. Count Mountain Ranges
+select 
+mc.country_code,
+count(m.mountain_range) as mountain_range 
+from mountains as m 
+join mountains_countries as mc on mc.mountain_id = m.id
+group by country_code
+having country_code in ('BG','RU','US')
+order by mountain_range desc;
+
+14. Countries with Rivers
+select 
+c.country_name,
+r.river_name 
+from countries as c 
+LEFT join countries_rivers as rc on rc.`country_code` = c.`country_code`
+LEFT join rivers as r on r.id = rc.river_id
+where c.`continent_code` = 'AF'
+order by country_name
+limit 5;
+
+15. *Continents and Currencies 
+
+
+
+16.  Countries Without Any Mountains
+select 
+count(*) as country_count
+from countries as c
+left join mountains_countries as mc on mc.country_code = c.country_code
+where mountain_id is null; 
+
+17. Highest Peak and Longest River by Country
+select 
+c.country_name,
+max(p.elevation) as highest_peak_elevation,
+max(r.length) as longest_river_length
+from countries as c
+join mountains_countries as mc on mc.country_code = c.country_code
+join countries_rivers as cr on cr.country_code = c.country_code
+join rivers as r on cr.river_id = r.id
+join peaks as p on p.mountain_id = mc.mountain_id
+group by c.country_name
+order by highest_peak_elevation desc, longest_river_length desc
+limit 5;
+
 
 
