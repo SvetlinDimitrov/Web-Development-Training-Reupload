@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -21,7 +22,10 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "products")
 public class Product  extends BaseEntity {
+
     @Column(name = "best_before")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @NotNull
     private LocalDate bestBefore;
 
     @Column
@@ -43,4 +47,9 @@ public class Product  extends BaseEntity {
     @ManyToOne
     private Shop shop;
 
+    public Product(@NotNull LocalDate bestBefore, @NotNull String name, @NotNull BigDecimal price) {
+        this.bestBefore = bestBefore;
+        this.name = name;
+        this.price = price;
+    }
 }

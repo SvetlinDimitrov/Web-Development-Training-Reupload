@@ -25,4 +25,9 @@ public class Town extends BaseEntity {
     public Town() {
         shops = new ArrayList<>();
     }
+
+    public Town(String name) {
+        this();
+        this.name = name;
+    }
 }

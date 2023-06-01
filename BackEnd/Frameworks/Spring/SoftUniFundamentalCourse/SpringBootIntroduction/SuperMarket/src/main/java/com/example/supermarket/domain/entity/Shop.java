@@ -25,6 +25,7 @@ public class Shop extends BaseEntity{
     private String address;
 
     @Column
+    @NotNull
     @Length(min = 2 , message = "name must be at least 2 characters long")
     private String name;
 
@@ -41,5 +42,11 @@ public class Shop extends BaseEntity{
     public Shop() {
         products = new ArrayList<>();
         sellers = new ArrayList<>();
+    }
+
+    public Shop(@NotNull String address, @NotNull String name) {
+        this();
+        this.address = address;
+        this.name = name;
     }
 }

@@ -18,8 +18,9 @@ import java.util.List;
 @Entity
 @Table(name = "categories")
 public class Category  extends BaseEntity {
+
     @Column(unique = true)
-    @Length(min = 2 , message = "name must be at least 2 characters long")
+    @Length(min = 2 , message = "Name must be minimum two characters!")
     @NotNull
     private String name;
 
@@ -28,5 +29,10 @@ public class Category  extends BaseEntity {
 
     public Category() {
         products = new ArrayList<>();
+    }
+
+    public Category(String name) {
+        this();
+        this.name = name;
     }
 }

@@ -48,4 +48,10 @@ public class Seller  extends BaseEntity {
     @OneToOne
     private Seller manager;
 
+    public Seller(@NotNull String firstName, @NotNull String lastName, @NotNull Integer age, @NotNull BigDecimal salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.salary = salary;
+    }
 }

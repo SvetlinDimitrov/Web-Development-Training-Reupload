@@ -2,62 +2,97 @@ package com.example.supermarket;
 
 import com.example.supermarket.domain.constants.ENUM;
 import com.example.supermarket.domain.entity.Category;
+import com.example.supermarket.domain.entity.Shop;
+import com.example.supermarket.domain.entity.Town;
 import com.example.supermarket.service.category.CategoryService;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
+import com.example.supermarket.service.product.ProductService;
+import com.example.supermarket.service.seller.SellerService;
+import com.example.supermarket.service.shop.ShopService;
+import com.example.supermarket.service.town.TownService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 
 import java.util.Scanner;
-import java.util.Set;
 
 
 @Component
 @AllArgsConstructor
 public class Main implements CommandLineRunner {
-
     private Scanner scanner;
     private CategoryService categoryService;
+    private TownService townService;
+    private ShopService shopService;
+    private SellerService sellerService;
+    private ProductService productService;
+
 
     @Override
     public void run(String... args) throws Exception {
 
-        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-
-        Validator validator = validatorFactory.getValidator();
+        int commandNumber;
         String input = "";
-        ENUM.MENU_MAP.forEach((key, value) -> System.out.println(key + " - " + value));
 
-        while(!input.equals("10")){
+        while (!input.equals("10")) {
+
+            ENUM.MENU_MAP.forEach((key, value) -> System.out.println(key + " - " + value));
             input = scanner.nextLine();
-            int command;
-            try{
-                command = Integer.parseInt(input);
-            }catch (Exception e){
-                System.out.println("Write a number in range of 1 to 10");
+            commandNumber = convertNumber(input);
+
+            if (commandNumber == -1) {
                 continue;
             }
-            String input2;
-            switch (command){
+
+            switch (commandNumber) {
                 case 1:
                     System.out.println("Enter category name:");
-                    input2 = scanner.nextLine();
-                    Category category = new Category();
-                    category.setName(input2);
-
-                    Set<ConstraintViolation<Category>> validate = validator.validate(category);
-                    if(validate.size() > 0){
-                        validate.forEach(m -> System.out.println(m.getMessage()));
-                    }
+                    String categoryName = scanner.nextLine();
+                    Category category = new Category(categoryName);
+                    categoryService.addCategory(category);
                     break;
                 case 2:
+                    System.out.println("Enter town name:");
+                    String townName = scanner.nextLine();
+                    Town town = new Town(townName);
+                    townService.add(town);
+                    break;
+                case 3:
+                    System.out.println("Enter shop details:name address town");
+                    String [] shopInfo = scanner.nextLine().split(" ");
+                    shopService.add(shopInfo);
+                    break;
+                case 4:
+                    System.out.println("Enter seller details:firstName lastName age salary shopName");
+                    String [] sellerInfo = scanner.nextLine().split(" ");
+                    sellerService.add(sellerInfo);
+                    break;
+                case 5:
+                    System.out.println("Enter product details:name price bestBefore(dd-MM-yyyy) category");
+                    String [] productInfo = scanner.nextLine().split(" ");
+                    productService.add(productInfo);
+                    break;
+                case 6:
+                    System.out.println("Enter seller firstName and lastName");
+                    String [] seller = scanner.nextLine().split(" ");
+                    System.out.println("Enter manager firstName and lastName");
+                    String [] manager = scanner.nextLine().split(" ");
+                    sellerService.addManagerToSeller(seller , manager);
+                    break;
             }
+            System.out.println("==============================================");
+
         }
 
+    }
+
+    private int convertNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            System.out.println("You ust write a number");
+            return -1;
+        }
     }
 }
