@@ -1,0 +1,64 @@
+Section 1: Data Definition Language (DDL) – 40 pts
+create database Restaurant;
+use Restaurant;
+
+create table products(
+	id int auto_increment primary key ,
+    name varchar(30) not null unique,
+    type varchar(30) not null,
+    price  decimal(10,2) not null
+);
+create table clients(
+	id int auto_increment primary key ,
+    first_name varchar(50) not null ,
+    last_name varchar(50) not null ,
+    birthdate date not null,
+    card varchar(50),
+    review text
+);
+
+create table tables(
+	id int auto_increment primary key ,
+    floor INT not null,
+    reserved boolean,
+    capacity INT not null
+);
+create table waiters(
+	id int auto_increment primary key ,
+    first_name varchar(50) not null ,
+    last_name varchar(50) not null ,
+    email varchar(50) not null ,
+    birthdate date DEFAULT '1990-01-01',
+    phone varchar(50),
+    salary decimal(10,2)
+);
+
+create table orders(
+	id int auto_increment primary key ,
+    table_id INT not null,
+    waiter_id INT not null,
+    capacity INT not null,
+    order_time date not null,
+    payed_status boolean,
+    constraint fk_orders_tables foreign key (table_id) references tables(id),
+    constraint fk_orders_waiters foreign key (waiter_id) references waiters(id)
+);
+
+create table orders_clients(
+	order_id INT ,
+	client_id INT ,
+	constraint fk_orders_clients_orders
+    foreign key (order_id) references orders(id),
+    constraint fk_orders_clients_clients
+    foreign key (client_id) references clients(id)
+);
+
+create table orders_products(
+	order_id INT ,
+	product_id INT ,
+	constraint fk_orders_products_orders
+    foreign key (order_id) references orders(id),
+    constraint fk_orders_products_products
+    foreign key (product_id) references products(id)
+);
+
