@@ -31,4 +31,13 @@ begin
 END
 
 
+11. Happy hour
+CREATE PROCEDURE udp_happy_hour(`type`VARCHAR(50))
+begin 
+ UPDATE `products` p
+ SET price = price - price * 0.2
+ WHERE p.type = type and price >= 10;
+END
+
+
 
