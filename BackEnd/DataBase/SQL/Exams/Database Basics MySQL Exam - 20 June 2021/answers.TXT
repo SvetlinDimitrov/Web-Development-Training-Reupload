@@ -1,0 +1,179 @@
+Section 1: Data Definition Language (DDL) – 40 pts
+
+01. Table Design
+# create database stc;
+create table addresses
+(
+    id   INT primary key AUTO_INCREMENT,
+    name varchar(100) not null
+);
+create table categories
+(
+    id   INT primary key AUTO_INCREMENT,
+    name varchar(10) not null
+);
+create table clients
+(
+    id   INT primary key AUTO_INCREMENT,
+    full_name varchar(50) not null,
+    phone_number varchar(20) not null
+);
+create table drivers
+(
+    id   INT primary key AUTO_INCREMENT,
+    first_name varchar(30) not null,
+    last_name varchar(30) not null,
+    age INT not null,
+    rating float default (5.5)
+);
+create table cars
+(
+    id   INT primary key AUTO_INCREMENT,
+    make varchar(20) not null,
+    model varchar(20),
+    year INT default 0 not null,
+    mileage INT default 0,
+    `condition` char(1) not null ,
+    category_id INT not null ,
+    constraint foreign key (category_id) references  categories(id)
+);
+create table courses
+(
+    id   INT primary key AUTO_INCREMENT,
+    from_address_id   INT not null ,
+    start datetime not null,
+    bill decimal(10,2) default 10,
+    car_id INT not null ,
+    client_id INT not null ,
+    constraint foreign key (from_address_id) references  addresses(id),
+    constraint foreign key (car_id) references  cars(id),
+    constraint foreign key (client_id) references  clients(id)
+);
+create table cars_drivers
+(
+    car_id INT not null ,
+    driver_id INT not null ,
+    constraint foreign key (car_id) references  cars(id),
+    constraint foreign key (driver_id) references  drivers(id),
+    constraint primary key (car_id , driver_id)
+);
+
+02. Insert
+insert into clients(full_name, phone_number)
+(select concat(first_name , ' ',last_name),
+        concat('(088)' , ' ','9999',drivers.id*2)
+ from drivers
+ where drivers.id between 10 and 20);
+
+03. Update
+update cars
+set `condition` = 'C'
+where (mileage is null or mileage >= 800000) and year <= 2010;
+
+04. Delete
+delete from clients
+where char_length(full_name) > 3 and
+      id not in(select client_id
+                from courses);
+
+Section 3: Querying – 50 pts
+
+05. Cars
+select make,
+       model,
+       `condition`
+from cars
+order by id;
+
+
+06. Drivers and Cars
+select first_name,
+       last_name,
+       make,
+       model,
+       mileage
+from drivers
+join cars_drivers cd on drivers.id = cd.driver_id
+join cars c on c.id = cd.car_id
+where mileage is not null
+order by  mileage desc,first_name
+
+07. Number of courses
+select cars.id,
+       make,
+       mileage,
+       count(c.car_id) as count_of_courses,
+       round(avg(bill) ,2) as avg_bill
+from cars
+left join courses c on cars.id = c.car_id
+group by cars.id
+having count_of_courses != 2
+order by count_of_courses desc,cars.id
+
+
+08. Regular clients
+select
+    full_name,
+    count(c.car_id) count_of_cars,
+    sum(c.bill) total_sum
+from clients
+left join courses c on clients.id = c.client_id
+left join cars c2 on c2.id = c.car_id
+where substr( full_name , 2 ,1) = 'a'
+group by clients.full_name
+having count_of_cars > 1
+order by full_name;
+
+
+09. Full info for courses
+select a.name,
+       if(hour(courses.start) between 6 and 20,
+           'Day' , 'Night') day_time ,
+        courses.bill,
+        c.full_name,
+        c2.make,
+        c2.model,
+        c3.name
+from courses
+join addresses a on a.id = courses.from_address_id
+join clients c on c.id = courses.client_id
+join cars c2 on c2.id = courses.car_id
+join categories c3 on c3.id = c2.category_id
+order by courses.id;
+
+
+Section 4: Programmability – 30 pts
+10. Find all courses by client’s phone number
+create function udf_courses_by_client (phone_num VARCHAR (20))
+returns INT
+deterministic 
+begin 
+    return (select count(c.id)
+            from clients
+            join courses c on clients.id = c.client_id
+            where clients.phone_number = phone_num);
+end;
+
+11. Full info for address
+create procedure udp_courses_by_address(address_name varchar(100))
+begin
+    select
+        addresses.name,
+        c2.full_name,
+        CASE
+            WHEN c.bill <= 20 THEN 'Low'
+            WHEN c.bill <= 30 THEN 'Medium'
+            ELSE 'High'
+        END level_of_bill,
+        c3.make,
+        c3.`condition`,
+        c4.name
+        from addresses
+        join courses c on addresses.id = c.from_address_id
+        join clients c2 on c2.id = c.client_id
+        join cars c3 on c3.id = c.car_id
+        join categories c4 on c4.id = c3.category_id
+            where addresses.name = address_name
+    order by c3.make , c2.full_name;
+end;
+
