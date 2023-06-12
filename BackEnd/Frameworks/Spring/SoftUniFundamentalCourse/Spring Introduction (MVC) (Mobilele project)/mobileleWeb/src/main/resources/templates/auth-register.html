@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header::head"></head>
+<head th:replace="~{fragments/header::head}"></head>
 
 <body>
-<div th:replace="fragments/navbar::nav"></div>
+<div th:replace="~{fragments/navbar::nav}"></div>
 <div class="container" >
     <h2 class="text-center text-white">Register User</h2>
-    <form action="/users/register"
-          method="POST"
+    <form th:action="@{/users/register}"
+          th:method="POST"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"
     th:object="${userRegister}">
         <div class="row">

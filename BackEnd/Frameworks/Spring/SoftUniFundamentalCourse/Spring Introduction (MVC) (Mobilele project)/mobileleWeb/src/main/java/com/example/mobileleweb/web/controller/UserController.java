@@ -4,7 +4,9 @@ import com.example.mobileleweb.domain.entity.Model;
 import com.example.mobileleweb.domain.entity.User;
 import com.example.mobileleweb.domain.viewDtos.LoginUserDto;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
+import com.example.mobileleweb.service.User.UserService;
 import com.example.mobileleweb.web.constants.BaseModelAndView;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/users")
 public class UserController extends BaseModelAndView {
+
+    private UserService userService;
 
     @GetMapping("/register")
     public ModelAndView getRegister(){
@@ -22,8 +27,8 @@ public class UserController extends BaseModelAndView {
     }
     @PostMapping("/register")
     public ModelAndView register(RegisterUserDto user, ModelAndView modelAndView){
-        //TODO: register user in dataBase
-        return redirect("/users/login" , modelAndView);
+        userService.register(user);
+        return redirect("users/login" , modelAndView);
     }
     @GetMapping("/login")
     public ModelAndView getLogin(){

@@ -1,16 +1,15 @@
 package com.example.mobileleweb.domain.entity;
 
 import com.example.mobileleweb.domain.constants.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -36,8 +35,14 @@ public class User extends BaseEntity {
     @Column(name = "is_active" , columnDefinition = "bit(1)")
     private Boolean isActive;
 
-    @OneToOne
-    private UserRole role;
+    @ManyToMany
+    @JoinTable(
+            uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "role_id" }) },
+            name = "roles_users",
+            joinColumns = @JoinColumn(unique = false , referencedColumnName = "id" , name = "user_id"),
+            inverseJoinColumns = @JoinColumn(unique = false ,referencedColumnName = "id" , name = "role_id")
+    )
+    private List<UserRole> roles = new ArrayList<>();
 
     @Column(name = "image_url",columnDefinition = "varchar(255)")
     private String imageUrl;

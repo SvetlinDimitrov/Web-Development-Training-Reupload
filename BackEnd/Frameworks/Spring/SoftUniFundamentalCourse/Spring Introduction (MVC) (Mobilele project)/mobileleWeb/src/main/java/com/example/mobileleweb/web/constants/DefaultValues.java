@@ -15,7 +15,7 @@ public class DefaultValues {
     @ModelAttribute
     public void configTheModel(Model modelAndView){
         modelAndView.addAttribute("text" , "Welcome to MobiLelele");
-        modelAndView.addAttribute("roles" , List.of(Role.values()));
+        modelAndView.addAttribute("roles" , Role.values());
         modelAndView.addAttribute("userRegister" , new RegisterUserDto());
         modelAndView.addAttribute("userLogin" , new LoginUserDto());
     }
