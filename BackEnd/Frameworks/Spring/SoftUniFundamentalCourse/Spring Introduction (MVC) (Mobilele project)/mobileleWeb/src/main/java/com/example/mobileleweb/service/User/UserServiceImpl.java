@@ -4,6 +4,7 @@ import com.example.mobileleweb.domain.constants.Role;
 import com.example.mobileleweb.domain.entity.User;
 import com.example.mobileleweb.domain.entity.UserRole;
 import com.example.mobileleweb.domain.modelViewEntity.UserView;
+import com.example.mobileleweb.domain.viewDtos.LoginUserDto;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
 import com.example.mobileleweb.repo.UserRepository;
 import com.example.mobileleweb.service.UserRole.UserRoleService;
@@ -29,5 +30,11 @@ public class UserServiceImpl implements UserService {
             user.getRoles().add(userRoleService.findByRole(Role.Admin));
         }
         userRepository.save(user);
+    }
+
+    @Override
+    public boolean login(LoginUserDto loginUserDto) {
+        return userRepository.findByUsername(loginUserDto.getUsername()).get()
+                .getPassword().equals(loginUserDto.getPassword());
     }
 }

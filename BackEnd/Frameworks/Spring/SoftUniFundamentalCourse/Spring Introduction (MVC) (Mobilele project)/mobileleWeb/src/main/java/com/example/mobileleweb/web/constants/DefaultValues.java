@@ -1,6 +1,7 @@
 package com.example.mobileleweb.web.constants;
 
 import com.example.mobileleweb.domain.constants.Role;
+import com.example.mobileleweb.domain.viewDtos.LoggedUser;
 import com.example.mobileleweb.domain.viewDtos.LoginUserDto;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
 import org.springframework.ui.Model;

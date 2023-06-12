@@ -5,7 +5,13 @@
 
 <body>
 
-<div th:replace="~{fragments/navbar::nav}"></div>
+<div th:if="${session.loggedUser == null}" >
+    <div th:replace="~{fragments/login_user_navbat::login_user}"></div>
+</div>
+
+<div th:if="${session.loggedUser != null}" >
+    <div th:replace="~{fragments/logged_user_navbar::loggedUser}"></div>
+</div>
 
 <div class="container-fluid">
     <h5 class="text-center text-white mt-5" th:text="${text}"></h5>
