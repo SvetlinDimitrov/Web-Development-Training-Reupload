@@ -2,10 +2,12 @@ package com.example.mobileleweb.web.controller;
 
 import com.example.mobileleweb.domain.entity.Model;
 import com.example.mobileleweb.domain.entity.User;
+import com.example.mobileleweb.domain.viewDtos.LoggedUser;
 import com.example.mobileleweb.domain.viewDtos.LoginUserDto;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
 import com.example.mobileleweb.service.User.UserService;
 import com.example.mobileleweb.web.constants.BaseModelAndView;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,9 +37,19 @@ public class UserController extends BaseModelAndView {
         return view("auth-login");
     }
     @PostMapping("/login")
-    public ModelAndView login(LoginUserDto loginUserDto , ModelAndView modelAndView){
-        //TODO:: check if the login user if valid
-        return redirect("/" , modelAndView);
+    public ModelAndView login(LoginUserDto loginUserDto , ModelAndView modelAndView , HttpSession httpSession){
+        if(userService.login(loginUserDto)){
+            LoggedUser loggedUser = new LoggedUser(loginUserDto.getUsername(), loginUserDto.getPassword());
+            httpSession.setAttribute("loggedUser" , loggedUser);
+            return redirect("" , modelAndView);
+        }
+        return redirect("users/login" , modelAndView);
+    }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpSession httpSession){
+        httpSession.removeAttribute("loggedUser");
+        return redirect("" , new ModelAndView());
     }
 
 
