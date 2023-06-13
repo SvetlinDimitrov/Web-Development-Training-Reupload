@@ -7,11 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
-public class HomeController {
+public class HomeController extends BaseModel {
 
     @GetMapping
-    public ModelAndView getHome(ModelAndView modelAndView){
-        modelAndView.setViewName("index");
-        return modelAndView;
+    public ModelAndView getHome(){
+        return view("index");
     }
 }
