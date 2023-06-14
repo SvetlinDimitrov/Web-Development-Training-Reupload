@@ -24,11 +24,10 @@ public class Comment extends BaseEntity {
     @Column
     private Boolean approved;
 
-    @Column(columnDefinition = "datetime(6)")
-    @Past
+    @Column
     private LocalDate created;
 
-    @Column(name = "text_content" , columnDefinition = "text")
+    @Column(name = "text_content")
     private String textContent;
 
     @ManyToOne

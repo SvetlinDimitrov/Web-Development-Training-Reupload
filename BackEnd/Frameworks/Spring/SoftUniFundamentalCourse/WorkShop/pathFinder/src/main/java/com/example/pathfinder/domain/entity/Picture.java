@@ -17,10 +17,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "pictures")
 public class Picture extends BaseEntity {
-    @Column(columnDefinition = "varchar(255)")
+    @Column
     private String title;
 
-    @Column(columnDefinition = "text")
+    @Column
     private String url;
 
     @ManyToOne

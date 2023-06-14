@@ -1,13 +1,13 @@
 package com.example.pathfinder.web;
 
+import com.example.pathfinder.domain.bindingViews.ViewUser;
 import com.example.pathfinder.domain.dtos.LoginUserDto;
 import com.example.pathfinder.domain.dtos.RegisterUserDto;
 import com.example.pathfinder.service.user.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -40,13 +40,45 @@ public class UserController  extends BaseModel{
     }
     @PostMapping("/login")
     public ModelAndView login(ModelAndView modelAndView,
-                                 LoginUserDto loginUserDto){
+                              LoginUserDto loginUserDto,
+                              HttpSession session){
 
-        if(userService.login(loginUserDto)){
+        clearSession(session);
+        ViewUser login = userService.login(loginUserDto);
+
+        if( login != null){
+            getPermissions(session, login);
             return redirect("" , modelAndView);
         }
+
         return redirect("users/login" , modelAndView);
 
+    }
+    @GetMapping("/loggout")
+    public ModelAndView loggout(HttpSession session){
+        clearSession(session);
+        return redirect("" , new ModelAndView());
+    }
+
+    @GetMapping("/profile")
+    public ModelAndView profile(ModelAndView modelAndView){
+        return view("profile" , modelAndView);
+    }
+
+    private static void clearSession(HttpSession session) {
+        session.removeAttribute("loggedUser");
+        session.removeAttribute("admin");
+        session.removeAttribute("user");
+    }
+
+    private static void getPermissions(HttpSession session, ViewUser login) {
+        session.setAttribute("loggedUser" , login.getId());
+
+        if(login.isAdmin()){
+            session.setAttribute("admin" , true);
+        }else{
+            session.setAttribute("user" , true);
+        }
     }
 
 }

@@ -2,10 +2,7 @@ package com.example.pathfinder.domain.entity;
 
 import com.example.pathfinder.domain.constants.BaseEntity;
 import com.example.pathfinder.domain.constants.CategoryConstant;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +15,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "categories")
 public class Categorie extends BaseEntity {
-    @Column(columnDefinition = "varchar(255)")
-    @Enumerated
+    @Column
+    @Enumerated(EnumType.STRING)
     private CategoryConstant name;
 
-    @Column(columnDefinition = "text")
+    @Column
     private String description;
 }

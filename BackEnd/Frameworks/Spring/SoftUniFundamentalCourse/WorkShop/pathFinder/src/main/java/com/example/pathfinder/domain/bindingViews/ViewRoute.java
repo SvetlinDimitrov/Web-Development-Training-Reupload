@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +25,6 @@ public class ViewRoute  {
     private String name;
     private ViewUser author;
     private String videoUrl;
-    private List<ViewPictures> pictures;
-    private Set<ViewCategories> roles;
+    private List<ViewPictures> pictures = new ArrayList<>();
+    private Set<ViewCategories> roles = new HashSet<>();
 }

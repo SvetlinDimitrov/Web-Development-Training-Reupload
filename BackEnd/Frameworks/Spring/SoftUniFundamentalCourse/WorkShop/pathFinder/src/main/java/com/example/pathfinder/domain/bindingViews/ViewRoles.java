@@ -13,7 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ViewRoles  {
 
-    private Long id;
     private RoleConstant role;
+    private Long Id;
+
 
 }

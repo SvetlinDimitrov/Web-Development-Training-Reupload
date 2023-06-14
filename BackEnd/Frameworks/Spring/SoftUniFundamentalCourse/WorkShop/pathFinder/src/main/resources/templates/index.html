@@ -6,17 +6,25 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header>
-        <th:block th:if="${@loggedUser.id == null}">
-            <nav th:replace="fragments/nav_notLoggedUser_fragment"></nav>
+        <th:block th:if="${session.loggedUser != null}">
+
+            <th:block th:if="${session.user}">
+                <nav th:replace="~{fragments/nav_user_fragment}"></nav>
+            </th:block>
+
+            <th:block th:if="${session.admin}">
+                <nav th:replace="~{fragments/nav_admin_fragment}"></nav>
+            </th:block>
+
         </th:block>
 
-        <th:block th:if="${@loggedUser.id != null && !@loggedUser.isAdmin()}">
-            <nav th:replace="fragments/nav_user_fragment"></nav>
+        <th:block th:if="${session.isEmpty()}">
+            <nav th:replace="~{fragments/nav_notLoggedUser_fragment}"></nav>
         </th:block>
 
-        <th:block th:if="${@loggedUser.id != null && @loggedUser.isAdmin()}">
-            <nav th:replace="fragments/nav_admin_fragment"></nav>
-        </th:block>
+
+
+
 
     </header>
     <!-- Top Container -->
@@ -93,7 +101,7 @@
 </div>
 <!-- Wrapper Ends -->'
 
-<footer th:replace="fragments/footer_fragment"></footer>
+<footer th:replace="~{fragments/footer_fragment}"></footer>
 </body>
 
 </html>

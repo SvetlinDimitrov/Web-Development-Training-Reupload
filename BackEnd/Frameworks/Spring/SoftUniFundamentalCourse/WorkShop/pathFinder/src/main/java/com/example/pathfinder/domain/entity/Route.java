@@ -18,29 +18,29 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "routes")
 public class Route extends BaseEntity {
-    @Column(name = "gpx_coordinates" , columnDefinition = "longtext")
+    @Column(name = "gpx_coordinates" ,columnDefinition = "longtext")
     private String gpxCoordinates;
 
     @Column(columnDefinition = "text")
     private String description;
 
-    @Column(columnDefinition = "varchar(255)")
-    @Enumerated
+    @Column
+    @Enumerated(EnumType.STRING)
     private Level level;
 
-    @Column(columnDefinition = "varchar(255)")
+    @Column
     private String name;
 
     @ManyToOne
     private User author;
 
-    @Column(name = "video_url" , columnDefinition = "varchar(255)")
+    @Column(name = "video_url")
     private String videoUrl;
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route" , fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "routes_categories",
             joinColumns = @JoinColumn(

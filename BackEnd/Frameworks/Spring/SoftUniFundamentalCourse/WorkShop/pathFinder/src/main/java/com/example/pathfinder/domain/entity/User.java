@@ -6,6 +6,7 @@ import com.example.pathfinder.domain.constants.RoleConstant;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
@@ -17,27 +18,25 @@ import java.util.Set;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 public class User extends BaseEntity {
-    @Column(columnDefinition = "varchar(255)")
-    @Length(min = 2)
+    @Column
     private String username;
 
-    @Column(name = "full_name" , columnDefinition = "varchar(255)")
+    @Column(name = "full_name")
     private String fullName;
 
-    @Column(columnDefinition = "int")
+    @Column
     private Integer age;
 
-    @Column(columnDefinition = "varchar(255)")
-    @Length(min = 2)
+    @Column()
     private String password;
 
-    @Column(columnDefinition = "varchar(255)")
-    //TODO:Accepts values, which contain the '@' symbol
+    @Column()
     private String email;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -51,26 +50,24 @@ public class User extends BaseEntity {
     )
     private Set<Role> roles;
 
-    @Enumerated
-    @Column(columnDefinition = "varchar(255)")
+    @Enumerated(EnumType.STRING)
+    @Column
     private Level level;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Route> route;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Message> messages;
 
-    @OneToMany(mappedBy = "recipient")
+    @OneToMany(mappedBy = "recipient" , fetch = FetchType.EAGER)
     private List<Message> recipients;
-    public User() {
-        this.roles = new HashSet<>();
-        roles.add(new Role(RoleConstant.USER));
-    }
+
+
 }

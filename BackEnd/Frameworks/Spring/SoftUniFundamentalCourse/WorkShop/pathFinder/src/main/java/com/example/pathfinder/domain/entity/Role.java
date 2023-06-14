@@ -2,10 +2,7 @@ package com.example.pathfinder.domain.entity;
 
 import com.example.pathfinder.domain.constants.BaseEntity;
 import com.example.pathfinder.domain.constants.RoleConstant;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "roles")
 public class Role extends BaseEntity {
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(250)")
     private RoleConstant role;
 }

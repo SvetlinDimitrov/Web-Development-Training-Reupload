@@ -17,10 +17,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Table(name = "messages")
 public class Message extends BaseEntity {
-    @Column(columnDefinition = "datetime(6)" , name = "date_time")
+    @Column(name = "date_time")
     private LocalDate dateTime;
 
-    @Column(columnDefinition = "text" , name = "text_content")
+    @Column(name = "text_content")
     private String textContent;
 
     @ManyToOne
