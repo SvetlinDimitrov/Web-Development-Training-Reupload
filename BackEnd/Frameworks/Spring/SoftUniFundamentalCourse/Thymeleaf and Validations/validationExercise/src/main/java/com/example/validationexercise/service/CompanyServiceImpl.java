@@ -32,4 +32,9 @@ public class CompanyServiceImpl implements CompanyService {
                 .get()
                 .toViewCompany();
     }
+
+    @Override
+    public Company companyById(String id) {
+        return companyRepository.findById(id).get();
+    }
 }

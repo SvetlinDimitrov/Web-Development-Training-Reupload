@@ -1,7 +1,6 @@
 package com.example.validationexercise.domain.viewMapping;
 
 import com.example.validationexercise.domain.entity.Company;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;

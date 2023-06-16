@@ -36,6 +36,7 @@ public class CompanyController extends DefaultModel {
                                    BindingResult result,
                                    ModelAndView modelAndView) {
         if (result.hasErrors()) {
+
             return view("company-add");
         }
         companyService.save(company);
@@ -59,6 +60,8 @@ public class CompanyController extends DefaultModel {
     public ViewCompany company() {
         return new ViewCompany();
     }
+
+    //TODO: delete requesting
 
 }
 

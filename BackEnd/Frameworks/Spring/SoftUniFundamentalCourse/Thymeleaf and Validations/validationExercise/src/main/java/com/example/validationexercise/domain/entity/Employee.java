@@ -1,8 +1,10 @@
 package com.example.validationexercise.domain.entity;
 
+import com.example.validationexercise.domain.viewMapping.ViewEmployee;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +14,7 @@ import java.util.Locale;
 @Entity
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
@@ -21,6 +24,7 @@ public class Employee {
     private String id;// – a char sequence
 
     @Column(columnDefinition = "date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthdate;//Cannot be null.
 
     @Column(columnDefinition = "varchar(255)")
@@ -40,4 +44,17 @@ public class Employee {
 
     @ManyToOne
     private Company company;
+
+    public ViewEmployee toViewEmployee(){
+        return ViewEmployee.builder()
+                .birthDate(birthdate)
+                .educationLevel(educationLevel)
+                .firstName(firstName)
+                .jobTitle(jobTitle)
+                .lastName(lastName)
+                .salary(salary)
+                .companyName(company.getName())
+                .companyId(company.getId())
+                .build();
+    }
 }

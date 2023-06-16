@@ -9,24 +9,14 @@
         <h2 class="text-center text-dark bg-light rounded-circle mt-5">All employees</h2>
         <hr style="width: 50%"/>
         <div class='row mb-4 d-flex justify-content-around'>
-            
-                <div class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
-                    <h2>Full name: {firstName} {lastName}</h2>
-                    <h4>Job title: {jobTitle}</h4>
-                    <h4>Birth Date: {birthDate}</h4>
-                    <h4><a class="btn-block" href="/">Detail info</a></h4>
-                </div>
-				<div class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
-                    <h2>Full name: {firstName} {lastName}</h2>
-                    <h4>Job title: {jobTitle}</h4>
-                    <h4>Birth Date: {birthDate}</h4>
-                    <h4><a class="btn-block" href="/">Detail info</a></h4>
-                </div>
-				<div class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
-                    <h2>Full name: {firstName} {lastName}</h2>
-                    <h4>Job title: {jobTitle}</h4>
-                    <h4>Birth Date: {birthDate}</h4>
-                    <h4><a class="btn-block" href="/">Detail info</a></h4>
+
+				<div th:each = "employee : ${allEmployees}"
+                        class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
+                    <h2 th:text="'Full name: ' + ${employee.firstName} + ' ' + ${employee.lastName}"></h2>
+                    <h4 th:text = "'Job title: ' + ${employee.jobTitle}"></h4>
+                    <h4 th:text="'Birth Date: '+
+                    ${#dates.format(employee.birthDate, 'yyyy-MM-dd')}"></h4>
+                    <h4><a class="btn-block" th:href="@{/employees/details}">Detail info</a></h4>
                 </div>
           
         </div>
