@@ -37,4 +37,11 @@ public class CompanyServiceImpl implements CompanyService {
     public Company companyById(String id) {
         return companyRepository.findById(id).get();
     }
+
+    @Override
+    public boolean isAlreadyExists(String name) {
+        return companyRepository.findAll()
+                .stream()
+                .anyMatch(c->c.getName().equals(name));
+    }
 }

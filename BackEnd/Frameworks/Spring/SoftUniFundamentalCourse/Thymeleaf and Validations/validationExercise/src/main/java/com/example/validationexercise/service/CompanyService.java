@@ -14,4 +14,5 @@ public interface CompanyService {
     ViewCompany findById(String id);
     Company companyById(String id);
 
+    boolean isAlreadyExists(String name);
 }

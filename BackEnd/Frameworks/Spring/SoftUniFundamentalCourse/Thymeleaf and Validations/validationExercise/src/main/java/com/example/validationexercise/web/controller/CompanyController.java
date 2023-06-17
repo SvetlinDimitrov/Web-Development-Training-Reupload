@@ -32,7 +32,7 @@ public class CompanyController extends DefaultModel {
     }
 
     @PostMapping("/add")
-    public ModelAndView getCompany(@Valid ViewCompany company,
+    public ModelAndView getCompany(@Valid @ModelAttribute(name = "company") ViewCompany company,
                                    BindingResult result,
                                    ModelAndView modelAndView) {
         if (result.hasErrors()) {
@@ -49,10 +49,8 @@ public class CompanyController extends DefaultModel {
 
     //TODO::sameHow to get the id for the corresponding entity
     @GetMapping("/details")
-    public ModelAndView getDetails(ModelAndView modelAndView,
-                                   @RequestParam(name = "name") String id) {
-        ViewCompany company = companyService.findById(id);
-        modelAndView.addObject("company", company);
+    public ModelAndView getDetails(ModelAndView modelAndView) {
+
         return view("company-details.html", modelAndView);
     }
 

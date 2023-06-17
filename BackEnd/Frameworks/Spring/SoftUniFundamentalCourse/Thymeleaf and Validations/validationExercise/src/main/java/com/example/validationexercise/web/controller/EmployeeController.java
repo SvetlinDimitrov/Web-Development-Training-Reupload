@@ -36,7 +36,7 @@ public class EmployeeController extends DefaultModel {
     }
 
     @PostMapping("/add")
-    public ModelAndView addEmployee(@Valid ViewEmployee employee,
+    public ModelAndView addEmployee(@Valid @ModelAttribute(name = "employee") ViewEmployee employee,
                                     BindingResult bindingResult,
                                     ModelAndView modelAndView) {
 
