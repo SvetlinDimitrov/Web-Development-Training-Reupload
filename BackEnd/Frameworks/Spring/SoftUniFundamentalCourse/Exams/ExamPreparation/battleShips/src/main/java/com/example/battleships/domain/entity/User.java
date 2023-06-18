@@ -30,7 +30,7 @@ public class User extends DefaultEntity {
 
     // ◦ The values should contain a '@' symbol
     //◦ The values should be unique in the database
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user" ,cascade = CascadeType.MERGE)
     private List<Ship> ships = new ArrayList<>();
 
     public ViewUser toViewUser(){
@@ -41,4 +41,5 @@ public class User extends DefaultEntity {
                 .email(email)
                 .build();
     }
+
 }

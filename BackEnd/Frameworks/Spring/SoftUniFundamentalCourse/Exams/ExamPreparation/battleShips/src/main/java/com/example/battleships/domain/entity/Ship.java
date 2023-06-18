@@ -1,5 +1,6 @@
 package com.example.battleships.domain.entity;
 
+import com.example.battleships.domain.bindingViews.ViewShip;
 import com.example.battleships.domain.constants.DefaultEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,10 +29,20 @@ public class Ship extends DefaultEntity {
     private LocalDate created;
     //            ◦ The values should not be future dates
 
-    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
     private Category category;
 
-    @ManyToOne(cascade = CascadeType.MERGE , fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH} , fetch = FetchType.EAGER)
     private User user;
 
+    public ViewShip toViewShip(){
+        return ViewShip.builder()
+                .id(getId())
+                .name(name)
+                .health(health)
+                .power(power)
+                .category(category.getName())
+                .created(created)
+                .build();
+    }
 }

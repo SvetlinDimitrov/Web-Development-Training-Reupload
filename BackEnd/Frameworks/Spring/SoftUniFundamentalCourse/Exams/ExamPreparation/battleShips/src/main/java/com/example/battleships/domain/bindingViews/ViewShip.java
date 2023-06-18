@@ -17,6 +17,8 @@ import java.time.LocalDate;
 @Builder
 public class ViewShip implements Serializable {
 
+    private Long id;
+
     @Size(min = 2 , max = 10)
     @NotEmpty
     @ShipConstraintName

@@ -17,6 +17,8 @@ import lombok.*;
 @UserConstraintConfirmPassword
 public class ViewUser {
 
+    private Long id;
+
     @Size(min = 3 , max = 10)
     @NotEmpty
     @UserConstraintName
