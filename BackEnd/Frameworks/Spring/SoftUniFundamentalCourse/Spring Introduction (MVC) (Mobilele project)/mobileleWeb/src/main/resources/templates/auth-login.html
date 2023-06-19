@@ -25,7 +25,8 @@
 
         </div>
         
-        <p class="errors alert alert-danger">
+        <p th:if = "${#fields.hasErrors()}"
+                class="errors alert alert-danger">
             Invalid username or password.
         </p>
 

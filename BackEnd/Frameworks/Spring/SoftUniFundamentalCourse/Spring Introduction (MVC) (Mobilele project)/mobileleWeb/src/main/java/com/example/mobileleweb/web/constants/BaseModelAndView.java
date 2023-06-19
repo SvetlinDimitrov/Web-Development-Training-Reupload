@@ -14,7 +14,7 @@ public abstract class BaseModelAndView {
        return view(viewName , new ModelAndView());
     }
     public ModelAndView redirect(String path , ModelAndView modelAndView){
-        modelAndView.setViewName("redirect:/" + path);
+        modelAndView.setViewName("redirect:" + path);
         return modelAndView;
     }
 }

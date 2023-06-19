@@ -1,6 +1,8 @@
 package com.example.mobileleweb.domain.entity;
 
 import com.example.mobileleweb.domain.constants.BaseEntity;
+import com.example.mobileleweb.domain.constants.Role;
+import com.example.mobileleweb.domain.viewDtos.LoggedUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +21,7 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(columnDefinition = "varchar(255)")
+    @Column(columnDefinition = "varchar(255)" , unique = true)
     private String username;
 
     @Column(columnDefinition = "varchar(255)")
@@ -52,4 +54,13 @@ public class User extends BaseEntity {
 
     @Column(columnDefinition = "datetime(6)")
     private LocalDate modified;
+
+    public LoggedUser toLoggedUser(){
+        return LoggedUser.builder()
+                .id(getId())
+                .username(username)
+                .isAdmin(roles.contains(Role.Admin))
+                .build();
+
+    }
 }

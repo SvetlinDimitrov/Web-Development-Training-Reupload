@@ -6,11 +6,11 @@
 <body>
 
 <div th:if="${session.loggedUser == null}" >
-    <div th:replace="~{fragments/login_user_navbat::login_user}"></div>
+    <div th:replace="~{fragments/login_user_navbat}"></div>
 </div>
 
 <div th:if="${session.loggedUser != null}" >
-    <div th:replace="~{fragments/logged_user_navbar::loggedUser}"></div>
+    <div th:replace="~{fragments/logged_user_navbar}"></div>
 </div>
 
 <div class="container-fluid">

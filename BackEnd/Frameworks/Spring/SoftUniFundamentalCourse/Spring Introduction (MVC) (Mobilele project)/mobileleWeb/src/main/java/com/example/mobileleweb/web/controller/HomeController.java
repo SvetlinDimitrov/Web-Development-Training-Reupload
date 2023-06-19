@@ -14,7 +14,7 @@ import java.util.Map;
 public class HomeController {
 
     @GetMapping
-    public ModelAndView getHome(ModelAndView modelAndView , HttpSession httpSession){
+    public ModelAndView getHome(ModelAndView modelAndView){
         modelAndView.setViewName("index");
         return modelAndView;
     }

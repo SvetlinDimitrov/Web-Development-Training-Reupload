@@ -1,15 +1,14 @@
 package com.example.mobileleweb.domain.viewDtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoggedUser {
+    private String id;
     private String username;
-    private String password;
+    private Boolean isAdmin;
 }

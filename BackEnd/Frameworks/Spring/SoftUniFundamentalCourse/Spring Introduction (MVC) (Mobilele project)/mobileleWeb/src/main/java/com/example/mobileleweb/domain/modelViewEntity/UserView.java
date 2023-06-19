@@ -16,28 +16,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserView {
 
+    private String id;
     private String username;
-
-
     private String password;
-
-
     private String firstName;
-
     private String lastName;
-
-
     private Boolean isActive;
-
-
     private UserRole role;
-
-
     private String imageUrl;
-
-
     private LocalDate created;
-
-
     private LocalDate modified;
+
 }
