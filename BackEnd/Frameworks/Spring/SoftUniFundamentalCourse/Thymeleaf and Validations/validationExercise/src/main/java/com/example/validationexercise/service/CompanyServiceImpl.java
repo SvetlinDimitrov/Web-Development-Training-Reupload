@@ -1,6 +1,7 @@
 package com.example.validationexercise.service;
 
 import com.example.validationexercise.domain.entity.Company;
+import com.example.validationexercise.domain.entity.Employee;
 import com.example.validationexercise.domain.viewMapping.ViewCompany;
 import com.example.validationexercise.repos.CompanyRepository;
 import lombok.AllArgsConstructor;
@@ -14,8 +15,9 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepository companyRepository;
 
     @Override
-    public void save(ViewCompany company) {
-        companyRepository.save(company.toCompany());
+    public ViewCompany save(ViewCompany company) {
+        Company save = companyRepository.save(company.toCompany());
+        return save.toViewCompany();
     }
 
     @Override
@@ -34,8 +36,8 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company companyById(String id) {
-        return companyRepository.findById(id).get();
+    public ViewCompany companyById(String id) {
+        return companyRepository.findById(id).get().toViewCompany();
     }
 
     @Override
@@ -43,5 +45,13 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.findAll()
                 .stream()
                 .anyMatch(c->c.getName().equals(name));
+    }
+
+    @Override
+    public void deleteCompany(String id) {
+        Company company = companyRepository.findById(id).get();
+        List<Employee> employees = company.getEmployees();
+        employees.forEach(e-> e.setCompany(null));
+        companyRepository.deleteById(id);
     }
 }

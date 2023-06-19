@@ -15,16 +15,17 @@
                 th:object="${employee}">
                     <div class="col-md-6 bg-dark">
                         <h2>Employee</h2>
-                        <h4 th:text = "*{firstName}">First Name: </h4>
-                        <h4 th:text = "*{lastName}">Last Name: </h4>
-                        <h4 th:text = "*{educationLevel}">Education Level: </h4>
-                        <h4 th:text = "*{jobTitle}">Job title: </h4>
-                        <h4 >Birthdate: {birthDate}</h4>
-                        <h4 th:text = "*{salary}">Salary: </h4>
-                        <h4 th:text = "*{companyName}">Company: </h4>
+                        <h4 th:text = "'First Name: '+ *{firstName}"></h4>
+                        <h4 th:text = "'Last Name: '+*{lastName}"></h4>
+                        <h4 th:text = "'Education Level: '+*{educationLevel}"></h4>
+                        <h4 th:text = "'Job title: '+*{jobTitle}"></h4>
+                        <h4 th:text="'Birth Date: '+${#dates.format(employee.birthDate, 'yyyy-MM-dd')}"></h4>
+                        <h4 th:text = "'Salary: '+*{salary}"></h4>
+                        <h4  th:if = "${employee.companyName == ''}" th:text = "'Company: Currently unemployed'"></h4>
+                        <h4  th:if = "${employee.companyName != ''}" th:text = "'Company: '+*{companyName}"></h4>
                         <div class="align-bottom">
 						<a class="btn btn-danger align-bottom"
-                                                     href="/">Delete employee</a>
+                                                     th:href="@{/employees/delete/{id}(id = ${employee.id})}">Delete employee</a>
                         </div>
                     </div>
                     <div class="col-md-6 bg-dark"><img src="/pic/employee.png" height="350px"></div>

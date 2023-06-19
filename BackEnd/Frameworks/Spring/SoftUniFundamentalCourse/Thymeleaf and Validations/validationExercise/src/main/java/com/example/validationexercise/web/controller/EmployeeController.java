@@ -9,10 +9,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -27,12 +24,18 @@ public class EmployeeController extends DefaultModel {
 
     @GetMapping("/all")
     public ModelAndView getCompanies(ModelAndView modelAndView) {
+
+        List<ViewEmployee> allEmployees = employeeService.getAllEmployees();
+        modelAndView.addObject("allEmployees" , allEmployees);
+
         return view("employee-all" , modelAndView);
     }
 
     @GetMapping("/add")
-    public ModelAndView addMenuForEmployees() {
-        return view("employee-add");
+    public ModelAndView addMenuForEmployees(ModelAndView modelAndView) {
+        modelAndView.addObject("employee" , new ViewEmployee());
+        modelAndView.addObject("allCompanies" , companyService.getAllCompanies());
+        return view("employee-add",modelAndView);
     }
 
     @PostMapping("/add")
@@ -41,35 +44,32 @@ public class EmployeeController extends DefaultModel {
                                     ModelAndView modelAndView) {
 
         if(bindingResult.hasErrors()){
-            modelAndView.addObject("employee",employee);
+            modelAndView.addObject("employee" , employee);
+            modelAndView.addObject("allCompanies" , companyService.getAllCompanies());
             return view("employee-add",modelAndView);
         }
 
         ViewEmployee saved = employeeService.save(employee);
-        modelAndView.addObject("employee" , saved);
 
-        return redirect("/employees/details" , modelAndView);
+        return redirect(String.format("/employees/details/%s",saved.getId()) , new ModelAndView());
     }
 
-    //TODO::sameHow to get the id for the corresponding entity
-    @GetMapping("/details")
-    public ModelAndView details(){
-        return view("employee-details.html");
+    @GetMapping("/details/{id}")
+    public ModelAndView details(@PathVariable(name = "id") String id,
+                                ModelAndView modelAndView){
+
+        ViewEmployee employee = employeeService.findEmployeeById(id);
+        modelAndView.addObject("employee" , employee);
+        return view("employee-details.html" , modelAndView);
+
     }
 
-    @ModelAttribute(name = "employee")
-    public ViewEmployee employee(){
-        return new ViewEmployee();
-    }
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteEmployee(@PathVariable(name = "id") String id){
 
-    @ModelAttribute(name = "allCompanies")
-    public List<ViewCompany> allCompanies(){
-        return companyService.getAllCompanies();
-    }
+        employeeService.deleteEmployee(id);
 
-    @ModelAttribute(name = "allEmployees")
-    public List<ViewEmployee> allEmployees(){
-        return employeeService.getAllEmployees();
+        return redirect("/employees/all" , new ModelAndView());
+
     }
-    //TODO: delete requesting
 }

@@ -23,7 +23,8 @@
                 <h2 th:text = "${c.name}"></h2>
                 <h4 th:text = "${c.town}"></h4>
                 <h4 th:text = "${c.description}"></h4>
-                <h4><a class="btn-block" th:href="@{/companies/details}">Detail info</a></h4>
+                <h4><a class="btn-block"
+                       th:href="@{/companies/details/{id}(id = ${c.id})}">Detail info</a></h4>
 
             </div>
 

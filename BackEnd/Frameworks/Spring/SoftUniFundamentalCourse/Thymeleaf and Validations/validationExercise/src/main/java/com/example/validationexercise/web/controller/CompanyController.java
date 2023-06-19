@@ -1,8 +1,10 @@
 package com.example.validationexercise.web.controller;
 
+import com.example.validationexercise.domain.entity.Company;
 import com.example.validationexercise.domain.viewMapping.ViewCompany;
 import com.example.validationexercise.service.CompanyService;
 import com.example.validationexercise.web.constants.DefaultModel;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,39 +29,41 @@ public class CompanyController extends DefaultModel {
     }
 
     @GetMapping("/add")
-    public ModelAndView addCompany() {
+    public ModelAndView addCompany(@ModelAttribute(name = "company") ViewCompany company) {
         return view("company-add");
     }
 
     @PostMapping("/add")
     public ModelAndView getCompany(@Valid @ModelAttribute(name = "company") ViewCompany company,
                                    BindingResult result,
-                                   ModelAndView modelAndView) {
+                                   HttpSession session) {
         if (result.hasErrors()) {
-
             return view("company-add");
         }
-        companyService.save(company);
 
-        modelAndView.addObject("company", company);
-        modelAndView.setViewName("redirect:/companies/details");
+        ViewCompany savedCompany = companyService.save(company);
 
-        return modelAndView;
+        session.setAttribute("company", savedCompany);
+        return redirect(String.format("/companies/details/%s",savedCompany.getId()), new ModelAndView());
     }
 
     //TODO::sameHow to get the id for the corresponding entity
-    @GetMapping("/details")
-    public ModelAndView getDetails(ModelAndView modelAndView) {
+    @GetMapping("/details/{id}")
+    public ModelAndView getDetails(@PathVariable(name = "id") String id,
+                                   ModelAndView modelAndView) {
 
+        ViewCompany company = companyService.companyById(id);
+        modelAndView.addObject("company", company);
         return view("company-details.html", modelAndView);
     }
 
-    @ModelAttribute(name = "company")
-    public ViewCompany company() {
-        return new ViewCompany();
-    }
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteCompany(@PathVariable(name = "id") String id) {
 
-    //TODO: delete requesting
+        companyService.deleteCompany(id);
+
+        return redirect("/companies/all", new ModelAndView());
+    }
 
 }
 

@@ -16,7 +16,7 @@
                     <h4 th:text = "'Job title: ' + ${employee.jobTitle}"></h4>
                     <h4 th:text="'Birth Date: '+
                     ${#dates.format(employee.birthDate, 'yyyy-MM-dd')}"></h4>
-                    <h4><a class="btn-block" th:href="@{/employees/details}">Detail info</a></h4>
+                    <h4><a class="btn-block" th:href="@{/employees/details/{id}(id = ${employee.id})}">Detail info</a></h4>
                 </div>
           
         </div>

@@ -21,7 +21,7 @@
                         <h4 th:text = "*{description}"></h4>
                         <h4 th:text = "*{budget}"></h4>
                         <div class="align-bottom"><a class="btn btn-danger align-bottom"
-                                                     href="/">Delete company</a>
+                                                     th:href="@{/companies/delete/{id}(id = ${company.id})}">Delete company</a>
                         </div>
                     </div>
                 </div>

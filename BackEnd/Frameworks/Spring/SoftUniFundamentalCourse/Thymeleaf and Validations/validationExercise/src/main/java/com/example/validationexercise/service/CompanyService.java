@@ -7,12 +7,14 @@ import com.example.validationexercise.domain.viewMapping.ViewEmployee;
 import java.util.List;
 
 public interface CompanyService {
-    void save(ViewCompany company);
+    ViewCompany save(ViewCompany company);
 
     List<ViewCompany> getAllCompanies();
 
     ViewCompany findById(String id);
-    Company companyById(String id);
+    ViewCompany companyById(String id);
 
     boolean isAlreadyExists(String name);
+
+    void deleteCompany(String id);
 }

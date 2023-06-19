@@ -24,7 +24,7 @@
                             id="firstName"
                             aria-describedby="firstName"
                             th:field="*{firstName}"/>
-                    <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}"></p>
+                    <p class = "alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}"></p>
                 </div>
 
                 <div class="form-group">
@@ -102,8 +102,8 @@
                            th:field="*{jobTitle}"/>
                     <small
                             class = "alert-danger"
-                            th:if = "${#fields.hasErrors('jobTitle')}"
-                            th:errors="*{jobTitle}">Error message
+                            th:if = "${#fields.hasErrors('jobTitle')}">
+                        Error message
                     </small>
                 </div>
 

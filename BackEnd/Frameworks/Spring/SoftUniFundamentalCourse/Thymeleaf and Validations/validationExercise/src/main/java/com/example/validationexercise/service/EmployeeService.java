@@ -9,4 +9,8 @@ public interface EmployeeService {
     ViewEmployee save(ViewEmployee employee);
 
     List<ViewEmployee> getAllEmployees();
+
+    ViewEmployee findEmployeeById(String id);
+
+    void deleteEmployee(String id);
 }
