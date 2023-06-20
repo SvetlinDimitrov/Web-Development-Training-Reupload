@@ -3,10 +3,7 @@ package com.example.mobileleweb.domain.entity;
 import com.example.mobileleweb.domain.constants.BaseEntity;
 import com.example.mobileleweb.domain.constants.ModelCategory;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Reference;
 
 import java.time.LocalDate;
@@ -16,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "models")
 public class Model extends BaseEntity {
 
@@ -41,7 +39,7 @@ public class Model extends BaseEntity {
     @Column(columnDefinition = "datetime(6)")
     private LocalDate modified;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Brand brand;
 
 }

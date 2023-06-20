@@ -9,6 +9,7 @@ import com.example.mobileleweb.domain.viewDtos.LoginUserDto;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
 import com.example.mobileleweb.repo.UserRepository;
 import com.example.mobileleweb.service.UserRole.UserRoleService;
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -25,12 +26,8 @@ public class UserServiceImpl implements UserService {
     public void register(RegisterUserDto registerUserDto) {
         UserView view = modelMapper.map(registerUserDto, UserView.class);
         User user = modelMapper.map(view, User.class);
-        userRepository.save(user);
         UserRole role = userRoleService.findByRole(registerUserDto.getRole());
-        user.getRoles().add(role);
-        if(userRepository.count() == 0){
-            user.getRoles().add(userRoleService.findByRole(Role.Admin));
-        }
+        user.setRole(role);
         userRepository.save(user);
     }
 
@@ -54,4 +51,42 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(loginUserDto.getUsername()).get().
                 toLoggedUser();
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).get();
+    }
+
+    @Override
+    public User findById(String sellerId) {
+        return userRepository.findById(sellerId).get();
+    }
+
+
+    @PostConstruct
+    public void init(){
+        if(userRepository.findAll().isEmpty()){
+            userRepository.save(
+                    User.builder()
+                            .username("user")
+                            .password("user")
+                            .firstName("user")
+                            .lastName("user")
+                            .isActive(true)
+                            .role(userRoleService.findByRole(Role.User))
+                            .build()
+            );
+            userRepository.save(
+                    User.builder()
+                            .username("admin")
+                            .password("admin")
+                            .firstName("admin")
+                            .lastName("admin")
+                            .isActive(true)
+                            .role(userRoleService.findByRole(Role.Admin))
+                            .build()
+            );
+        }
+    }
+
 }
