@@ -25,13 +25,8 @@ public class ViewUser  {
     private Integer age;
     private String password;
     private String email;
-    private Set<ViewRoles> roles = new HashSet<>();
     private Level level;
-    private List<ViewComments> comments = new ArrayList<>();
-    private List<ViewRoute> route = new ArrayList<>();
-    private List<ViewPictures> pictures = new ArrayList<>();
-    private List<ViewMessages> messages = new ArrayList<>();
-    private List<ViewMessages> recipients = new ArrayList<>();
+    private Set<ViewRoles> roles = new HashSet<>();
 
     public boolean isAdmin(){
         return roles.stream().map(ViewRoles::getRole).anyMatch(r->r.equals(RoleConstant.ADMIN));
