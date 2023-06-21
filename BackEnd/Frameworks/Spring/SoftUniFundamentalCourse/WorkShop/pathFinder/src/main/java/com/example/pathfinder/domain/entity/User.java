@@ -30,13 +30,13 @@ public class User extends BaseEntity {
     @Column
     private Integer age;
 
-    @Column
+    @Column()
     private String password;
 
-    @Column
+    @Column()
     private String email;
 
-    @ManyToMany(cascade = CascadeType.MERGE , fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -54,19 +54,19 @@ public class User extends BaseEntity {
     @Column
     private Level level;
 
-    @OneToMany(mappedBy = "author" )
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "author" )
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Route> route;
 
-    @OneToMany(mappedBy = "author" )
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author" , fetch = FetchType.EAGER)
     private List<Message> messages;
 
-    @OneToMany(mappedBy = "recipient" )
+    @OneToMany(mappedBy = "recipient" , fetch = FetchType.EAGER)
     private List<Message> recipients;
 
 
