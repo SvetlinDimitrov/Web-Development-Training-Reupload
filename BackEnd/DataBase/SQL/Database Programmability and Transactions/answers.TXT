@@ -1,0 +1,43 @@
+DELIMITER $$
+
+1. Count Employees by Town
+CREATE FUNCTION ufn_count_employees_by_town(town_name Varchar(45))        
+    RETURNS  int
+    deterministic
+    BEGIN 
+      return (select count(*) 
+      from employees as e 
+      join addresses as a on a.address_id = e.address_id
+      join towns as t on a.town_id = t.town_id
+      where t.`name` = town_name);
+  END 
+
+2. Employees Promotion
+CREATE PROCEDURE usp_raise_salaries(department_name varchar(45))
+begin 
+ UPDATE employees as e
+ SET e.salary = e.salary + e.salary * 0.05
+ WHERE department_id = (
+	select department_id from departments as d
+    where d.name = department_name);
+END
+
+3. Employees Promotion By ID
+CREATE PROCEDURE usp_raise_salary_by_id(id INT)
+begin 
+ UPDATE employees as e
+ SET e.salary = e.salary + e.salary * 0.05
+ WHERE e.employee_id = id;
+END
+
+
+11. Happy hour
+CREATE PROCEDURE udp_happy_hour(`type`VARCHAR(50))
+begin 
+ UPDATE `products` p
+ SET price = price - price * 0.2
+ WHERE p.type = type and price >= 10;
+END
+
+
+
