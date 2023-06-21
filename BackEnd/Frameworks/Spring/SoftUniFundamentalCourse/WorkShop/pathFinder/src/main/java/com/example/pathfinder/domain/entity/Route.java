@@ -37,10 +37,10 @@ public class Route extends BaseEntity {
     @Column(name = "video_url")
     private String videoUrl;
 
-    @OneToMany(mappedBy = "route" , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "route" , fetch = FetchType.LAZY)
     private List<Picture> pictures;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "routes_categories",
             joinColumns = @JoinColumn(
