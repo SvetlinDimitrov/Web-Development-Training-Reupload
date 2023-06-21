@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace = "~{fragments/head}"></head>
+<body>
+<header th:replace = "~{fragments/header}"></header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <main class="jumbotron text-center rounded col-md-12 align-self-center">
+                <div class="justify-content-center">
+                    <h1>Employee Details</h1>
+                </div>
+                <div class="row"
+                th:object="${employee}">
+                    <div class="col-md-6 bg-dark">
+                        <h2>Employee</h2>
+                        <h4 th:text = "'First Name: '+ *{firstName}"></h4>
+                        <h4 th:text = "'Last Name: '+*{lastName}"></h4>
+                        <h4 th:text = "'Education Level: '+*{educationLevel}"></h4>
+                        <h4 th:text = "'Job title: '+*{jobTitle}"></h4>
+                        <h4 th:text="'Birth Date: '+${#dates.format(employee.birthDate, 'yyyy-MM-dd')}"></h4>
+                        <h4 th:text = "'Salary: '+*{salary}"></h4>
+                        <h4  th:if = "${employee.companyName == ''}" th:text = "'Company: Currently unemployed'"></h4>
+                        <h4  th:if = "${employee.companyName != ''}" th:text = "'Company: '+*{companyName}"></h4>
+                        <div class="align-bottom">
+						<a class="btn btn-danger align-bottom"
+                                                     th:href="@{/employees/delete/{id}(id = ${employee.id})}">Delete employee</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 bg-dark"><img src="/pic/employee.png" height="350px"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+</main>
+<footer id="footer">
+    <div class="container-fluid bg-transparent rounded">
+        <div class="text-white p-2 text-center">&copy; Spring Team 2020. All rights reserved.</div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<main>
+    <div class="container">
+        <h2 class="text-center text-dark bg-light rounded-circle mt-5">All companies</h2>
+        <hr style="width: 50%"/>
+        <div class='row mb-4 d-flex justify-content-around'>
+
+            <div th:if="${allCompanies == null}" class="col-md-4 d-flex flex-column bg-text mb-3 rounded-circle">
+                <h2>Company: {name}</h2>
+                <h4>Town: {town}</h4>
+                <h4>Description: {description - first 5 char} ...</h4>
+                <h4><a class="btn-block" href="/">Detail info</a></h4>
+            </div>
+
+            <div th:if="${allCompanies != null}"
+                 th:each="c : ${allCompanies}"
+                 class="col-md-4 d-flex flex-column bg-text mb-3 rounded-circle">
+
+                <h2 th:text = "${c.name}"></h2>
+                <h4 th:text = "${c.town}"></h4>
+                <h4 th:text = "${c.description}"></h4>
+                <h4><a class="btn-block"
+                       th:href="@{/companies/details/{id}(id = ${c.id})}">Detail info</a></h4>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer id="footer">
+    <div class="container-fluid bg-transparent rounded">
+        <div class="text-white p-2 text-center">&copy; Spring Team 2020. All rights reserved.</div>
+    </div>
+</footer>
+</body>
+</html>
