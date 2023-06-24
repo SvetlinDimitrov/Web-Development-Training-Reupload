@@ -1,9 +1,11 @@
 import anotationTest.Column;
 import anotationTest.Entity;
 import anotationTest.Id;
+import constants.MyConnector;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,14 +20,21 @@ public class EntityManager<E> implements DatabaseContent<E> {
     private static final String SELECT_ALL = "SELECT * FROM %s";
     private static final String SELECT_WITH_CONDITION = "SELECT * FROM %s %s";
     private static final String CREATE_TABLE = "CREATE TABLE %s (%s);";
-    private static final String ALTER_TABLE = "ALTER TABLE %s ADD %s datatype;";
+    private static final String ALTER_TABLE = "ALTER TABLE %s ADD (%s);";
+    private static final String DELETE_TABLE = "DROP TABLE %s;";
+
+    private static final String GET_ALL_COLUMN_NAME = "select `COLUMN_NAME` " +
+            "from information_schema.COLUMNS " +
+            "where TABLE_SCHEMA = 'soft_uni' " +
+            "and COLUMN_NAME != 'id' " +
+            "and TABLE_NAME = 'cats'";
 
     @Override
     public boolean persist(E entity) throws Exception {
         if (getId(entity) == 0) {
-            return insertRecuest(entity);
+            return insertRequest(entity);
         }
-        return updRecuest(entity);
+        return updRequest(entity);
     }
 
     @Override
@@ -49,7 +58,7 @@ public class EntityManager<E> implements DatabaseContent<E> {
         }
 
         ResultSet resultSet = MyConnector.getConnection().prepareStatement(selectStatement).executeQuery();
-        getAllEntatys(table, list, resultSet);
+        getAllEntities(table, list, resultSet);
         return (Iterable<E>) list;
     }
 
@@ -71,7 +80,8 @@ public class EntityManager<E> implements DatabaseContent<E> {
     public void doCreate(Class<E> entityClass) throws Exception {
         Entity annotation = entityClass.getAnnotation(Entity.class);
         if(annotation == null){
-            throw new Exception("Problem buddy , no Entity si putNal nad classA , go sega i si si go putNi 4e da know what to do");
+            throw new Exception("If you want to create a class with name " +
+                    ", first you need to use my super-powerful entity annotation on the class");
         }
         E entity = entityClass.getDeclaredConstructor().newInstance();
         String tableName = getTableName(entity);
@@ -83,21 +93,74 @@ public class EntityManager<E> implements DatabaseContent<E> {
             String columnToAdd = makeMeColumn(field);
             columnForCreate.add(columnToAdd);
         }
-        String CREATE_STATEMENT = String.format(CREATE_TABLE , tableName, String.join("," , columnForCreate));
-        MyConnector.getConnection().prepareStatement(CREATE_STATEMENT).execute();
+
+
+            String CREATE_STATEMENT = String.format(CREATE_TABLE , tableName, String.join("," , columnForCreate));
+            MyConnector.getConnection().prepareStatement(CREATE_STATEMENT).execute();
+
     }
 
     @Override
-    public void alterTable(E entity) throws Exception {
-        Entity annotation = entity.getClass().getAnnotation(Entity.class);
+    public void alterTable(Class<E> entity) throws Exception {
+        Entity annotation = entity.getAnnotation(Entity.class);
         if(annotation == null){
             throw new Exception("Problem buddy , no Entity si putNal nad classA , go sega i si si go putNi 4e da know what to do");
         }
-        String tableName = getTableName(entity);
 
+        String tableName = annotation.name();
+        Field[] fields = entity.getDeclaredFields();
+
+        HashSet<String> allColumnsInDataBase = getAllNameColumnsFromTable();
+
+        HashSet<String> columnsToAdd= Arrays.stream(fields)
+                .map(Field::getName)
+                .filter(name -> !allColumnsInDataBase.contains(name) && !name.equals("id"))
+                .collect(Collectors.toCollection(HashSet::new));
+
+
+        List<String> columnsForCreate = new ArrayList<>();
+        for (Field field : fields) {
+            if(columnsToAdd.contains(field.getName())){
+                String columnToAdd = makeMeColumn(field);
+                columnsForCreate.add(columnToAdd);
+            }
+        }
+
+        if(!columnsForCreate.isEmpty()){
+        MyConnector.getConnection()
+                .prepareStatement(String.format(ALTER_TABLE , tableName , String.join(", ",columnsForCreate)))
+                .execute();
+        }
+    }
+
+    @Override
+    public void deleteTable(Class<E> entity) throws Exception {
+        Entity annotation = entity.getAnnotation(Entity.class);
+        if (annotation == null) {
+            throw new Exception("Problem buddy , no Entity si putNal nad classA , go sega i si si go putNi 4e da know what to do");
+        }
+        try {
+            MyConnector.getConnection().prepareStatement(String.format(DELETE_TABLE , annotation.name()))
+                    .execute();
+        }catch (Exception e){
+            System.out.println("There is no Entity in the dataBase");
+        }
 
     }
 
+    private HashSet<String> getAllNameColumnsFromTable() throws SQLException {
+
+        HashSet<String> columnNames= new HashSet<>();
+        ResultSet resultSet = MyConnector.getConnection()
+                .prepareStatement(GET_ALL_COLUMN_NAME)
+                .executeQuery();
+
+        while(resultSet.next()){
+            columnNames.add(resultSet.getString(1));
+        }
+        return columnNames;
+
+    }
     private String makeMeColumn(Field field) {
         String columnToReturn = "";
         if(field.isAnnotationPresent(Id.class)){
@@ -112,7 +175,7 @@ public class EntityManager<E> implements DatabaseContent<E> {
         return columnToReturn;
     }
 
-    private boolean updRecuest(E entity) throws Exception {
+    private boolean updRequest(E entity) throws Exception {
         String tableName = getTableName(entity);
         String id = String.valueOf(getId(entity));
         Map<String, String> map = getPair(entity);
@@ -137,7 +200,7 @@ public class EntityManager<E> implements DatabaseContent<E> {
         return map;
     }
 
-    private boolean insertRecuest(E entity) throws SQLException, IllegalAccessException {
+    private boolean insertRequest(E entity) throws SQLException, IllegalAccessException {
         String tableName = getTableName(entity);
         String rowTableNames = getRowNames(entity);
         String valuesToInsert = getValuesToInsert(entity);
@@ -175,10 +238,10 @@ public class EntityManager<E> implements DatabaseContent<E> {
                 return Integer.parseInt(field.get(entity).toString());
             }
         }
-        throw new Exception("Bro no tableName exist");
+        throw new Exception("Bro where is Id annotation");
     }
 
-    private void getAllEntatys(Class<E> table, ArrayList<Object> list, ResultSet resultSet) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, SQLException {
+    private void getAllEntities(Class<E> table, ArrayList<Object> list, ResultSet resultSet) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, SQLException {
 
         while (resultSet.next()) {
             E user = table.getDeclaredConstructor().newInstance();
