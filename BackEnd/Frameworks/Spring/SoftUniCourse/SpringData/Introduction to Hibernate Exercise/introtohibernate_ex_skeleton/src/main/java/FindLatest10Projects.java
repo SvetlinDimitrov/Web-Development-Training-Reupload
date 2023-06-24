@@ -14,10 +14,9 @@ public class FindLatest10Projects {
     public static void main(String[] args) {
         EntityManager manager = Persistence.createEntityManagerFactory("easy").createEntityManager();
 
-        manager.createQuery("Select p from Project p" , Project.class)
+        manager.createQuery("Select p from Project p order by startDate desc" , Project.class)
                 .getResultList()
                 .stream()
-                .sorted((p1,p2) -> p2.getStartDate().compareTo(p1.getStartDate()))
                 .limit(10)
                 .sorted(Comparator.comparing(Project::getName))
                 .forEach(p-> System.out.printf(OUTPUT_FORMAT ,p.getName()

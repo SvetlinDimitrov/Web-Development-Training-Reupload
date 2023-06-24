@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.Set;
 
 @Entity
@@ -40,6 +41,7 @@ public class Address {
     public void setTown(Town town) {
         this.town = town;
     }
+
 
     @OneToMany(mappedBy = "address")
     public Set<Employee> getEmployees() {
