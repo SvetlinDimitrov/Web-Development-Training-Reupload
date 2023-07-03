@@ -17,8 +17,7 @@ import java.util.Set;
 @Service
 public class CategoryServiceImp implements CategoryService{
     private CategoryRepo categoryRepo;
-    private static final String RESOURCE_PATH = "D:\\Web Development\\SoftUni\\SpringData\\Spring Data Intro\\SpringIntroExecise\\src\\main\\resources\\files\\";
-    private static final String CATEGORY_FILE_NAME = "categories.txt";
+    private static final String CATEGORY_FILE_NAME = "src\\main\\resources\\files\\categories.txt";
 
     @Autowired
     public CategoryServiceImp(CategoryRepo categoryRepo) {
@@ -28,7 +27,7 @@ public class CategoryServiceImp implements CategoryService{
     @Override
     public void registerCategory() throws IOException {
         if(categoryRepo.findAll().isEmpty()){
-            List<Category> categories = Files.readAllLines(Path.of(RESOURCE_PATH + CATEGORY_FILE_NAME))
+            List<Category> categories = Files.readAllLines(Path.of(CATEGORY_FILE_NAME))
                     .stream()
                     .filter(e->!e.isBlank())
                     .map(row -> new Category(row))

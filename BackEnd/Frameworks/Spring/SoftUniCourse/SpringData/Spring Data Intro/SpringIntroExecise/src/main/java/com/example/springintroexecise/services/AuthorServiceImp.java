@@ -16,8 +16,7 @@ import java.util.Random;
 @Service
 public class AuthorServiceImp  implements AuthorService{
     private AuthorRepo authorRepo;
-    private static final String RESOURCE_PATH = "D:\\Web Development\\SoftUni\\SpringData\\Spring Data Intro\\SpringIntroExecise\\src\\main\\resources\\files\\";
-    private static final String AUTHORS_FILE_NAME = "authors.txt";
+    private static final String AUTHORS_FILE_NAME = "src\\main\\resources\\files\\authors.txt";
 
     @Autowired
     public AuthorServiceImp(AuthorRepo authorRepo) {
@@ -27,7 +26,7 @@ public class AuthorServiceImp  implements AuthorService{
     @Override
     public void registerAuthors() throws IOException {
         if(authorRepo.findAll().isEmpty()){
-            List<Author> authors = Files.readAllLines(Path.of(RESOURCE_PATH + AUTHORS_FILE_NAME))
+            List<Author> authors = Files.readAllLines(Path.of(AUTHORS_FILE_NAME))
                     .stream()
                     .map(row -> new Author(row.split(" ")[0] , row.split(" ")[1]))
                     .toList();

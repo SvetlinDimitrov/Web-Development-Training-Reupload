@@ -25,8 +25,7 @@ public class BookServiceImp implements BookService {
     private BookRepo bookRepo;
     private AuthorService authorService;
     private CategoryService categoryService;
-    private static final String RESOURCE_PATH = "D:\\Web Development\\SoftUni\\SpringData\\Spring Data Intro\\SpringIntroExecise\\src\\main\\resources\\files\\";
-    private static final String BOOKS_FILE_NAME = "books.txt";
+    private static final String BOOKS_FILE_NAME = "src\\main\\resources\\files\\books.txt";
 
     @Autowired
     public BookServiceImp(BookRepo bookRepo, AuthorService authorService, CategoryService categoryService) {
@@ -38,7 +37,7 @@ public class BookServiceImp implements BookService {
     @Override
     public void registerBooks() throws IOException {
         if(bookRepo.findAll().isEmpty()){
-            List<Book> books = Files.readAllLines(Path.of(RESOURCE_PATH + BOOKS_FILE_NAME))
+            List<Book> books = Files.readAllLines(Path.of(BOOKS_FILE_NAME))
                     .stream()
                     .map(row -> {
                         String[] data = row.split("\\s+");
@@ -60,8 +59,15 @@ public class BookServiceImp implements BookService {
 
                         Set<Category> categories = categoryService.getRandomCategories();
 
-                        return new Book(title, editionType, price, releaseDate,
-                                ageRestriction, author, categories, copies);
+                        return new Book()
+                                .setTitle(title)
+                                .setEditionType(editionType)
+                                .setPrice(price)
+                                .setReleaseDate(releaseDate)
+                                .setAgeRestriction(ageRestriction)
+                                .setAuthor(author)
+                                .setCategory(categories)
+                                .setCopies(copies);
                     }).toList();
             bookRepo.saveAll(books);
         }
