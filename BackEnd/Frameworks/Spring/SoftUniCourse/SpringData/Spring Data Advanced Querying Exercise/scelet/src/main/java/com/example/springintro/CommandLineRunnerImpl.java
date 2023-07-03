@@ -1,6 +1,7 @@
 package com.example.springintro;
 
 import com.example.springintro.model.entity.Book;
+import com.example.springintro.model.entity.DTO.ShowingInfo;
 import com.example.springintro.service.AuthorService;
 import com.example.springintro.service.BookService;
 import com.example.springintro.service.CategoryService;
@@ -26,13 +27,26 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        bookService.reducedBook(s)
-                .forEach(a-> System.out.printf("%s %s %s %s%n",
-                        a.getTitle() , a.getEditionType().name() ,a.getEditionType().name() , a.getPrice()));
+//        Books_Titles_by_Age_Restriction("miNor");
+//        Golden_Books();
+//        Books_by_Price();
+//        Not_Released_Books("2000");
+//        Books_Released_Before_Date("12-04-1992");
+//        Authors_Search("e");
+//        Books_Search("sK");
+//        Book_Titles_Search("Ric");
+//        Count_Books("12");
+//        Total_Book_Copies();
+//        Reduced_Book("Things Fall Apart");
+    }
 
-
+    private void Reduced_Book(String title) {
+        ShowingInfo apart = bookService.reducedBook(title);
+        System.out.println(String.format("%s %s %s %s",
+                apart.getTitle(),
+                apart.getEditionType(),
+                apart.getAgeRestriction(),
+                apart.getPrice()));
     }
 
     private void Total_Book_Copies() {
@@ -79,8 +93,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         bookService.goldenBooks().forEach(e-> System.out.println(e.getTitle()));
     }
 
-    private void Books_Titles_by_Age_Restriction() {
-        bookService.booksTitlesByAgeRestriction(new Scanner(System.in).nextLine().toUpperCase())
+    private void Books_Titles_by_Age_Restriction(String word) {
+        bookService.booksTitlesByAgeRestriction(word.toUpperCase())
                 .forEach(e-> System.out.println(e.getTitle()));
     }
 

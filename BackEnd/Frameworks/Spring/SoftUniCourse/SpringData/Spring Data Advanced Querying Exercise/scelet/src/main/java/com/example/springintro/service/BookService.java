@@ -23,7 +23,7 @@ public interface BookService {
     List<Book> bookTitlesSearch(String prefix);
     int countBooks (long length);
 
-    List<ShowingInfo> reducedBook(String title);
+    ShowingInfo reducedBook(String title);
 
 
 }

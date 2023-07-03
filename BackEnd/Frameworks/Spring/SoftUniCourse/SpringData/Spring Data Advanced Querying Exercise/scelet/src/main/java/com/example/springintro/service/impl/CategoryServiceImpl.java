@@ -3,6 +3,7 @@ package com.example.springintro.service.impl;
 import com.example.springintro.model.entity.Category;
 import com.example.springintro.repository.CategoryRepository;
 import com.example.springintro.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class CategoryServiceImpl implements CategoryService {
 
     private static final String CATEGORIES_FILE_PATH = "src/main/resources/files/categories.txt";
+
 
     private final CategoryRepository categoryRepository;
 

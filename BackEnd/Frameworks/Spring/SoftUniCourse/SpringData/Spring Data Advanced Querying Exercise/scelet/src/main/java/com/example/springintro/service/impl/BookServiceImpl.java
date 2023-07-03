@@ -132,9 +132,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<ShowingInfo> reducedBook(String title) {
-        return bookRepository.showGivenInfo(title)
-                .orElseThrow(NoSuchFieldError::new);
+    public ShowingInfo reducedBook(String title) {
+        return bookRepository.showGivenInfo(title).get();
     }
 
     private Book createBookFromInfo(String[] bookInfo) {

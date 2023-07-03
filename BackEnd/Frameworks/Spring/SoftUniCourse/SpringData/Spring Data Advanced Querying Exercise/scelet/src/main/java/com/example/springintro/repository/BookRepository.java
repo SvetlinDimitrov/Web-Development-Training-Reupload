@@ -33,6 +33,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("select count(b) from Book b where char_length(b.title) > :num")
     int countAllByTitleGreaterThan(long num);
 
-    @Query("select com.example.springintro.model.entity.DTO.ShowingInfo from Book b where b.title = :title")
-    Optional<List<ShowingInfo>> showGivenInfo(String title);
+    @Query("select new com.example.springintro.model.entity.DTO.ShowingInfo(b.title,b.ageRestriction,b.editionType , b.price) " +
+            "from Book b where b.title = :title")
+    Optional<ShowingInfo> showGivenInfo(String title);
 }
