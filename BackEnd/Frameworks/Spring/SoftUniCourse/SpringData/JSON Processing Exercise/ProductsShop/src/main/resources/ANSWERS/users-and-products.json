@@ -374,20 +374,6 @@
       }
     },
     {
-      "firstName": "Benjamin",
-      "lastName": "Henry",
-      "age": 63,
-      "soldProducts": {
-        "count": 1,
-        "productList": [
-          {
-            "name": "allergy eye",
-            "price": 426.91
-          }
-        ]
-      }
-    },
-    {
       "firstName": "Jean",
       "lastName": "Henry",
       "age": 0,
@@ -417,6 +403,20 @@
           {
             "name": "IOPE SUPER VITAL",
             "price": 824.68
+          }
+        ]
+      }
+    },
+    {
+      "firstName": "Benjamin",
+      "lastName": "Henry",
+      "age": 63,
+      "soldProducts": {
+        "count": 1,
+        "productList": [
+          {
+            "name": "allergy eye",
+            "price": 426.91
           }
         ]
       }
@@ -586,20 +586,6 @@
       }
     },
     {
-      "firstName": "Emily",
-      "lastName": "Parker",
-      "age": 41,
-      "soldProducts": {
-        "count": 1,
-        "productList": [
-          {
-            "name": "CARBIDOPA AND LEVODOPA",
-            "price": 441.64
-          }
-        ]
-      }
-    },
-    {
       "firstName": "Billy",
       "lastName": "Parker",
       "age": 68,
@@ -613,6 +599,20 @@
           {
             "name": "Prednisone",
             "price": 1285.99
+          }
+        ]
+      }
+    },
+    {
+      "firstName": "Emily",
+      "lastName": "Parker",
+      "age": 41,
+      "soldProducts": {
+        "count": 1,
+        "productList": [
+          {
+            "name": "CARBIDOPA AND LEVODOPA",
+            "price": 441.64
           }
         ]
       }
@@ -697,6 +697,24 @@
       }
     },
     {
+      "firstName": "Sandra",
+      "lastName": "Riley",
+      "age": 74,
+      "soldProducts": {
+        "count": 2,
+        "productList": [
+          {
+            "name": "Allopurinol",
+            "price": 336.81
+          },
+          {
+            "name": "Pollens - Trees, Birch Mix",
+            "price": 1153.54
+          }
+        ]
+      }
+    },
+    {
       "firstName": "Jennifer",
       "lastName": "Riley",
       "age": 0,
@@ -714,24 +732,6 @@
           {
             "name": "Stila Hydrating Primer Oil-Free SPF 30",
             "price": 179.28
-          }
-        ]
-      }
-    },
-    {
-      "firstName": "Sandra",
-      "lastName": "Riley",
-      "age": 74,
-      "soldProducts": {
-        "count": 2,
-        "productList": [
-          {
-            "name": "Allopurinol",
-            "price": 336.81
-          },
-          {
-            "name": "Pollens - Trees, Birch Mix",
-            "price": 1153.54
           }
         ]
       }
