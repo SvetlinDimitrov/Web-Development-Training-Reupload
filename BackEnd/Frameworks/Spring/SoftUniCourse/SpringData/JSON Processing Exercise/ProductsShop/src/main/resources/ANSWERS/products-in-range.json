@@ -1,12 +1,12 @@
 [
   {
-    "name": "Allopurinol",
-    "price": 518.50,
+    "name": "TRAMADOL HYDROCHLORIDE",
+    "price": 516.48,
     "seller": {}
   },
   {
-    "name": "equaline",
-    "price": 520.45,
+    "name": "Allopurinol",
+    "price": 518.50,
     "seller": {}
   },
   {
@@ -25,18 +25,23 @@
     "seller": {}
   },
   {
-    "name": "PLANTAGO LANCEOLATA POLLEN",
-    "price": 561.68,
-    "seller": {}
-  },
-  {
     "name": "Topiramate",
     "price": 578.77,
     "seller": {}
   },
   {
+    "name": "AIR",
+    "price": 581.69,
+    "seller": {}
+  },
+  {
     "name": "Gemcitabine",
     "price": 594.79,
+    "seller": {}
+  },
+  {
+    "name": "Pleo Ginkgo",
+    "price": 613.65,
     "seller": {}
   },
   {
@@ -50,8 +55,13 @@
     "seller": {}
   },
   {
-    "name": "Imipramine Hydrochloride",
-    "price": 648.69,
+    "name": "Foaming Hand Sanitizer",
+    "price": 624.72,
+    "seller": {}
+  },
+  {
+    "name": "ziprasidone hydrochloride",
+    "price": 628.66,
     "seller": {}
   },
   {
@@ -65,48 +75,23 @@
     "seller": {}
   },
   {
-    "name": "ENBREL",
-    "price": 673.97,
+    "name": "Amitiza",
+    "price": 666.58,
     "seller": {}
   },
   {
-    "name": "PRIMAXIN",
-    "price": 686.66,
+    "name": "CALMING DIAPER RASH",
+    "price": 700.92,
     "seller": {}
   },
   {
-    "name": "CLARINS Ever Matte SPF 15 - 105 Nude",
-    "price": 696.06,
-    "seller": {}
-  },
-  {
-    "name": "Acnezzol Base",
-    "price": 710.60,
-    "seller": {}
-  },
-  {
-    "name": "Pleo Lat",
-    "price": 720.08,
-    "seller": {}
-  },
-  {
-    "name": "GOONG SECRET CALMING BATH",
-    "price": 742.47,
+    "name": "Prostate",
+    "price": 716.05,
     "seller": {}
   },
   {
     "name": "Warfarin Sodium",
     "price": 770.05,
-    "seller": {}
-  },
-  {
-    "name": "Pollens - Weeds and Garden Plants, Nettle Urtica dioica",
-    "price": 782.77,
-    "seller": {}
-  },
-  {
-    "name": "Naproxen",
-    "price": 807.22,
     "seller": {}
   },
   {
@@ -125,13 +110,13 @@
     "seller": {}
   },
   {
-    "name": "Shopko Lip Treatment",
-    "price": 861.42,
+    "name": "ESIKA",
+    "price": 879.37,
     "seller": {}
   },
   {
-    "name": "ESIKA",
-    "price": 879.37,
+    "name": "Levothyroxine Sodium",
+    "price": 885.86,
     "seller": {}
   },
   {
@@ -140,18 +125,18 @@
     "seller": {}
   },
   {
-    "name": "Aspirin",
-    "price": 925.45,
-    "seller": {}
-  },
-  {
-    "name": "Ranitidine",
-    "price": 926.64,
-    "seller": {}
-  },
-  {
     "name": "Care One Hemorrhoidal",
     "price": 932.18,
+    "seller": {}
+  },
+  {
+    "name": "Spironolactone",
+    "price": 933.69,
+    "seller": {}
+  },
+  {
+    "name": "pain relief",
+    "price": 938.23,
     "seller": {}
   },
   {
@@ -170,43 +155,18 @@
     "seller": {}
   },
   {
-    "name": "NEO-POLY-BAC HYDRO",
-    "price": 967.32,
-    "seller": {}
-  },
-  {
-    "name": "Clearskin",
-    "price": 968.59,
-    "seller": {}
-  },
-  {
     "name": "Dawn Ultra Antibacterial Hand",
     "price": 969.86,
     "seller": {}
   },
   {
-    "name": "Megestrol Acetate",
-    "price": 976.15,
-    "seller": {}
-  },
-  {
-    "name": "Smooth texture Orange flavor",
-    "price": 976.65,
+    "name": "Retin-A MICRO",
+    "price": 995.98,
     "seller": {}
   },
   {
     "name": "Butalbital, Aspirin and Caffeine",
     "price": 1010.98,
-    "seller": {}
-  },
-  {
-    "name": "SEPHORA Acne-Fighting Mattifying Moisturizer",
-    "price": 1019.28,
-    "seller": {}
-  },
-  {
-    "name": "CVS Therapeutic Menthol Pain Reliever",
-    "price": 1033.42,
     "seller": {}
   },
   {
@@ -220,8 +180,8 @@
     "seller": {}
   },
   {
-    "name": "LBEL Couleur Luxe Rouge Amplifier XP amplifying SPF 15",
-    "price": 1069.43,
+    "name": "Acetic Acid",
+    "price": 1060.43,
     "seller": {}
   },
   {
@@ -235,18 +195,13 @@
     "seller": {}
   },
   {
-    "name": "ESIKA 3-IN-1 PRO MAKE UP FOUNDATION SPF 20 BASE DE MAQUILLAJE PARA ROSTRO 3-EN-1 PRO FPS 20",
-    "price": 1097.60,
+    "name": "smart sense nighttime cold and flu relief",
+    "price": 1101.77,
     "seller": {}
   },
   {
-    "name": "PREMIER VALUE ALLERGY",
-    "price": 1127.61,
-    "seller": {}
-  },
-  {
-    "name": "Laser Block 100",
-    "price": 1135.43,
+    "name": "Lorazepam",
+    "price": 1134.96,
     "seller": {}
   },
   {
@@ -260,28 +215,18 @@
     "seller": {}
   },
   {
-    "name": "Baza Antifungal",
-    "price": 1162.34,
+    "name": "Americaine",
+    "price": 1165.75,
     "seller": {}
   },
   {
-    "name": "Benazepril Hydrochloride and Hydrochlorothiazide",
-    "price": 1187.27,
+    "name": "leader pain reliever",
+    "price": 1179.79,
     "seller": {}
   },
   {
-    "name": "Nighttime Sleep Aid",
-    "price": 1217.11,
-    "seller": {}
-  },
-  {
-    "name": "Topical 60 Sec Sodium Fluoride",
-    "price": 1228.84,
-    "seller": {}
-  },
-  {
-    "name": "XtraCare Foam Antibacterial Hand Wash",
-    "price": 1251.97,
+    "name": "PAMO Kill Natural",
+    "price": 1181.06,
     "seller": {}
   },
   {
@@ -290,43 +235,18 @@
     "seller": {}
   },
   {
+    "name": "SUMATRIPTAN SUCCINATE",
+    "price": 1265.94,
+    "seller": {}
+  },
+  {
     "name": "DIVALPROEX SODIUM",
     "price": 1287.03,
     "seller": {}
   },
   {
-    "name": "VITALUMIERE AQUA",
-    "price": 1293.09,
-    "seller": {}
-  },
-  {
-    "name": "MEDI-FIRST Non-Aspirin",
-    "price": 1301.28,
-    "seller": {}
-  },
-  {
-    "name": "Cefadroxil",
-    "price": 1302.20,
-    "seller": {}
-  },
-  {
-    "name": "Zonisamide",
-    "price": 1305.41,
-    "seller": {}
-  },
-  {
-    "name": "Ibuprofen",
-    "price": 1305.96,
-    "seller": {}
-  },
-  {
-    "name": "Fosphenytoin Sodium",
-    "price": 1334.06,
-    "seller": {}
-  },
-  {
-    "name": "Labetalol Hydrochloride",
-    "price": 1345.11,
+    "name": "Hydralazine Hydrochloride",
+    "price": 1309.72,
     "seller": {}
   },
   {
@@ -335,13 +255,8 @@
     "seller": {}
   },
   {
-    "name": "MEDICATED DANDRUFF",
-    "price": 1351.02,
-    "seller": {}
-  },
-  {
-    "name": "EMEND",
-    "price": 1365.51,
+    "name": "PCA SKIN ACNE",
+    "price": 1356.22,
     "seller": {}
   },
   {
@@ -360,13 +275,8 @@
     "seller": {}
   },
   {
-    "name": "Fair Foundation SPF 15",
-    "price": 1394.24,
-    "seller": {}
-  },
-  {
-    "name": "Wintergreen Isopropyl Alcohol",
-    "price": 1397.57,
+    "name": "Metoprolol Tartrate",
+    "price": 1405.74,
     "seller": {}
   },
   {
@@ -375,18 +285,18 @@
     "seller": {}
   },
   {
-    "name": "Etodolac",
-    "price": 1443.13,
+    "name": "Acid Reducer",
+    "price": 1443.51,
     "seller": {}
   },
   {
-    "name": "smart sense nicotine",
-    "price": 1444.12,
+    "name": "Treatment Set TS336667",
+    "price": 1466.47,
     "seller": {}
   },
   {
-    "name": "Amitriptyline Hydrochloride",
-    "price": 1453.96,
+    "name": "GEMCITABINE",
+    "price": 1468.11,
     "seller": {}
   },
   {
@@ -400,13 +310,13 @@
     "seller": {}
   },
   {
-    "name": "Alcohol Free Antiseptic",
-    "price": 1486.07,
+    "name": "Etoposide",
+    "price": 1483.96,
     "seller": {}
   },
   {
-    "name": "Budpak Hemorrhoid Anesthetic",
-    "price": 1499.29,
+    "name": "Alcohol Free Antiseptic",
+    "price": 1486.07,
     "seller": {}
   }
 ]

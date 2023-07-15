@@ -10,15 +10,14 @@ import com.example.productsshop.entities.Dtos.XML.product.ProductXMLDtoWrapper;
 import com.example.productsshop.entities.Dtos.XML.user.UserSoldProductsDtoWrapper;
 import com.example.productsshop.entities.Dtos.XML.user.UserXMLDto;
 import com.example.productsshop.entities.Dtos.XML.user.UserXMLDtoWrapper;
-import com.example.productsshop.entities.products.Product;
 import com.example.productsshop.entities.users.User;
 import com.example.productsshop.entities.Dtos.Json.UserDtoSoldResponse;
-import com.example.productsshop.services.CategoryService;
-import com.example.productsshop.services.ProductService;
-import com.example.productsshop.services.SeedService;
-import com.example.productsshop.services.UserService;
-import org.modelmapper.PropertyMap;
-import org.modelmapper.TypeMap;
+import com.example.productsshop.services.category.CategoryService;
+import com.example.productsshop.services.product.ProductService;
+import com.example.productsshop.services.seed.JsonSeedServiceImp;
+import com.example.productsshop.services.seed.SeedService;
+import com.example.productsshop.services.seed.XmlSeedServiceImp;
+import com.example.productsshop.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -35,13 +34,16 @@ import static java.lang.Boolean.TRUE;
 
 @Component
 public class Controller implements CommandLineRunner {
+    //SeedService uses template Design Pattern
+    //If you want to fill the data with JsonFormat you need to pass in the Constructor :JsonSeedServiceImp seedService
+    //If you want to fill the data with XmlFormat you need to pass in the Constructor :XmlSeedServiceImp seedService
     private SeedService seedService;
     private UserService userService;
     private ProductService productService;
     private CategoryService categoryService;
 
     @Autowired
-    public Controller(SeedService seedService, UserService userService, ProductService productService, CategoryService categoryService) {
+    public Controller(JsonSeedServiceImp seedService, UserService userService, ProductService productService, CategoryService categoryService) {
         this.seedService = seedService;
         this.userService = userService;
         this.productService = productService;
@@ -55,7 +57,7 @@ public class Controller implements CommandLineRunner {
         ProductsInRangeXML();
         ProductsInRangeJSON();
 
-         SuccessFullySoldJson();
+        SuccessFullySoldJson();
         SuccessFullySoldXml();
 
         categorySummaryJason();
@@ -75,7 +77,7 @@ public class Controller implements CommandLineRunner {
         writer.flush();
         writer.close();
     }
-    private void usersAndProductsXml() throws IOException, JAXBException {
+    private void usersAndProductsXml() throws  JAXBException {
         List<User> usersList = userService.findAllBySoldProductsBuyerIsNotNullOrderByLastName();
         UserSoldProductsDtoWrapper usersWrapper = new UserSoldProductsDtoWrapper(usersList);
 
@@ -91,7 +93,7 @@ public class Controller implements CommandLineRunner {
         List<CategorySummary> categorySummaries = categoryService.CategoriesByProductsCount();
         getWriter(PATH_TO_SUMMARY_CATEGORY_JSON, categorySummaries);
     }
-    private void categorySummaryXml() throws IOException, JAXBException {
+    private void categorySummaryXml() throws JAXBException {
         List<CategorySummaryDto> list = categoryService.CategoriesByProductsCount()
                 .stream()
                 .map(CategorySummaryDto::toCategorySummaryDto)
@@ -115,7 +117,7 @@ public class Controller implements CommandLineRunner {
         getWriter(PATH_TO_SOLD_PRODUCTS_JSON, list);
     }
 
-    private void SuccessFullySoldXml() throws IOException, JAXBException {
+    private void SuccessFullySoldXml() throws  JAXBException {
         List<UserXMLDto> list = userService.SuccessfullySoldProducts()
                 .stream()
                 .map(UserXMLDto::toUserXmlDto)
@@ -139,7 +141,7 @@ public class Controller implements CommandLineRunner {
         getWriter(PATH_TO_PRODUCT_IN_RANGE_JSON, list);
     }
 
-    private void ProductsInRangeXML() throws IOException, JAXBException {
+    private void ProductsInRangeXML() throws JAXBException {
         List<ProductXMLDto> list = productService.productsInRange()
                 .stream()
                 .map(ProductXMLDto::toProductXMLDto)
