@@ -23,18 +23,18 @@ public class User extends BaseEntity {
     @Column(name = "full_name")
     private String fullName;
 
-    @ManyToMany(targetEntity = Game.class , fetch = FetchType.EAGER)
-    private Set<Game> games;
+    @ManyToMany(fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
+    private List<Game> games;
 
     @Column(name = "is_admin")
     private Boolean isAdmit;
 
 
-    @OneToMany(mappedBy = "user" , targetEntity = Order.class,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
     private List<Order> order;
 
     public User() {
-        this.games = new HashSet<>();
+        this.games = new ArrayList<>();
         this.isAdmit = false;
         this.order = new ArrayList<>();
     }
