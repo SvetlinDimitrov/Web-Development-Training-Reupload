@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/book")
 public class BookController {
     private final BookService service;
@@ -41,4 +42,5 @@ public class BookController {
         service.saveBook(bookView);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
 }

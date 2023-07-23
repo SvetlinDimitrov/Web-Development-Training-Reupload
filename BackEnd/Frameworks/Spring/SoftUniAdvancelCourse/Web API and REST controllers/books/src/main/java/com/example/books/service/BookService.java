@@ -67,7 +67,7 @@ public class BookService {
     }
 
     private BookView toBookView(Book book) {
-        return new BookView(book.getTitle(), book.getIsbn(), book.getAuthor().getName());
+        return new BookView(book.getId() , book.getTitle(), book.getIsbn(), book.getAuthor().getName());
     }
 
 

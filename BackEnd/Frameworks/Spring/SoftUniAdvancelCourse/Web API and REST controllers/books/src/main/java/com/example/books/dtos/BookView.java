@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookView {
-
+    private Long id;
     private String title;
     private String isbn;
     private String author;
