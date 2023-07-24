@@ -18,7 +18,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(
+        return http.authorizeHttpRequests(
                         (request) -> request.
                                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                                 requestMatchers("/users/login", "users/register").permitAll().
@@ -32,14 +32,14 @@ public class SecurityConfig {
                                 .passwordParameter("password")
                                 .loginPage("/users/login")
                                 .failureUrl("/users/login")
-                                .loginProcessingUrl("/users/login")
+                                .defaultSuccessUrl("/" , true)
                 )
                 .logout((out) ->
                         out.
                                 logoutUrl("/users/logout").
                                 logoutSuccessUrl("/users/login").
-                                clearAuthentication(true));
-        return http.build();
+                                clearAuthentication(true))
+                .build();
     }
 
     @Bean
