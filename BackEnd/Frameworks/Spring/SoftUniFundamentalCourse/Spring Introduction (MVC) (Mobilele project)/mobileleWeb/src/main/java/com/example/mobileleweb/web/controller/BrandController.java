@@ -21,11 +21,7 @@ public class BrandController extends BaseModelAndView {
     private ModelService modelService;
 
     @GetMapping
-    public ModelAndView getAllModels(ModelAndView modelAndView,
-                                     HttpSession session){
-        if(session.getAttribute("loggedUser") == null){
-            return redirect("/users/login" , modelAndView);
-        }
+    public ModelAndView getAllModels(ModelAndView modelAndView){
         Map<String , List<ViewModel>> brandMap= modelService.getAllModelsWithCorrespondingModels();
         modelAndView.addObject("allBrands" , brandMap);
         modelAndView.setViewName("brands");

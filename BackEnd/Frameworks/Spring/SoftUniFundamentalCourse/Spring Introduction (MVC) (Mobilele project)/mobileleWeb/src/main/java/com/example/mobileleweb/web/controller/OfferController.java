@@ -25,11 +25,7 @@ public class OfferController extends BaseModelAndView {
     private UserService userService;
 
     @GetMapping("/add")
-    public ModelAndView getAddView(ModelAndView modelAndView,
-                                   HttpSession session) {
-        if (isLoggedUser(session)) {
-            return redirect("/users/login", modelAndView);
-        }
+    public ModelAndView getAddView(ModelAndView modelAndView) {
         modelAndView.addObject("allModels", modelService.getAllModels());
         modelAndView.addObject("offerView", new ViewOffer());
         return view("offer-add.html", modelAndView);
@@ -40,10 +36,6 @@ public class OfferController extends BaseModelAndView {
                                  BindingResult result,
                                  ModelAndView modelAndView,
                                  HttpSession session) {
-
-        if (isLoggedUser(session)) {
-            return redirect("/users/login", modelAndView);
-        }
 
         if (result.hasErrors()) {
             modelAndView.addObject("allModels", modelService.getAllModels());
@@ -57,24 +49,15 @@ public class OfferController extends BaseModelAndView {
 
 
     @GetMapping("/all")
-    public ModelAndView getAllView(ModelAndView modelAndView,
-                                   HttpSession session) {
-        if (isLoggedUser(session)) {
-            return redirect("/users/login", modelAndView);
+    public ModelAndView getAllView(ModelAndView modelAndView) {
 
-        }
         modelAndView.addObject("allOffers", offerService.getAllOffers());
         return view("offers.html", modelAndView);
     }
 
     @GetMapping("/details/{id}")
     public ModelAndView getDetails(@PathVariable(name = "id") String id,
-                                   ModelAndView modelAndView,
-                                   HttpSession session) {
-
-        if (isLoggedUser(session)) {
-            return redirect("/users/login", modelAndView);
-        }
+                                   ModelAndView modelAndView) {
 
         ViewOffer offer = offerService.getViewOfferById(id);
         modelAndView.addObject("offer", offer);
@@ -88,11 +71,7 @@ public class OfferController extends BaseModelAndView {
 
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable(name = "id") String id,
-                                  ModelAndView modelAndView,
-                                  HttpSession session) {
-        if (isLoggedUser(session)) {
-            return redirect("/users/login", modelAndView);
-        }
+                                  ModelAndView modelAndView) {
 
         offerService.deleteOffer(id);
         return redirect("/offers/all", modelAndView);
@@ -104,12 +83,7 @@ public class OfferController extends BaseModelAndView {
                                @PathVariable(name = "sellerId") String sellerId,
                                @Valid @ModelAttribute(name = "offerView") ViewOffer viewOffer,
                                BindingResult result,
-                               ModelAndView modelAndView,
-                               HttpSession session) {
-
-        if (isLoggedUser(session)) {
-            return redirect("/users/login", modelAndView);
-        }
+                               ModelAndView modelAndView) {
 
         if (result.hasErrors()) {
             modelAndView.addObject("offerView", viewOffer);
@@ -122,9 +96,5 @@ public class OfferController extends BaseModelAndView {
         offerService.updateOffer(viewOffer);
 
         return redirect(String.format("/offers/details/%s", viewOffer.getId()), modelAndView);
-    }
-
-    private static boolean isLoggedUser(HttpSession session) {
-        return session.getAttribute("loggedUser") == null;
     }
 }

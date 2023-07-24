@@ -22,7 +22,6 @@ public class UserUniqueNameValidator implements ConstraintValidator <UserUniqueN
 
     @Override
     public boolean isValid(RegisterUserDto userDto, ConstraintValidatorContext context) {
-
         return userService.checkIfUsernameAlreadyExists(userDto.getUsername());
     }
 }
