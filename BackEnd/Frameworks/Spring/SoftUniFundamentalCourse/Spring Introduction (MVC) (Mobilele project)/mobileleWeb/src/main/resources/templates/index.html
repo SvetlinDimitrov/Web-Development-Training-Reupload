@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:replace="~{fragments/header::head}"></head>
 
 <body>
 
-<div th:if="${session.loggedUser == null}" >
+<div sec:authorize="isAnonymous()" >
     <div th:replace="~{fragments/login_user_navbat}"></div>
 </div>
 
-<div th:if="${session.loggedUser != null}" >
+<div sec:authorize="isAuthenticated()" >
     <div th:replace="~{fragments/logged_user_navbar}"></div>
 </div>
 

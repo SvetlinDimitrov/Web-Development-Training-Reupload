@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
                             .firstName("user")
                             .lastName("user")
                             .isActive(true)
-                            .role(userRoleService.findByRole(Role.User))
+                            .role(userRoleService.findByRole(Role.USER))
                             .build()
             );
             userRepository.save(
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
                             .firstName("admin")
                             .lastName("admin")
                             .isActive(true)
-                            .role(userRoleService.findByRole(Role.Admin))
+                            .role(userRoleService.findByRole(Role.ADMIN))
                             .build()
             );
         }

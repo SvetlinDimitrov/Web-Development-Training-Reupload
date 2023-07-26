@@ -55,7 +55,7 @@ public class UserEntity extends BaseEntity {
         return LoggedUser.builder()
                 .id(getId())
                 .username(username)
-                .isAdmin(role.getRole().equals(Role.Admin))
+                .isAdmin(role.getRole().equals(Role.ADMIN))
                 .build();
 
     }

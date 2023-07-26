@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @Configuration
 public class SecurityConfig {
@@ -22,7 +23,7 @@ public class SecurityConfig {
                         (request) -> request.
                                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                                 requestMatchers("/users/login", "users/register").anonymous().
-                                requestMatchers("/brands/all").hasRole(Role.Admin.name()).
+                                requestMatchers("/brands/all").hasRole(Role.ADMIN.name()).
                                 anyRequest().
                                 authenticated()
                 )
@@ -32,15 +33,16 @@ public class SecurityConfig {
                                 .usernameParameter("username")
                                 .passwordParameter("password")
                                 .failureUrl("/users/login?error=true")
-                                .successForwardUrl("/")
-                                .permitAll()
+                                .defaultSuccessUrl("/" , true)
 
                 )
                 .logout((out) ->
                         out.
                                 logoutUrl("/users/logout").
                                 logoutSuccessUrl("/users/login").
-                                clearAuthentication(true))
+                                deleteCookies("JSESSIONID").
+                                clearAuthentication(true)
+                )
                 .build();
     }
 

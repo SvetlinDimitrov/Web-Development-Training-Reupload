@@ -25,10 +25,9 @@ public class UserDetailsServiceImp implements UserDetailsService {
     }
 
     private Collection<? extends GrantedAuthority> getSimpleAuthority(UserEntity userEntity) {
-        return List.of(new SimpleGrantedAuthority("ROLE_"+ userEntity.getRole().role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_"+userEntity.getRole().role.name()));
     }
     private User toUserSec (UserEntity userEntity){
-        return new org.springframework.security.core.userdetails.User
-                (userEntity.getUsername(), userEntity.getPassword(), getSimpleAuthority(userEntity));
+        return new User(userEntity.getUsername(), userEntity.getPassword(), getSimpleAuthority(userEntity));
     }
 }
