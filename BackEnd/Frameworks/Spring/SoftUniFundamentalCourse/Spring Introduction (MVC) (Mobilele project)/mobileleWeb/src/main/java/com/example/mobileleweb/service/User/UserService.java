@@ -1,7 +1,6 @@
 package com.example.mobileleweb.service.User;
 
-import com.example.mobileleweb.domain.entity.User;
-import com.example.mobileleweb.domain.viewDtos.LoggedUser;
+import com.example.mobileleweb.domain.entity.UserEntity;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
 
 public interface UserService {
@@ -9,7 +8,7 @@ public interface UserService {
 
     boolean checkIfUsernameAlreadyExists(String username);
 
-    User getUserByUsername(String username);
+    UserEntity getUserByUsername(String username);
 
-    User findById(String sellerId);
+    UserEntity findById(String sellerId);
 }

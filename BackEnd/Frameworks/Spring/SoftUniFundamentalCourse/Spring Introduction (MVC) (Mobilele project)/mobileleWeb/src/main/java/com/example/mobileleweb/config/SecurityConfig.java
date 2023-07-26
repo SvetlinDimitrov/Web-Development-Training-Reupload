@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -21,18 +21,20 @@ public class SecurityConfig {
         return http.authorizeHttpRequests(
                         (request) -> request.
                                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                                requestMatchers("/users/login", "users/register").permitAll().
+                                requestMatchers("/users/login", "users/register").anonymous().
                                 requestMatchers("/brands/all").hasRole(Role.Admin.name()).
                                 anyRequest().
                                 authenticated()
                 )
                 .formLogin((formLogin) ->
                         formLogin
+                                .loginPage("/users/login")
                                 .usernameParameter("username")
                                 .passwordParameter("password")
-                                .loginPage("/users/login")
-                                .failureUrl("/users/login")
-                                .defaultSuccessUrl("/" , true)
+                                .failureUrl("/users/login?error=true")
+                                .successForwardUrl("/")
+                                .permitAll()
+
                 )
                 .logout((out) ->
                         out.
@@ -44,11 +46,11 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new Pbkdf2PasswordEncoder("secret",2,2, Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA1);
     }
 
     @Bean
-    public UserDetailsService getService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserDetailsService getService(UserRepository userRepository) {
         return new UserDetailsServiceImp(userRepository);
     }
 }

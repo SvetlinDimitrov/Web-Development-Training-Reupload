@@ -2,8 +2,6 @@ package com.example.mobileleweb.domain.viewDtos;
 
 import com.example.mobileleweb.domain.constants.Engine;
 import com.example.mobileleweb.domain.constants.Transmission;
-import com.example.mobileleweb.domain.entity.Model;
-import com.example.mobileleweb.domain.entity.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

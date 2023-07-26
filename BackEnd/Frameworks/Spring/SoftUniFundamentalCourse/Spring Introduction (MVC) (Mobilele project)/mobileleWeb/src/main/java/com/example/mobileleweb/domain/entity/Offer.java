@@ -51,7 +51,7 @@ public class Offer extends BaseEntity {
     private Model model;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    private User seller;
+    private UserEntity seller;
 
     public Offer setImgToModelImg() {
         this.setImageUrl(this.getModel().getImageUrl());

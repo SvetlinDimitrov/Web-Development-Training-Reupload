@@ -43,8 +43,9 @@ public class UserController extends BaseModelAndView {
     }
 
     @GetMapping("/login")
-    public ModelAndView getLogin() {
-        return view("auth-login", new ModelAndView());
+    public ModelAndView getLogin(ModelAndView modelAndView) {
+        modelAndView.setViewName("auth-login");
+        return modelAndView;
     }
 
 }

@@ -74,10 +74,17 @@ function submit(){
     }   
 
     let body2 = {
-        method :'post',
+        method: 'POST',
         body: JSON.stringify(bookToCreate)
     }
     console.log(JSON.stringify(bookToCreate))
 
-    fetch('http://localhost:8080/book' , body2);
+    fetch('http://localhost:8080/book' , body2) 
+    .then(response => {
+        loadAll()
+    })
+    .catch(error => {
+        console.error('Error making POST request:', error);
+        // Handle any errors that occurred during the request
+    });
 }

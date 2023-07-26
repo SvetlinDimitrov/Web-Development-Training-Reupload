@@ -1,6 +1,6 @@
 package com.example.mobileleweb.web.controller;
 
-import com.example.mobileleweb.domain.entity.User;
+import com.example.mobileleweb.domain.entity.UserEntity;
 import com.example.mobileleweb.domain.viewDtos.LoggedUser;
 import com.example.mobileleweb.domain.viewDtos.ViewOffer;
 import com.example.mobileleweb.service.Model.ModelService;
@@ -61,9 +61,9 @@ public class OfferController extends BaseModelAndView {
 
         ViewOffer offer = offerService.getViewOfferById(id);
         modelAndView.addObject("offer", offer);
-        User user = userService.findById(offer.getSellerId());
+        UserEntity userEntity = userService.findById(offer.getSellerId());
 
-        String userName = String.format("%s %s", user.getFirstName(), user.getLastName());
+        String userName = String.format("%s %s", userEntity.getFirstName(), userEntity.getLastName());
         modelAndView.addObject("userName", userName);
 
         return view("details.html", modelAndView);
