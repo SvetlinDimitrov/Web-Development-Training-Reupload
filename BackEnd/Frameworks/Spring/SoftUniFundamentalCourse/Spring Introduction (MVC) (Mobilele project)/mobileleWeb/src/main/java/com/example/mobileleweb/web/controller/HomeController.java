@@ -6,6 +6,7 @@ import com.example.mobileleweb.domain.viewDtos.ViewUser;
 import com.example.mobileleweb.service.User.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +21,13 @@ public class HomeController {
     private UserService userService;
 
     @GetMapping
-    public ModelAndView getHome(HttpSession session ,
-                                Principal principal ,
-                                ModelAndView modelAndView){
-        ViewUser user = userService.getUserByUsername(principal.getName()).toUserView();
-        session.setAttribute("user" ,user);
+    public ModelAndView getHome(@AuthenticationPrincipal ViewUser viewUser,
+                                HttpSession session,
+                                ModelAndView modelAndView) {
+
+        session.setAttribute("user", viewUser);
         modelAndView.setViewName("index");
+
         return modelAndView;
     }
 

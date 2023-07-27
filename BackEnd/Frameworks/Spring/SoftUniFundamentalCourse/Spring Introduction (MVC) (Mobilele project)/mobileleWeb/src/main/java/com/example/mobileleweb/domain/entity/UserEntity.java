@@ -51,19 +51,6 @@ public class UserEntity extends BaseEntity {
     private List<Offer> offers = new ArrayList<>();
 
     public ViewUser toUserView(){
-        return ViewUser.builder().
-                id(getId()).
-                username(username).
-                role(role.getRole()).
-                firstName(firstName).
-                lastName(lastName).
-                offers(offers).
-                password(password).
-                created(created).
-                imageUrl(imageUrl).
-                modified(created).
-                isActive(isActive).
-                build();
-
+        return new ViewUser(this);
     }
 }
