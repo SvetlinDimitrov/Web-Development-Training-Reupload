@@ -1,17 +1,17 @@
 package com.example.mobileleweb.service.Offer;
 
-import com.example.mobileleweb.domain.viewDtos.ViewOffer;
+import com.example.mobileleweb.domain.viewDtos.ViewOfferDto;
 
 import java.util.List;
 
 public interface OfferService {
-    List<ViewOffer> getAllOffers();
+    List<ViewOfferDto> getAllOffers();
 
-    void addOffer(ViewOffer offerView);
+    void addOffer(ViewOfferDto offerView);
 
-    ViewOffer getViewOfferById(String id);
+    ViewOfferDto getViewOfferById(String id);
 
-    void updateOffer(ViewOffer viewOffer);
+    void updateOffer(ViewOfferDto viewOfferDto);
 
     void deleteOffer(String id);
 }

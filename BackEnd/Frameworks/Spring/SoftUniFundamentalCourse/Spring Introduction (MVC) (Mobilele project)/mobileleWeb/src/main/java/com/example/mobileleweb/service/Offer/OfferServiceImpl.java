@@ -2,9 +2,8 @@ package com.example.mobileleweb.service.Offer;
 
 import com.example.mobileleweb.domain.constants.Engine;
 import com.example.mobileleweb.domain.constants.Transmission;
-import com.example.mobileleweb.domain.entity.Model;
 import com.example.mobileleweb.domain.entity.Offer;
-import com.example.mobileleweb.domain.viewDtos.ViewOffer;
+import com.example.mobileleweb.domain.viewDtos.ViewOfferDto;
 import com.example.mobileleweb.repo.OfferRepository;
 import com.example.mobileleweb.service.Model.ModelService;
 import com.example.mobileleweb.service.User.UserService;
@@ -62,7 +61,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public List<ViewOffer> getAllOffers() {
+    public List<ViewOfferDto> getAllOffers() {
         List<Offer> offers = offerRepository.findAll();
         return offers.stream()
                 .map(Offer::toViewOffer)
@@ -70,7 +69,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public void addOffer(ViewOffer offerView) {
+    public void addOffer(ViewOfferDto offerView) {
         Offer offer = mapper.map(offerView, Offer.class);
         offer.setModel(modelService.findById(offerView.getModelId()));
         offer.setSeller(userService.findById(offerView.getSellerId()));
@@ -78,12 +77,12 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public ViewOffer getViewOfferById(String id) {
+    public ViewOfferDto getViewOfferById(String id) {
         return offerRepository.findById(id).get().toViewOffer();
     }
 
     @Override
-    public void updateOffer(ViewOffer offerView) {
+    public void updateOffer(ViewOfferDto offerView) {
         Offer offer = offerRepository.findById(offerView.getId()).get();
         offer.setDescription(offerView.getDescription());
         offer.setEngine(offerView.getEngine());

@@ -3,6 +3,7 @@ package com.example.mobileleweb.config;
 import com.example.mobileleweb.domain.constants.Role;
 import com.example.mobileleweb.repo.UserRepository;
 import com.example.mobileleweb.service.security.UserDetailsServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,6 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @Configuration
 public class SecurityConfig {
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -43,6 +43,12 @@ public class SecurityConfig {
                                 deleteCookies("JSESSIONID").
                                 clearAuthentication(true)
                 )
+                .rememberMe((me) ->
+                        me.
+                                key("gospod").
+                                tokenValiditySeconds(600000)
+
+                        )
                 .build();
     }
 

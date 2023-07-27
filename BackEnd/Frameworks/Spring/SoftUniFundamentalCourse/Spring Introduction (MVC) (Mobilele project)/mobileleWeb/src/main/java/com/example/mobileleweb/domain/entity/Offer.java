@@ -3,7 +3,7 @@ package com.example.mobileleweb.domain.entity;
 import com.example.mobileleweb.domain.constants.BaseEntity;
 import com.example.mobileleweb.domain.constants.Engine;
 import com.example.mobileleweb.domain.constants.Transmission;
-import com.example.mobileleweb.domain.viewDtos.ViewOffer;
+import com.example.mobileleweb.domain.viewDtos.ViewOfferDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -58,8 +58,8 @@ public class Offer extends BaseEntity {
         return this;
     }
 
-    public ViewOffer toViewOffer() {
-        return ViewOffer.builder()
+    public ViewOfferDto toViewOffer() {
+        return ViewOfferDto.builder()
                 .id(getId())
                 .engine(engine)
                 .imageUrl(imageUrl)

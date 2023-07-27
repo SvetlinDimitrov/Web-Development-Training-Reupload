@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head th:replace="~{fragments/header::head}"></head>
 
 <body>
 
-<div sec:authorize="isAnonymous()" >
-    <div th:replace="~{fragments/login_user_navbat}"></div>
-</div>
-
-<div sec:authorize="isAuthenticated()" >
-    <div th:replace="~{fragments/logged_user_navbar}"></div>
-</div>
+<nav sec:authorize="isAnonymous()" th:replace="~{fragments/login_user_navbat}"></nav>
+<nav sec:authorize="isAuthenticated()" th:replace="~{fragments/logged_user_navbar}"></nav>
 
 <div class="container-fluid">
     <h5 class="text-center text-white mt-5" th:text="${text}"></h5>

@@ -1,8 +1,8 @@
 package com.example.mobileleweb.web.controller;
 
 import com.example.mobileleweb.domain.entity.UserEntity;
-import com.example.mobileleweb.domain.viewDtos.LoggedUser;
-import com.example.mobileleweb.domain.viewDtos.ViewOffer;
+import com.example.mobileleweb.domain.viewDtos.ViewOfferDto;
+import com.example.mobileleweb.domain.viewDtos.ViewUser;
 import com.example.mobileleweb.service.Model.ModelService;
 import com.example.mobileleweb.service.Offer.OfferService;
 import com.example.mobileleweb.service.User.UserService;
@@ -27,12 +27,12 @@ public class OfferController extends BaseModelAndView {
     @GetMapping("/add")
     public ModelAndView getAddView(ModelAndView modelAndView) {
         modelAndView.addObject("allModels", modelService.getAllModels());
-        modelAndView.addObject("offerView", new ViewOffer());
+        modelAndView.addObject("offerView", new ViewOfferDto());
         return view("offer-add.html", modelAndView);
     }
 
     @PostMapping("/add")
-    public ModelAndView addOffer(@Valid @ModelAttribute(name = "offerView") ViewOffer offerView,
+    public ModelAndView addOffer(@Valid @ModelAttribute(name = "offerView") ViewOfferDto offerView,
                                  BindingResult result,
                                  ModelAndView modelAndView,
                                  HttpSession session) {
@@ -41,7 +41,7 @@ public class OfferController extends BaseModelAndView {
             modelAndView.addObject("allModels", modelService.getAllModels());
             return view("offer-add.html", modelAndView);
         }
-        LoggedUser user = (LoggedUser) session.getAttribute("loggedUser");
+        ViewUser user = (ViewUser) session.getAttribute("user");
         offerView.setSellerId(user.getId());
         offerService.addOffer(offerView);
         return redirect("/offers/all", modelAndView);
@@ -59,7 +59,7 @@ public class OfferController extends BaseModelAndView {
     public ModelAndView getDetails(@PathVariable(name = "id") String id,
                                    ModelAndView modelAndView) {
 
-        ViewOffer offer = offerService.getViewOfferById(id);
+        ViewOfferDto offer = offerService.getViewOfferById(id);
         modelAndView.addObject("offer", offer);
         UserEntity userEntity = userService.findById(offer.getSellerId());
 
@@ -81,20 +81,20 @@ public class OfferController extends BaseModelAndView {
     @PostMapping("/update/{offerId}/seller/{sellerId}")
     public ModelAndView update(@PathVariable(name = "offerId") String offerId,
                                @PathVariable(name = "sellerId") String sellerId,
-                               @Valid @ModelAttribute(name = "offerView") ViewOffer viewOffer,
+                               @Valid @ModelAttribute(name = "offerView") ViewOfferDto viewOfferDto,
                                BindingResult result,
                                ModelAndView modelAndView) {
 
         if (result.hasErrors()) {
-            modelAndView.addObject("offerView", viewOffer);
+            modelAndView.addObject("offerView", viewOfferDto);
             modelAndView.addObject("allModels", modelService.getAllModels());
             return view("update.html", modelAndView);
         }
 
-        viewOffer.setSellerId(sellerId);
-        viewOffer.setId(offerId);
-        offerService.updateOffer(viewOffer);
+        viewOfferDto.setSellerId(sellerId);
+        viewOfferDto.setId(offerId);
+        offerService.updateOffer(viewOfferDto);
 
-        return redirect(String.format("/offers/details/%s", viewOffer.getId()), modelAndView);
+        return redirect(String.format("/offers/details/%s", viewOfferDto.getId()), modelAndView);
     }
 }

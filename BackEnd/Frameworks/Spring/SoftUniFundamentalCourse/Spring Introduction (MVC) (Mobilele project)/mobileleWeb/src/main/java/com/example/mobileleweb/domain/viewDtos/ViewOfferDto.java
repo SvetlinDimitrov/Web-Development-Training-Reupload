@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Builder
-public class ViewOffer {
+public class ViewOfferDto {
 
     private String id;
 

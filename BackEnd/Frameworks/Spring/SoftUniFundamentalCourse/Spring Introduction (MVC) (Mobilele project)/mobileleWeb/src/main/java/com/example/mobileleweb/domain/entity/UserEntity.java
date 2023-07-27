@@ -1,8 +1,7 @@
 package com.example.mobileleweb.domain.entity;
 
 import com.example.mobileleweb.domain.constants.BaseEntity;
-import com.example.mobileleweb.domain.constants.Role;
-import com.example.mobileleweb.domain.viewDtos.LoggedUser;
+import com.example.mobileleweb.domain.viewDtos.ViewUser;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -51,12 +50,20 @@ public class UserEntity extends BaseEntity {
     @OneToMany(mappedBy = "seller")
     private List<Offer> offers = new ArrayList<>();
 
-    public LoggedUser toLoggedUser(){
-        return LoggedUser.builder()
-                .id(getId())
-                .username(username)
-                .isAdmin(role.getRole().equals(Role.ADMIN))
-                .build();
+    public ViewUser toUserView(){
+        return ViewUser.builder().
+                id(getId()).
+                username(username).
+                role(role.getRole()).
+                firstName(firstName).
+                lastName(lastName).
+                offers(offers).
+                password(password).
+                created(created).
+                imageUrl(imageUrl).
+                modified(created).
+                isActive(isActive).
+                build();
 
     }
 }
