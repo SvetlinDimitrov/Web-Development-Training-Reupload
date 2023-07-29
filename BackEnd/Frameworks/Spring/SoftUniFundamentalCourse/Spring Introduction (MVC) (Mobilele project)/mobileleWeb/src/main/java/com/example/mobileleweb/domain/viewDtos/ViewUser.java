@@ -24,7 +24,8 @@ public class ViewUser extends User {
     private List<Offer> offers = new ArrayList<>();
 
     public ViewUser(UserEntity userEntity) {
-        super(userEntity.getUsername(), userEntity.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_"+userEntity.getRole().getRole().name())));
+        super(userEntity.getUsername(), userEntity.getPassword(),
+                List.of(new SimpleGrantedAuthority(userEntity.getRole().getRole().name())));
         this.id = userEntity.getId();
         this.username = userEntity.getUsername();
         this.password = userEntity.getPassword();
