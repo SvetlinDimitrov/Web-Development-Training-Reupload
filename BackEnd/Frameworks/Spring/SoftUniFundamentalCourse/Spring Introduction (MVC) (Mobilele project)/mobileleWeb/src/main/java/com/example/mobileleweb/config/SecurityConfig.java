@@ -3,7 +3,6 @@ package com.example.mobileleweb.config;
 import com.example.mobileleweb.domain.constants.Role;
 import com.example.mobileleweb.repo.UserRepository;
 import com.example.mobileleweb.service.security.UserDetailsServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,13 +11,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.springframework.security.web.context.DelegatingSecurityContextRepository;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 
 @Configuration
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http , SecurityContextRepository securityContextRepository) throws Exception {
         return http.authorizeHttpRequests(
                         (request) -> request.
                                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
@@ -49,6 +51,7 @@ public class SecurityConfig {
                                 tokenValiditySeconds(600000)
 
                         )
+                .securityContext((sec) -> sec.securityContextRepository(securityContextRepository))
                 .build();
     }
 
@@ -60,5 +63,13 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService getService(UserRepository userRepository) {
         return new UserDetailsServiceImp(userRepository);
+    }
+
+    @Bean
+    public SecurityContextRepository getSecContext(){
+        return new DelegatingSecurityContextRepository(
+                new RequestAttributeSecurityContextRepository(),
+                new HttpSessionSecurityContextRepository()
+        );
     }
 }

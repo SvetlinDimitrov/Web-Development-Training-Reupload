@@ -4,6 +4,8 @@ import com.example.mobileleweb.domain.constants.Role;
 import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
 import com.example.mobileleweb.service.User.UserService;
 import com.example.mobileleweb.web.constants.BaseModelAndView;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -33,13 +35,18 @@ public class UserController extends BaseModelAndView {
     @PostMapping("/register")
     public ModelAndView register(@Valid @ModelAttribute(name = "userRegister") RegisterUserDto user,
                                  BindingResult result,
-                                 ModelAndView modelAndView) {
+                                 ModelAndView modelAndView,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) {
         if (result.hasErrors()) {
             modelAndView.addObject("roles", Role.values());
             return view("auth-register", modelAndView);
         }
-        userService.register(user);
-        return redirect("/users/login", modelAndView);
+        userService.register(user,request ,response);
+
+
+
+        return redirect("/", modelAndView);
     }
 
     @GetMapping("/login")
