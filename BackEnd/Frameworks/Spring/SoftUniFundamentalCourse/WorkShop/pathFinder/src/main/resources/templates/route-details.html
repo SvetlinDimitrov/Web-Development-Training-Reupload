@@ -4,24 +4,8 @@
 <head th:replace="~{fragments/head_fragment}"></head>
 <body>
 <div class="wrapper">
-    <header>
-        <th:block th:if="${session.loggedUser != null}">
-
-            <th:block th:if="${session.user}">
-                <nav th:replace="~{fragments/nav_user_fragment}"></nav>
-            </th:block>
-
-            <th:block th:if="${session.admin}">
-                <nav th:replace="~{fragments/nav_admin_fragment}"></nav>
-            </th:block>
-
-        </th:block>
-
-        <th:block th:if="${session.isEmpty()}">
-            <nav th:replace="~{fragments/nav_notLoggedUser_fragment}"></nav>
-        </th:block>
-
-    </header>
+    <!-- Navigation -->
+    <header th:replace="~{fragments/fullNavigation}"></header>
 
     <input type="hidden" name="routeId" id="routeId">
     <div class="details-main" th:object="${route}">

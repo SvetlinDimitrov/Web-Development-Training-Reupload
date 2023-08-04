@@ -1,51 +1,38 @@
 package com.example.pathfinder.service.user;
 
+import com.example.pathfinder.domain.bindingViews.ViewComments;
 import com.example.pathfinder.domain.bindingViews.ViewRoles;
+import com.example.pathfinder.domain.bindingViews.ViewRoute;
 import com.example.pathfinder.domain.bindingViews.ViewUser;
 import com.example.pathfinder.domain.constants.Level;
-import com.example.pathfinder.domain.constants.RoleConstant;
 import com.example.pathfinder.domain.dtos.LoginUserDto;
 import com.example.pathfinder.domain.dtos.RegisterUserDto;
-import com.example.pathfinder.domain.entity.User;
-import com.example.pathfinder.repos.RoleRepository;
+import com.example.pathfinder.domain.entity.Role;
+import com.example.pathfinder.domain.entity.UserEntity;
 import com.example.pathfinder.repos.UserRepository;
+import com.example.pathfinder.service.role.RoleService;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
+
     private UserRepository userRepository;
-    private ModelMapper mapper;
-    private RoleRepository roleRepository;
+    private RoleService roleService;
+    private PasswordEncoder passwordEncoder;
 
     @Override
-    public boolean register(RegisterUserDto registerUserDto) {
+    public void register(RegisterUserDto registerUserDto) {
 
-        ViewUser userView = mapper.map(registerUserDto, ViewUser.class);
-        ViewRoles viewRoles = mapper.map(roleRepository.findByRole(RoleConstant.USER).get(), ViewRoles.class);
-        userView.getRoles().add(viewRoles);
-        User user = mapper.map(userView, User.class);
-        user.setLevel(Level.BEGINNER);
-        userRepository.save(user);
-        return true;
-
+        UserEntity userView = toUserEntity(registerUserDto);
+        userRepository.save(userView);
     }
 
-    @Override
-    @Transactional
-    public ViewUser login(LoginUserDto loginUserDto) {
-        Optional<User> userInTheBase = userRepository.findByUsername(loginUserDto.getUsername());
-        if (userInTheBase.isPresent() &&
-                userInTheBase.get().getPassword().equals(loginUserDto.getPassword())) {
-            return mapper.map(userInTheBase.get(), ViewUser.class);
-        }
-        return null;
-    }
 
     @Override
     public boolean checkTheEmail(String value) {
@@ -60,12 +47,47 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public ViewUser getViewUserById(Long id) {
-        return mapper.map(findById(id) , ViewUser.class);
+        return toViewUser(findById(id));
     }
 
     @Override
-    public User findById(Long id){
+    public UserEntity findById(Long id) {
         return userRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    @Transactional
+    public LoginUserDto findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .map(this::toLoginUserDto)
+                .orElseThrow(() -> new RuntimeException("No user have that username"));
+
+    }
+
+    private LoginUserDto toLoginUserDto(UserEntity userEntity) {
+        return new LoginUserDto(userEntity.getUsername(),
+                userEntity.getPassword(),
+                userEntity.getRoles()
+                        .stream()
+                        .map(Role::getRole)
+                        .collect(Collectors.toSet()),
+                userEntity.getId());
+    }
+
+    private UserEntity toUserEntity(RegisterUserDto dto) {
+        return UserEntity.builder()
+                .username(dto.getUsername())
+                .fullName(dto.getFullName())
+                .age(dto.getAge())
+                .password(passwordEncoder.encode(dto.getPassword()))
+                .email(dto.getEmail())
+                .level(Level.BEGINNER)
+                .roles(roleService.getRegisterRoles())
+                .build();
+    }
+
+    private ViewUser toViewUser(UserEntity user) {
+        return new ViewUser(user);
     }
 
 }

@@ -1,8 +1,7 @@
 package com.example.pathfinder.domain.bindingViews;
 
 
-import com.example.pathfinder.domain.entity.Route;
-import com.example.pathfinder.domain.entity.User;
+import com.example.pathfinder.domain.entity.Picture;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,10 @@ public class ViewPictures {
     private Long id;
     private String title;
     private String url;
-    private ViewUser author;
-    private ViewRoute route;
 
+    public ViewPictures(Picture picture) {
+        this.id = picture.getId();
+        this.title = picture.getTitle();
+        this.url = picture.getUrl();
+    }
 }

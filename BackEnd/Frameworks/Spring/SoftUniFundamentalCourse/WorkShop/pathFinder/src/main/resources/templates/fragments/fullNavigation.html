@@ -1,0 +1,25 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header th:fragment="fullNavigation">
+
+  <th:block th:if="${session.loggedUser} != null" >
+
+    <th:block th:if = "${!session.loggedUser.isAdmin()}">
+      <nav th:replace="~{fragments/nav_user_fragment}"></nav>
+    </th:block>
+
+    <th:block th:if = "${session.loggedUser.isAdmin()}">
+      <nav th:replace="~{fragments/nav_admin_fragment}"></nav>
+    </th:block>
+
+  </th:block>
+  <th:block th:if="${session.loggedUser} == null" >
+
+    <th:block >
+      <nav th:replace="~{fragments/nav_notLoggedUser_fragment.html}"></nav>
+    </th:block>
+  </th:block>
+
+</header>
+</html>

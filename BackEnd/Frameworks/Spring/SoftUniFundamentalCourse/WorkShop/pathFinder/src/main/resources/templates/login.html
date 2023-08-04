@@ -11,14 +11,13 @@
             <form
                     th:action="@{/users/login}"
                     th:method="post"
-                    th:object="${loginUser}">
+            >
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
-                               th:field="${loginUser.username}"
                                name="username"
                                required minlength="4" maxlength="20"
                                id="inputUsername"
@@ -33,7 +32,6 @@
                     </div>
                     <div class="col-auto">
                         <input type="password"
-                               th:field="${loginUser.password}"
                                name="password"
                                required minlength="4" maxlength="20"
                                id="inputPassword" class="form-control"
@@ -43,17 +41,15 @@
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
-                <small th:if="${#fields.hasErrors('username') || #fields.hasErrors('password') ||
-                #fields.hasErrors('${loginUser}')}"
-                       id="passwordError"
+                <small th:if="${param.error}"
                        class="alert-danger">
-                    not registered user or wrong password
+                    not registered userEntity or wrong password
                 </small>
             </form>
         </div>
 
     </div>
 </main>
-<footer th:replace="fragments/footer_fragment"></footer>
+<footer th:replace="~{fragments/footer_fragment}"></footer>
 </body>
 </html>

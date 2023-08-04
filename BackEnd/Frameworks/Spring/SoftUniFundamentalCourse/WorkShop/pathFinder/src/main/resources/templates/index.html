@@ -1,28 +1,12 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 
 <head th:replace="~{fragments/head_fragment}"></head>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-    <header>
-        <th:block th:if="${session.loggedUser != null}">
-
-            <th:block th:if="${session.user}">
-                <nav th:replace="~{fragments/nav_user_fragment}"></nav>
-            </th:block>
-
-            <th:block th:if="${session.admin}">
-                <nav th:replace="~{fragments/nav_admin_fragment}"></nav>
-            </th:block>
-
-        </th:block>
-
-        <th:block th:if="${session.isEmpty()}">
-            <nav th:replace="~{fragments/nav_notLoggedUser_fragment}"></nav>
-        </th:block>
-
-    </header>
+    <header th:replace="~{fragments/fullNavigation}"></header>
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">

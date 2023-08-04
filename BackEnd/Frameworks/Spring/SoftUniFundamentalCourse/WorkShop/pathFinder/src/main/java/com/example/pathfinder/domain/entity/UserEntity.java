@@ -2,15 +2,9 @@ package com.example.pathfinder.domain.entity;
 
 import com.example.pathfinder.domain.constants.BaseEntity;
 import com.example.pathfinder.domain.constants.Level;
-import com.example.pathfinder.domain.constants.RoleConstant;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import lombok.*;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,8 +13,9 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "users")
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
     @Column
     private String username;
 

@@ -24,7 +24,7 @@ public class Picture extends BaseEntity {
     private String url;
 
     @ManyToOne
-    private User author;
+    private UserEntity author;
 
     @ManyToOne
     private Route route;

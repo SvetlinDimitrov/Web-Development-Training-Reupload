@@ -1,7 +1,7 @@
 package com.example.pathfinder.domain.bindingViews;
 
 
-import com.example.pathfinder.domain.entity.User;
+import com.example.pathfinder.domain.entity.Message;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +17,10 @@ public class ViewMessages {
     private Long id;
     private LocalDate dateTime;
     private String textContent;
-    private ViewUser author;
-    private ViewUser recipient;
+
+    public ViewMessages(Message message){
+        this.id = message.getId();
+        this.dateTime = message.getDateTime();
+        this.textContent = message.getTextContent();
+    }
 }

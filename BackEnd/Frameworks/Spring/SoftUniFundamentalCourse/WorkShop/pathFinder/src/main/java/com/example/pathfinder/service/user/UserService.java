@@ -3,12 +3,11 @@ package com.example.pathfinder.service.user;
 import com.example.pathfinder.domain.bindingViews.ViewUser;
 import com.example.pathfinder.domain.dtos.LoginUserDto;
 import com.example.pathfinder.domain.dtos.RegisterUserDto;
-import com.example.pathfinder.domain.entity.User;
+import com.example.pathfinder.domain.entity.UserEntity;
 
 public interface UserService {
-    boolean register(RegisterUserDto registerUserDto);
+    void register(RegisterUserDto registerUserDto);
 
-    ViewUser login(LoginUserDto loginUserDto);
 
     boolean checkTheEmail(String value);
 
@@ -17,5 +16,7 @@ public interface UserService {
 
     ViewUser getViewUserById(Long id);
 
-    User findById(Long id);
+    UserEntity findById(Long id);
+
+    LoginUserDto findByUsername(String username);
 }

@@ -24,8 +24,8 @@ public class Message extends BaseEntity {
     private String textContent;
 
     @ManyToOne
-    private User author;
+    private UserEntity author;
 
     @ManyToOne
-    private User recipient;
+    private UserEntity recipient;
 }

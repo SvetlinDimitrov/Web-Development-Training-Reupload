@@ -32,7 +32,7 @@ public class Route extends BaseEntity {
     private String name;
 
     @ManyToOne
-    private User author;
+    private UserEntity author;
 
     @Column(name = "video_url")
     private String videoUrl;

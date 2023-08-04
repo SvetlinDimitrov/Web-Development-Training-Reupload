@@ -1,7 +1,5 @@
 package com.example.pathfinder.domain.bindingViews;
 
-import com.example.pathfinder.domain.entity.Route;
-import com.example.pathfinder.domain.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
