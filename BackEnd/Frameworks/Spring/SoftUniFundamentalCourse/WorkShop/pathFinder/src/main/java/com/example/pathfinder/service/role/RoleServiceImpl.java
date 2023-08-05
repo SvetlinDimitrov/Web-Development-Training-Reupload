@@ -34,14 +34,4 @@ public class RoleServiceImpl implements RoleService {
         }
         return roles;
     }
-
-    @PostConstruct
-    public void initDefaultRoles() {
-        if (roleRepository.count() == 0) {
-            roleRepository.saveAll(
-                    Arrays.stream(RoleConstant.values())
-                            .map(Role::new)
-                            .collect(Collectors.toSet()));
-        }
-    }
 }

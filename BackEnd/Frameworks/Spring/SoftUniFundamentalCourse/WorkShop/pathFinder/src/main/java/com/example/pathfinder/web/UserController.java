@@ -44,8 +44,11 @@ public class UserController extends BaseModel {
     }
 
     @GetMapping("/profile")
-    public ModelAndView profile(ModelAndView modelAndView) {
-
-        return view("profile", modelAndView);
+    public ModelAndView profile() {
+        return view("profile");
+    }
+    @GetMapping("/admin")
+    public ModelAndView admin(){
+        return redirect("" , new ModelAndView());
     }
 }

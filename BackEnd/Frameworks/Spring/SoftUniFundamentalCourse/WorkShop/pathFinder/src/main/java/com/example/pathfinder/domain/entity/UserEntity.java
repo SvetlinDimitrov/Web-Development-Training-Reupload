@@ -35,7 +35,7 @@ public class UserEntity extends BaseEntity {
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "user_entity_id",
+                    name = "user_id",
                     referencedColumnName = "id"
             ),
             inverseJoinColumns = @JoinColumn(

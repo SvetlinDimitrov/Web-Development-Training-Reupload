@@ -1,12 +1,15 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.domain.bindingViews.ViewRoute;
+import com.example.pathfinder.domain.bindingViews.ViewUser;
+import com.example.pathfinder.domain.dtos.LoginUserDto;
 import com.example.pathfinder.domain.dtos.RegisterRouteDto;
-import com.example.pathfinder.service.category.CategoryService;
+import com.example.pathfinder.domain.dtos.UploadPictureDto;
+import com.example.pathfinder.service.picture.PictureService;
 import com.example.pathfinder.service.route.RouteService;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -21,65 +24,64 @@ import java.util.List;
 public class RouteController extends BaseModel {
 
     private RouteService routeService;
-    private CategoryService categoryService;
+    private PictureService pictureService;
 
     @GetMapping("")
-    public ModelAndView getRoutes(ModelAndView modelAndView,
-                                  HttpSession session){
-
-        if(session.getAttribute("loggedUser") == null){
-            return redirect("users/login", new ModelAndView());
-        }
+    public ModelAndView getRoutes(ModelAndView modelAndView){
 
         List<ViewRoute> routes = routeService.getAllViewRoutes();
         modelAndView.addObject("routes" , routes);
+
         return view("routes.html" , modelAndView);
+
     }
 
     @GetMapping("/details/{id}")
     public ModelAndView getDetailAboutTheRoute(@PathVariable Long id,
-                                       ModelAndView modelAndView,
-                                               HttpSession session){
-        if(session.getAttribute("loggedUser") == null){
-            return redirect("users/login", new ModelAndView());
+                                               ModelAndView modelAndView,
+                                               @AuthenticationPrincipal LoginUserDto user){
+
+        if(user != null){
+            modelAndView.addObject("userId" , user.getId());
         }
+
         ViewRoute route = routeService.getViewRouteById(id);
         modelAndView.addObject("route",route);
-        modelAndView.addObject("message" , "");
+        modelAndView.addObject("routeId",id);
+
         return view("route-details.html" , modelAndView);
+
     }
 
     @GetMapping("/add")
-    public ModelAndView getAddPage(ModelAndView modelAndView,
-                                   HttpSession session){
+    public ModelAndView getAddPage(ModelAndView modelAndView){
 
-        if(session.getAttribute("loggedUser") == null){
-            return redirect("users/login", new ModelAndView());
-        }
         modelAndView.addObject("registerRoute" , new RegisterRouteDto());
         return view("add-route.html" , modelAndView);
+
     }
 
     @PostMapping("/add")
     public ModelAndView addRoute(@Valid @ModelAttribute(name = "registerRoute")RegisterRouteDto registerRouteDto,
                                  BindingResult result,
-                                 ModelAndView modelAndView,
-                                 HttpSession session) throws IOException {
-
-        if(session.getAttribute("loggedUser") == null){
-            return redirect("users/login", new ModelAndView());
-        }
+                                 @AuthenticationPrincipal LoginUserDto loginUser,
+                                 ModelAndView modelAndView) throws IOException {
 
         if(result.hasErrors()){
             modelAndView.addObject("registerRoute" , registerRouteDto);
+            modelAndView.addObject("pictureUpload" , new UploadPictureDto());
             return view("add-route.html" , modelAndView);
         }
-        Long id = (Long) session.getAttribute("loggedUser");
-        routeService.saveRote(registerRouteDto , id);
+
+        routeService.saveRote(registerRouteDto , loginUser.getId());
         return redirect("routes" , modelAndView);
+
     }
 
-    @GetMapping(value = {"/pedestrian/{level}","/bicycle/{level}","/motorcycle/{level}","/car/{level}"})
+    @GetMapping(value = {"/pedestrian/{level}",
+            "/bicycle/{level}",
+            "/motorcycle/{level}",
+            "/car/{level}"})
     public ModelAndView getUniqueCategorical(ModelAndView modelAndView, @PathVariable Integer level){
         modelAndView.addObject("routes" ,routeService.getAllViewRoutesByCategoryConstOriginalId(level));
         return switch (level) {
@@ -89,4 +91,19 @@ public class RouteController extends BaseModel {
             default -> view("car.html", modelAndView);
         };
     }
+
+    @PostMapping("/picture/{routeId}/{userId}")
+    public ModelAndView uploadPicture(@Valid @ModelAttribute (name = "pictureUpload") UploadPictureDto picture,
+                                      ModelAndView modelAndView,
+                                      @PathVariable(name = "routeId") Long routeId,
+                                      @PathVariable(name = "userId") Long userId){
+
+        modelAndView.setViewName("redirect:/routes/details/"+routeId);
+
+       pictureService.savePicture(picture, userId, routeId);
+
+        return modelAndView;
+    }
+
+
 }

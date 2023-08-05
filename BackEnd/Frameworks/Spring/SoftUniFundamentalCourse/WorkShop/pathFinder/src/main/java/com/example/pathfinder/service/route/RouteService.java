@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.util.List;
 
 public interface RouteService {
-    List<ViewRoute> getAllRoutesByUserId(Long userId);
 
     ViewRoute getViewRouteById(Long id);
 
     void saveRote(RegisterRouteDto registerRouteDto, Long id) throws IOException;
 
     List<ViewRoute> getAllViewRoutes();
+
 
     ViewRoute getMostCommendViewRoute();
 

@@ -16,6 +16,6 @@ import lombok.Setter;
 @Table(name = "roles")
 public class Role extends BaseEntity {
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(250)")
+    @Column(columnDefinition = "varchar(250)" , name = "name")
     private RoleConstant role;
 }

@@ -21,6 +21,8 @@ public class ViewRoute {
     private String description;
     private Level level;
     private String name;
+    private String author;
+    private Long authorId;
     private String videoUrl;
     private List<ViewPictures> pictures = new ArrayList<>();
     private Set<ViewCategories> roles = new HashSet<>();
@@ -40,5 +42,7 @@ public class ViewRoute {
                 .stream()
                 .map(ViewCategories::new)
                 .collect(Collectors.toSet());
+        this.author = route.getAuthor().getFullName();
+        this.authorId = route.getAuthor().getId();
     }
 }

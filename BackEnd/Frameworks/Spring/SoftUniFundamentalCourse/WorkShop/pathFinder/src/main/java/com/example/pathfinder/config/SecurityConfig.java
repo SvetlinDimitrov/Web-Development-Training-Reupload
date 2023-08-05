@@ -1,5 +1,6 @@
 package com.example.pathfinder.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,7 +17,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(httpRequest -> {
                     httpRequest
-                            .requestMatchers("/users/login", "/users/register" , "/").permitAll()
+                            .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                            .requestMatchers("/",
+                                    "/about",
+                                    "/users/login",
+                                    "/users/register",
+                                    "/routes/**",
+                                    "/comment/{routeId}").permitAll()
+                            .requestMatchers("/users/admin").hasRole("ADMIN")
                             .anyRequest().authenticated();
                 })
                 .formLogin(login -> {

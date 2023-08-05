@@ -32,4 +32,4 @@ spring:
 #cloudinary:
   #api-key: 
   #api-secret: 
-  #cloud-name: 
+  #cloud-name:
