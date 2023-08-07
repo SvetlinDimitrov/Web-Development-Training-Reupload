@@ -13,12 +13,12 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ViewMessages {
+public class ViewMessage {
     private Long id;
     private LocalDate dateTime;
     private String textContent;
 
-    public ViewMessages(Message message){
+    public ViewMessage(Message message){
         this.id = message.getId();
         this.dateTime = message.getDateTime();
         this.textContent = message.getTextContent();

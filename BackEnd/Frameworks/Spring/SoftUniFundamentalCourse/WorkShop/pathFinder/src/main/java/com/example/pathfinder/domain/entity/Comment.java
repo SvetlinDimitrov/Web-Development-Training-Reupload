@@ -33,4 +33,14 @@ public class Comment extends BaseEntity {
 
     @ManyToOne
     private Route route;
+
+    public Comment(Long Id, Boolean approved, LocalDate created, String textContent, UserEntity author, Route route) {
+        super(Id);
+        this.approved = approved;
+        this.created = created;
+        this.textContent = textContent;
+        this.author = author;
+        this.route = route;
+    }
+
 }

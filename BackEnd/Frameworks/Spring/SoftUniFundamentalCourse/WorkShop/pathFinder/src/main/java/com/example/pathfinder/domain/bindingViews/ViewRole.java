@@ -12,12 +12,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ViewRoles  {
+public class ViewRole {
 
     private RoleConstant role;
     private Long Id;
 
-    public ViewRoles(Role role) {
+    public ViewRole(Role role) {
         this.role = role.getRole();
         this.Id = role.getId();
     }

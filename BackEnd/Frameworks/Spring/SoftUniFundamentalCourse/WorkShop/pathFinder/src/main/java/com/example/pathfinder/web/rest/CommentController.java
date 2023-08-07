@@ -1,6 +1,6 @@
 package com.example.pathfinder.web.rest;
 
-import com.example.pathfinder.domain.bindingViews.ViewComments;
+import com.example.pathfinder.domain.bindingViews.ViewComment;
 import com.example.pathfinder.domain.dtos.CreateCommendDto;
 import com.example.pathfinder.service.comment.CommentService;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,9 @@ public class CommentController {
     }
 
     @GetMapping("/{routeId}")
-    public ResponseEntity<List<ViewComments>> getAllComments(@PathVariable(name = "routeId") Long routeId) {
+    public ResponseEntity<List<ViewComment>> getAllComments(@PathVariable(name = "routeId") Long routeId) {
 
-        List<ViewComments> comments = commentService.getAllByRouteId(routeId);
+        List<ViewComment> comments = commentService.getAllByRouteId(routeId);
 
         return comments != null ? new ResponseEntity<>(comments, HttpStatus.OK) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);

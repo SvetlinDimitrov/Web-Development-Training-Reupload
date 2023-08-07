@@ -11,13 +11,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ViewPictures {
+public class ViewPicture {
 
     private Long id;
     private String title;
     private String url;
 
-    public ViewPictures(Picture picture) {
+    public ViewPicture(Picture picture) {
         this.id = picture.getId();
         this.title = picture.getTitle();
         this.url = picture.getUrl();

@@ -1,6 +1,6 @@
 package com.example.pathfinder.service.comment;
 
-import com.example.pathfinder.domain.bindingViews.ViewComments;
+import com.example.pathfinder.domain.bindingViews.ViewComment;
 import com.example.pathfinder.domain.dtos.CreateCommendDto;
 import com.example.pathfinder.domain.entity.Comment;
 import com.example.pathfinder.domain.entity.Route;
@@ -26,7 +26,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public boolean save(CreateCommendDto dtoComment, Long routeId, Long userId) {
-        if (routeRepository.count() < routeId || userRepository.count() < userId) {
+        if (routeRepository.count() < routeId || userRepository.count() < userId || dtoComment == null) {
             return false;
         }
         Comment comment = toComment(dtoComment , routeId , userId);
@@ -36,17 +36,15 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @Transactional
-    public List<ViewComments> getAllByRouteId(Long routeId) {
+    public List<ViewComment> getAllByRouteId(Long routeId) {
 
         Optional<Route> route = routeRepository.findById(routeId);
 
-        return route.isPresent() ?
-                commentRepository.findByRoute(route.orElseThrow())
+        return route
+                .map(value -> commentRepository.findByRoute(value)
                 .stream()
-                .map(ViewComments::new)
-                .collect(Collectors.toList())
-                :
-                null;
+                .map(ViewComment::new)
+                .collect(Collectors.toList())).orElse(null);
 
     }
 

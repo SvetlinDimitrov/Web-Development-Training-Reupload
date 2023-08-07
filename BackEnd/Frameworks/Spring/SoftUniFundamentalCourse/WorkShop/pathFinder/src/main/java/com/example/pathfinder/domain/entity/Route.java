@@ -3,10 +3,7 @@ package com.example.pathfinder.domain.entity;
 import com.example.pathfinder.domain.constants.BaseEntity;
 import com.example.pathfinder.domain.constants.Level;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 import java.util.Set;
@@ -16,6 +13,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "routes")
 public class Route extends BaseEntity {
     @Column(name = "gpx_coordinates" ,columnDefinition = "longtext")

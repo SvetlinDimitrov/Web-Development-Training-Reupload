@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@Setter
 @MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,4 +14,9 @@ public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
+    public BaseEntity setId(Long id) {
+        Id = id;
+        return this;
+    }
 }

@@ -24,8 +24,8 @@ public class ViewRoute {
     private String author;
     private Long authorId;
     private String videoUrl;
-    private List<ViewPictures> pictures = new ArrayList<>();
-    private Set<ViewCategories> roles = new HashSet<>();
+    private List<ViewPicture> pictures = new ArrayList<>();
+    private Set<ViewCategorie> roles = new HashSet<>();
 
     public ViewRoute(Route route) {
         this.id = route.getId();
@@ -36,11 +36,11 @@ public class ViewRoute {
         this.videoUrl = route.getVideoUrl();
         this.pictures = route.getPictures()
                 .stream()
-                .map(ViewPictures::new)
+                .map(ViewPicture::new)
                 .collect(Collectors.toList());
         this.roles = route.getRoles()
                 .stream()
-                .map(ViewCategories::new)
+                .map(ViewCategorie::new)
                 .collect(Collectors.toSet());
         this.author = route.getAuthor().getFullName();
         this.authorId = route.getAuthor().getId();

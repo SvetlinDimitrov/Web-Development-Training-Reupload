@@ -22,11 +22,11 @@ public class ViewUser  {
     private String fullName;
     private Integer age;
     private String email;
-    private Set<ViewRoles> roles;
+    private Set<ViewRole> roles;
     private Level level;
     private List<ViewRoute> route;
-    private List<ViewPictures> pictures;
-    private List<ViewMessages> messages;
+    private List<ViewPicture> pictures;
+    private List<ViewMessage> messages;
     private boolean isAdmin;
 
     public ViewUser(UserEntity user) {
@@ -37,7 +37,7 @@ public class ViewUser  {
         this.email = user.getEmail();
         this.roles = user.getRoles()
                 .stream()
-                .map(ViewRoles::new)
+                .map(ViewRole::new)
                 .collect(Collectors.toSet());
         this.level = user.getLevel();
         this.route = user.getRoute()
@@ -46,11 +46,11 @@ public class ViewUser  {
                 .collect(Collectors.toList());
         this.pictures = user.getPictures()
                 .stream()
-                .map(ViewPictures::new)
+                .map(ViewPicture::new)
                 .collect(Collectors.toList());
         this.messages = user.getMessages()
                 .stream()
-                .map(ViewMessages::new)
+                .map(ViewMessage::new)
                 .collect(Collectors.toList());
         this.isAdmin = roles.stream()
                 .anyMatch(r-> r.getRole().equals(RoleConstant.ADMIN));
