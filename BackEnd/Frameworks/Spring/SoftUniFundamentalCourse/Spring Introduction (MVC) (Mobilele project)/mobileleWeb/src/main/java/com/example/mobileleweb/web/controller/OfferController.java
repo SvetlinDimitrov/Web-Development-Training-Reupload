@@ -2,7 +2,7 @@ package com.example.mobileleweb.web.controller;
 
 import com.example.mobileleweb.domain.entity.UserEntity;
 import com.example.mobileleweb.domain.viewDtos.ViewOfferDto;
-import com.example.mobileleweb.domain.viewDtos.ViewUser;
+import com.example.mobileleweb.domain.viewDtos.SecurityViewUser;
 import com.example.mobileleweb.service.Model.ModelService;
 import com.example.mobileleweb.service.Offer.OfferService;
 import com.example.mobileleweb.service.User.UserService;
@@ -41,7 +41,7 @@ public class OfferController extends BaseModelAndView {
             modelAndView.addObject("allModels", modelService.getAllModels());
             return view("offer-add.html", modelAndView);
         }
-        ViewUser user = (ViewUser) session.getAttribute("user");
+        SecurityViewUser user = (SecurityViewUser) session.getAttribute("user");
         offerView.setSellerId(user.getId());
         offerService.addOffer(offerView);
         return redirect("/offers/all", modelAndView);

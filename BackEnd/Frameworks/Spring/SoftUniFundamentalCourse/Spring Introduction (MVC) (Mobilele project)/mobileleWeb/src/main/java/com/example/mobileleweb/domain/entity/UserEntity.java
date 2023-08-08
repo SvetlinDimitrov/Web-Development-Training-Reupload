@@ -1,7 +1,8 @@
 package com.example.mobileleweb.domain.entity;
 
 import com.example.mobileleweb.domain.constants.BaseEntity;
-import com.example.mobileleweb.domain.viewDtos.ViewUser;
+import com.example.mobileleweb.domain.viewDtos.RegisterUserDto;
+import com.example.mobileleweb.domain.viewDtos.SecurityViewUser;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +10,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -50,7 +50,65 @@ public class UserEntity extends BaseEntity {
     @OneToMany(mappedBy = "seller")
     private List<Offer> offers = new ArrayList<>();
 
-    public ViewUser toUserView(){
-        return new ViewUser(this);
+    public UserEntity (RegisterUserDto userDto) {
+        this.username = userDto.getUsername();
+        this.password = userDto.getPassword();
+        this.firstName = userDto.getFirstName();
+        this.lastName = userDto.getLastName();
+
+    }
+
+    public SecurityViewUser toUserView(){
+        return new SecurityViewUser(this);
+    }
+
+    public UserEntity setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public UserEntity setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public UserEntity setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public UserEntity setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public UserEntity setActive(Boolean active) {
+        isActive = active;
+        return this;
+    }
+
+    public UserEntity setRole(UserRole role) {
+        this.role = role;
+        return this;
+    }
+
+    public UserEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public UserEntity setCreated(LocalDate created) {
+        this.created = created;
+        return this;
+    }
+
+    public UserEntity setModified(LocalDate modified) {
+        this.modified = modified;
+        return this;
+    }
+
+    public UserEntity setOffers(List<Offer> offers) {
+        this.offers = offers;
+        return this;
     }
 }

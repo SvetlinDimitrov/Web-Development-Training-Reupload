@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @AllArgsConstructor
 @Component
@@ -23,7 +24,6 @@ public class OfferServiceImpl implements OfferService {
     private OfferRepository offerRepository;
     private ModelService modelService;
     private UserService userService;
-    private ModelMapper mapper;
 
 
     @PostConstruct
@@ -70,7 +70,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void addOffer(ViewOfferDto offerView) {
-        Offer offer = mapper.map(offerView, Offer.class);
+        Offer offer = offerView.toOffer();
         offer.setModel(modelService.findById(offerView.getModelId()));
         offer.setSeller(userService.findById(offerView.getSellerId()));
         offerRepository.save(offer);
@@ -78,12 +78,15 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public ViewOfferDto getViewOfferById(String id) {
-        return offerRepository.findById(id).get().toViewOffer();
+        return offerRepository
+                .findById(id)
+                .orElseThrow(NoSuchElementException::new)
+                .toViewOffer();
     }
 
     @Override
     public void updateOffer(ViewOfferDto offerView) {
-        Offer offer = offerRepository.findById(offerView.getId()).get();
+        Offer offer = offerRepository.findById(offerView.getId()).orElseThrow(NoSuchElementException::new);
         offer.setDescription(offerView.getDescription());
         offer.setEngine(offerView.getEngine());
         offer.setImageUrl(offerView.getImageUrl());
@@ -100,7 +103,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void deleteOffer(String id) {
-        Offer offer = offerRepository.findById(id).get();
+        Offer offer = offerRepository.findById(id).orElseThrow(NoSuchElementException::new);
         offer.getSeller().getOffers().remove(offer);
         offerRepository.delete(offer);
     }

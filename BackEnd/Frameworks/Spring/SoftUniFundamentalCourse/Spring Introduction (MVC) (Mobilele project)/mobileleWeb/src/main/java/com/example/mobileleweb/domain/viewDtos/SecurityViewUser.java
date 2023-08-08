@@ -3,14 +3,16 @@ package com.example.mobileleweb.domain.viewDtos;
 import com.example.mobileleweb.domain.constants.Role;
 import com.example.mobileleweb.domain.entity.Offer;
 import com.example.mobileleweb.domain.entity.UserEntity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class ViewUser extends User {
+public class SecurityViewUser extends User {
     private String id;
     private String username;
     private String password;
@@ -23,9 +25,9 @@ public class ViewUser extends User {
     private LocalDate modified;
     private List<Offer> offers = new ArrayList<>();
 
-    public ViewUser(UserEntity userEntity) {
+    public SecurityViewUser(UserEntity userEntity) {
         super(userEntity.getUsername(), userEntity.getPassword(),
-                List.of(new SimpleGrantedAuthority(userEntity.getRole().getRole().name())));
+                List.of(new SimpleGrantedAuthority("ROLE_"+userEntity.getRole().getRole().name())));
         this.id = userEntity.getId();
         this.username = userEntity.getUsername();
         this.password = userEntity.getPassword();
@@ -38,11 +40,15 @@ public class ViewUser extends User {
         this.modified = userEntity.getModified();
     }
 
+    public SecurityViewUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, authorities);
+    }
+
     public String getId() {
         return id;
     }
 
-    public ViewUser setId(String id) {
+    public SecurityViewUser setId(String id) {
         this.id = id;
         return this;
     }
@@ -52,7 +58,7 @@ public class ViewUser extends User {
         return username;
     }
 
-    public ViewUser setUsername(String username) {
+    public SecurityViewUser setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -62,7 +68,7 @@ public class ViewUser extends User {
         return password;
     }
 
-    public ViewUser setPassword(String password) {
+    public SecurityViewUser setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -71,7 +77,7 @@ public class ViewUser extends User {
         return firstName;
     }
 
-    public ViewUser setFirstName(String firstName) {
+    public SecurityViewUser setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -80,7 +86,7 @@ public class ViewUser extends User {
         return lastName;
     }
 
-    public ViewUser setLastName(String lastName) {
+    public SecurityViewUser setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -89,7 +95,7 @@ public class ViewUser extends User {
         return isActive;
     }
 
-    public ViewUser setActive(Boolean active) {
+    public SecurityViewUser setActive(Boolean active) {
         isActive = active;
         return this;
     }
@@ -98,7 +104,7 @@ public class ViewUser extends User {
         return role;
     }
 
-    public ViewUser setRole(Role role) {
+    public SecurityViewUser setRole(Role role) {
         this.role = role;
         return this;
     }
@@ -107,7 +113,7 @@ public class ViewUser extends User {
         return imageUrl;
     }
 
-    public ViewUser setImageUrl(String imageUrl) {
+    public SecurityViewUser setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -116,7 +122,7 @@ public class ViewUser extends User {
         return created;
     }
 
-    public ViewUser setCreated(LocalDate created) {
+    public SecurityViewUser setCreated(LocalDate created) {
         this.created = created;
         return this;
     }
@@ -125,7 +131,7 @@ public class ViewUser extends User {
         return modified;
     }
 
-    public ViewUser setModified(LocalDate modified) {
+    public SecurityViewUser setModified(LocalDate modified) {
         this.modified = modified;
         return this;
     }
@@ -134,7 +140,7 @@ public class ViewUser extends User {
         return offers;
     }
 
-    public ViewUser setOffers(List<Offer> offers) {
+    public SecurityViewUser setOffers(List<Offer> offers) {
         this.offers = offers;
         return this;
     }

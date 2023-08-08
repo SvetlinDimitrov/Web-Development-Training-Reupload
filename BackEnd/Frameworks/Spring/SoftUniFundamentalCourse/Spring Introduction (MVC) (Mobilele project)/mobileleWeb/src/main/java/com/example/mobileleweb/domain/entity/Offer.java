@@ -9,6 +9,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -72,9 +73,23 @@ public class Offer extends BaseEntity {
                 .modified(modified)
                 .modelId(model.getId())
                 .sellerId(seller.getId())
-                .offerYear_BrandName_OfferName(String.format("%d %s %s", year ,
+                .offerYear_BrandName_OfferName(String.format("%d %s %s",
+                        year ,
                         model.getBrand().getName(),
                         model.getName()))
                 .build();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Offer offer = (Offer) o;
+        return Objects.equals(description, offer.description) && engine == offer.engine && Objects.equals(imageUrl, offer.imageUrl) && Objects.equals(mileage, offer.mileage) && Objects.equals(price, offer.price) && transmission == offer.transmission && Objects.equals(year, offer.year) && Objects.equals(created, offer.created) && Objects.equals(modified, offer.modified) && Objects.equals(model, offer.model) && Objects.equals(seller, offer.seller);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, engine, imageUrl, mileage, price, transmission, year, created, modified, model, seller);
     }
 }

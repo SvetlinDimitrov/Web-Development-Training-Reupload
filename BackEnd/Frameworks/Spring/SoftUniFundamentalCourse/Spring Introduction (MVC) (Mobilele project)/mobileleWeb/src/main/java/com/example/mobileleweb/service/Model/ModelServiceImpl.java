@@ -11,17 +11,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 @AllArgsConstructor
 public class ModelServiceImpl implements ModelService {
     private ModelRepository modelRepository;
     private BrandService brandService;
-    private ModelMapper mapper;
 
     @PostConstruct
     public void init(){
@@ -171,7 +167,7 @@ public class ModelServiceImpl implements ModelService {
 
         models.forEach(m-> {
             map.putIfAbsent(m.getBrand().getName() , new ArrayList<>());
-            map.get(m.getBrand().getName()).add(mapper.map(m , ViewModel.class));
+            map.get(m.getBrand().getName()).add(new ViewModel(m));
         });
         return map;
     }
@@ -185,12 +181,15 @@ public class ModelServiceImpl implements ModelService {
     public List<ViewModel> getAllModels() {
         return modelRepository.findAll()
                 .stream()
-                .map(m->mapper.map(m , ViewModel.class))
+                .map(ViewModel::new)
                 .toList();
     }
 
     @Override
     public Model findById(String modelId) {
-        return modelRepository.findById(modelId).get();
+        return modelRepository
+                .findById(modelId)
+                .orElseThrow(NoSuchElementException::new);
     }
+
 }

@@ -1,7 +1,7 @@
 package com.example.mobileleweb.service.security;
 
 import com.example.mobileleweb.domain.entity.UserEntity;
-import com.example.mobileleweb.domain.viewDtos.ViewUser;
+import com.example.mobileleweb.domain.viewDtos.SecurityViewUser;
 import com.example.mobileleweb.repo.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +18,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
                 .map(this::toUserSec)
                 .orElseThrow(() -> new UsernameNotFoundException("no user found"));
     }
-    private ViewUser toUserSec (UserEntity userEntity){
-        return new ViewUser(userEntity);
+    private SecurityViewUser toUserSec (UserEntity userEntity){
+        return new SecurityViewUser(userEntity);
     }
 }

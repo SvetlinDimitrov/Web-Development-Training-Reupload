@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 @AllArgsConstructor
@@ -42,6 +43,6 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Brand findByName(String name) {
-        return brandRepository.findByName(name).get();
+        return brandRepository.findByName(name).orElseThrow(NoSuchElementException::new);
     }
 }
