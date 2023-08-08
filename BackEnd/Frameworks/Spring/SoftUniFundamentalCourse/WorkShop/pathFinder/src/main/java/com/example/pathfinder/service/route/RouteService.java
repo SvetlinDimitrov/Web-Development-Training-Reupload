@@ -14,8 +14,5 @@ public interface RouteService {
 
     List<ViewRoute> getAllViewRoutes();
 
-
-    ViewRoute getMostCommendViewRoute();
-
     List<ViewRoute> getAllViewRoutesByCategoryConstOriginalId(Integer level);
 }

@@ -42,48 +42,38 @@ class PictureServiceImplTest {
     @InjectMocks
     private PictureServiceImpl pictureService;
 
-    private final static Long VALID_USER_ID = 1L;
-    private final static Long VALID_ROUTE_ID = 1L;
-    private final static Long INVALID_ROUTE_ID = 3L;
-    private final static Long INVALID_USER_ID = 3L;
-    private final Map<String , String> map = new HashMap<>();
+    private final static Long VALID_ID = 1L;
+    private final static Long INVALID_ID = 3L;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    public void setUp(){
 
+        when(cloudinary.uploader()).thenReturn(mock(Uploader.class));
 
-        Uploader uploaderMock = mock(Uploader.class);
-        when(cloudinary.uploader()).thenReturn(uploaderMock);
-        when(uploaderMock.upload(notNull() , notNull())).thenReturn(map);
-
-        MultipartFile multipartFile = mock(MultipartFile.class);
-        when(picture.getPicture()).thenReturn(multipartFile);
-        when(multipartFile.getBytes()).thenReturn(new byte[]{});
-
-        UserEntity user = new UserEntity();
-        Route route = new Route();
-        when(userRepository.findById(VALID_USER_ID)).thenReturn(Optional.of(user));
-        when(routeRepository.findById(VALID_ROUTE_ID)).thenReturn(Optional.of(route));
+        when(picture.getPicture()).thenReturn(mock(MultipartFile.class));
 
     }
 
     @Test
     public void savePictureTest_ReturnTrueForCorrectInput() {
 
-        assertTrue(pictureService.savePicture(picture, VALID_USER_ID, VALID_ROUTE_ID));
+        when(userRepository.findById(VALID_ID)).thenReturn(Optional.of(mock(UserEntity.class)));
+        when(routeRepository.findById(VALID_ID)).thenReturn(Optional.of(mock(Route.class)));
+
+        assertTrue(pictureService.savePicture(picture, VALID_ID, VALID_ID));
 
     }
 
     @Test
     public void savePictureTest_ReturnFallsForInvalidInput() {
 
+        when(userRepository.findById(INVALID_ID)).thenReturn(null);
+        when(routeRepository.findById(INVALID_ID)).thenReturn(null);
 
+        when(userRepository.findById(VALID_ID)).thenReturn(Optional.of(mock(UserEntity.class)));
 
-        boolean result = pictureService.savePicture(picture, VALID_USER_ID, INVALID_ROUTE_ID);
-        boolean result1 = pictureService.savePicture(picture, INVALID_USER_ID, VALID_ROUTE_ID);
-
-        assertFalse(result);
-        assertFalse(result1);
+        assertFalse(pictureService.savePicture(picture, VALID_ID, INVALID_ID));
+        assertFalse(pictureService.savePicture(picture, INVALID_ID, VALID_ID));
 
     }
 

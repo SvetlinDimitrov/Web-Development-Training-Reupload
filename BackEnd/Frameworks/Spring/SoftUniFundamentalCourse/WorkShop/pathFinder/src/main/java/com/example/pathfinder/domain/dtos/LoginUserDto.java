@@ -2,6 +2,7 @@ package com.example.pathfinder.domain.dtos;
 
 import com.example.pathfinder.domain.constants.RoleConstant;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -30,4 +31,5 @@ public class LoginUserDto extends User {
                 .stream()
                 .anyMatch(r->r.equals(RoleConstant.ADMIN));
     }
+
 }

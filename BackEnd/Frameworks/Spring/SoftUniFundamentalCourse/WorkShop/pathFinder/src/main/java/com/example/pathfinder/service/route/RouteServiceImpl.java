@@ -1,5 +1,6 @@
 package com.example.pathfinder.service.route;
 
+import com.example.pathfinder.domain.bindingViews.ViewCategorie;
 import com.example.pathfinder.domain.bindingViews.ViewRoute;
 import com.example.pathfinder.domain.constants.CategoryConstant;
 import com.example.pathfinder.domain.dtos.RegisterRouteDto;
@@ -38,19 +39,19 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public void saveRote(RegisterRouteDto registerRouteDto, Long id) throws IOException {
-        Route routeToSave = mapper.map(registerRouteDto, Route.class);
+            Route routeToSave = mapper.map(registerRouteDto, Route.class);
 
-        routeToSave.setGpxCoordinates(new String(registerRouteDto.getGpxCoordinates().getBytes()));
+            routeToSave.setGpxCoordinates(new String(registerRouteDto.getGpxCoordinates().getBytes()));
 
-        routeToSave.setRoles(categoryService.getAllCategories()
-                .stream()
-                .filter(c->registerRouteDto.getCategories().contains(c.getName()))
-                .map(c->mapper.map(c , Categorie.class))
-                .collect(Collectors.toSet()));
+            routeToSave.setRoles(categoryService.getAllCategories()
+                    .stream()
+                    .filter(c->registerRouteDto.getCategories().contains(c.getName()))
+                    .map(c->mapper.map(c , Categorie.class))
+                    .collect(Collectors.toSet()));
 
-        routeToSave.setAuthor(userService.findById(id));
+            routeToSave.setAuthor(userService.findById(id));
 
-        routeRepository.save(routeToSave);
+            routeRepository.save(routeToSave);
 
     }
 
@@ -59,13 +60,8 @@ public class RouteServiceImpl implements RouteService {
     public List<ViewRoute> getAllViewRoutes() {
         return routeRepository.findAll()
                 .stream()
-                .map(r->mapper.map(r,ViewRoute.class))
+                .map(ViewRoute::new)
                 .toList();
-    }
-
-    @Override
-    public ViewRoute getMostCommendViewRoute() {
-        return null;
     }
 
     @Override
@@ -76,7 +72,7 @@ public class RouteServiceImpl implements RouteService {
 
         return routeRepository.findAllByCategories(category)
                 .stream()
-                .map(r->mapper.map(r , ViewRoute.class))
+                .map(ViewRoute::new)
                 .toList();
     }
 }

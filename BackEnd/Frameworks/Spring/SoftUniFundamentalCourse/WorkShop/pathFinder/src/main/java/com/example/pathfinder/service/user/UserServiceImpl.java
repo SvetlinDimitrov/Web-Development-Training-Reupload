@@ -9,6 +9,7 @@ import com.example.pathfinder.domain.entity.UserEntity;
 import com.example.pathfinder.repos.UserRepository;
 import com.example.pathfinder.service.role.RoleService;
 import jakarta.annotation.PostConstruct;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkTheUsername(String value) {
+    public boolean avalibaleUsername(String value) {
         return userRepository.findByUsername(value).isEmpty();
     }
 
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity findById(Long id) {
-        return userRepository.findById(id).orElseThrow();
+        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("not found"));
     }
 
     @Override

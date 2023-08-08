@@ -11,7 +11,7 @@ public interface UserService {
 
     boolean checkTheEmail(String value);
 
-    boolean checkTheUsername(String value);
+    boolean avalibaleUsername(String value);
 
 
     ViewUser getViewUserById(Long id);

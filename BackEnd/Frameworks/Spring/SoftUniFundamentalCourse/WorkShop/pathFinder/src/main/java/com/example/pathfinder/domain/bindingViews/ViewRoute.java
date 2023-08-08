@@ -4,10 +4,7 @@ import com.example.pathfinder.domain.constants.Level;
 import com.example.pathfinder.domain.entity.Route;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
@@ -44,5 +41,18 @@ public class ViewRoute {
                 .collect(Collectors.toSet());
         this.author = route.getAuthor().getFullName();
         this.authorId = route.getAuthor().getId();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ViewRoute viewRoute = (ViewRoute) o;
+        return Objects.equals(id, viewRoute.id) && Objects.equals(gpxCoordinates, viewRoute.gpxCoordinates) && Objects.equals(description, viewRoute.description) && level == viewRoute.level && Objects.equals(name, viewRoute.name) && Objects.equals(author, viewRoute.author) && Objects.equals(authorId, viewRoute.authorId) && Objects.equals(videoUrl, viewRoute.videoUrl) && Objects.equals(pictures, viewRoute.pictures) && Objects.equals(roles, viewRoute.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, gpxCoordinates, description, level, name, author, authorId, videoUrl, pictures, roles);
     }
 }

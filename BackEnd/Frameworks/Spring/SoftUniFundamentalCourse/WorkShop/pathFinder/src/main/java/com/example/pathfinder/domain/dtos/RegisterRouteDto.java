@@ -5,6 +5,7 @@ import com.example.pathfinder.domain.constants.Level;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class RegisterRouteDto {
 
     @NotBlank
@@ -39,5 +41,7 @@ public class RegisterRouteDto {
     @NotNull
     private List<CategoryConstant> categories= new ArrayList<>();
     private Long authorId;
+
+
 
 }

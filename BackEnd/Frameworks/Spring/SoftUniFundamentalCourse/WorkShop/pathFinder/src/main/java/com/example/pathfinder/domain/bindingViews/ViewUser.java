@@ -7,6 +7,7 @@ import com.example.pathfinder.domain.entity.UserEntity;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -55,5 +56,19 @@ public class ViewUser  {
         this.isAdmin = roles.stream()
                 .anyMatch(r-> r.getRole().equals(RoleConstant.ADMIN));
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ViewUser viewUser = (ViewUser) o;
+        return isAdmin == viewUser.isAdmin && Objects.equals(id, viewUser.id) && Objects.equals(username, viewUser.username) && Objects.equals(fullName, viewUser.fullName) && Objects.equals(age, viewUser.age) && Objects.equals(email, viewUser.email) && Objects.equals(roles, viewUser.roles) && level == viewUser.level && Objects.equals(route, viewUser.route) && Objects.equals(pictures, viewUser.pictures) && Objects.equals(messages, viewUser.messages);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, fullName, age, email, roles, level, route, pictures, messages, isAdmin);
     }
 }
