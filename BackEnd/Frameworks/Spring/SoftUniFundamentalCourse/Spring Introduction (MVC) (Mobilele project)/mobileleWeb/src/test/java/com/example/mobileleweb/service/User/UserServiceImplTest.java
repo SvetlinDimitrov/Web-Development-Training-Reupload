@@ -1,8 +1,10 @@
 package com.example.mobileleweb.service.User;
 
+import com.example.mobileleweb.domain.constants.Role;
+import com.example.mobileleweb.domain.entity.UserEntity;
+import com.example.mobileleweb.domain.entity.UserRole;
 import com.example.mobileleweb.repo.UserRepository;
 import com.example.mobileleweb.service.UserRole.UserRoleService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +14,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.SecurityContextRepository;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -29,27 +38,87 @@ class UserServiceImplTest {
     @InjectMocks
     private UserServiceImpl userService;
 
+    private static UserEntity userEntity;
+    private static final String EXISTING_USERNAME = "test1";
+    private static final String NOT_EXISTING_USERNAME = "test999";
+
+    private static final String LEGIT_ID = "legit";
+    private static final String NOT_LEGIT_ID = "NOTlEGIT";
+
     @BeforeEach
     void setUp() {
-    }
+        UserRole userRole = new UserRole(Role.ADMIN);
+        userEntity = new UserEntity()
+                .setUsername("test")
+                .setPassword("12345")
+                .setFirstName("testName")
+                .setLastName("testLastName")
+                .setActive(false)
+                .setRole(userRole)
+                .setImageUrl("imageUrl")
+                .setCreated(LocalDate.parse("2018-10-23"))
+                .setModified(LocalDate.parse("2018-10-23"))
+                .setOffers(List.of());
+        userEntity.setId("1");
 
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
     void register() {
+        //TODO: again void
     }
 
     @Test
-    void checkIfUsernameAlreadyExists() {
+    void checkIfUsernameAlreadyExistsTest_shouldReturnFalseForAlreadyExcitingUser() {
+        when(userRepository.findByUsername(EXISTING_USERNAME)).thenReturn(Optional.of(userEntity));
+
+        boolean result = userService.checkIfUsernameAlreadyExists(EXISTING_USERNAME);
+
+        assertFalse(result);
     }
 
     @Test
-    void getUserByUsername() {
+    void checkIfUsernameAlreadyExistsTest_shouldReturnTrueForNonExistingUser() {
+        when(userRepository.findByUsername(NOT_EXISTING_USERNAME)).thenReturn(Optional.empty());
+
+        boolean result = userService.checkIfUsernameAlreadyExists(NOT_EXISTING_USERNAME);
+
+        assertTrue(result);
     }
 
     @Test
-    void findById() {
+    void getUserByUsernameTest_returnsTheUserIfItExisted() {
+        when(userRepository.findByUsername(EXISTING_USERNAME)).thenReturn(Optional.of(userEntity));
+
+        UserEntity result = userService.getUserByUsername(EXISTING_USERNAME);
+
+        assertNotNull(result);
+    }
+
+    @Test
+    void getUserByUsernameTest_ThrowsIfNobodyIsHome() {
+        when(userRepository.findByUsername(NOT_EXISTING_USERNAME)).thenReturn(Optional.empty());
+
+        assertThrows(
+                NoSuchElementException.class, () -> userService.getUserByUsername(NOT_EXISTING_USERNAME)
+        );
+    }
+
+    @Test
+    void findByIdTest_ReturnsUserEntityIfTheUserIdIsLegit() {
+        when(userRepository.findById(LEGIT_ID)).thenReturn(Optional.of(userEntity));
+
+        UserEntity result = userService.findById(LEGIT_ID);
+
+        assertNotNull(result);
+    }
+
+    @Test
+    void findByIdTest_ThrowsExceptionIfNoBodyIsHome() {
+        when(userRepository.findById(NOT_LEGIT_ID)).thenReturn(Optional.empty());
+
+        assertThrows(
+                NoSuchElementException.class , () -> userService.findById(NOT_LEGIT_ID)
+        );
     }
 }

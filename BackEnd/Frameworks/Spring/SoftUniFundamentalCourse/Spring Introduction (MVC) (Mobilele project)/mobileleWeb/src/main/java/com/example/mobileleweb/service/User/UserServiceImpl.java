@@ -70,8 +70,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity findById(String sellerId) {
-        return userRepository.findById(sellerId).orElseThrow(NoSuchElementException::new);
+    public UserEntity findById(String id) {
+        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
 

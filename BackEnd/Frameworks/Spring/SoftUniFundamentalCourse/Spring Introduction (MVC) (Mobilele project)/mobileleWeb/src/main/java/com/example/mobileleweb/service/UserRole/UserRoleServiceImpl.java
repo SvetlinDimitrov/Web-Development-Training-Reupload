@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Override
     public UserRole findByRole(Role role) {
-        return userRoleRepository.findByRole(role).get();
+        return userRoleRepository.findByRole(role).orElseThrow(NoSuchElementException::new);
     }
 
     @PostConstruct
