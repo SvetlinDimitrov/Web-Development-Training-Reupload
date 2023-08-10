@@ -8,6 +8,7 @@ class MobileleGradeRebuildApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

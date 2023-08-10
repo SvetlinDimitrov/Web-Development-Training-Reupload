@@ -1,13 +1,11 @@
 package com.example.mobilelegraderebuild.service.User;
 
-import com.example.mobilelegraderebuild.domain.constants.Role;
 import com.example.mobilelegraderebuild.domain.entity.UserEntity;
 import com.example.mobilelegraderebuild.domain.entity.UserRole;
 import com.example.mobilelegraderebuild.domain.viewDtos.RegisterUserDto;
 import com.example.mobilelegraderebuild.domain.viewDtos.SecurityViewUser;
 import com.example.mobilelegraderebuild.repo.UserRepository;
 import com.example.mobilelegraderebuild.service.UserRole.UserRoleService;
-import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -74,13 +72,5 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
-
-    @PostConstruct
-    public void init() {
-        if (userRepository.findAll().isEmpty()) {
-            userRepository.save(UserEntity.builder().username("user").password(passwordEncoder.encode("user")).firstName("user").lastName("user").isActive(true).role(userRoleService.findByRole(Role.USER)).build());
-            userRepository.save(UserEntity.builder().username("admin").password(passwordEncoder.encode("admin")).firstName("admin").lastName("admin").isActive(true).role(userRoleService.findByRole(Role.ADMIN)).build());
-        }
-    }
 
 }

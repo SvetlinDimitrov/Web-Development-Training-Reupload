@@ -14,9 +14,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,9 +28,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OfferServiceImplTest {
@@ -43,6 +45,8 @@ class OfferServiceImplTest {
 
     private final static List<ViewOfferDto> listOfferViewDto = new ArrayList<>();
     private final static List<Offer> listOffer = new ArrayList<>();
+    @Captor
+    private ArgumentCaptor<Offer> offerCaptor;
     private final static String VALID_ID = "1";
     private final static String NOT_VALID_ID = "2";
 
@@ -133,7 +137,7 @@ class OfferServiceImplTest {
     }
 
     @Test
-    void getAllOffersTest_ifMapCorrectly() {
+    void getAllOffers_withNonEmptyRepository_CorrectlyMapped() {
         when(offerRepository.findAll()).thenReturn(listOffer);
 
         List<ViewOfferDto> result = offerService.getAllOffers();
@@ -142,12 +146,26 @@ class OfferServiceImplTest {
     }
 
     @Test
-    void addOffer() {
-        //TODO:: dont know how to handle void methods
+    void addOffer_validArguments_successfullySaved() {
+        ViewOfferDto offerDto = listOfferViewDto.get(0);
+        Offer expected = listOffer.get(0);
+        Model model = expected.getModel();
+        UserEntity seller = expected.getSeller();
+
+        when(modelService.findById(offerDto.getModelId())).thenReturn(model);
+        when(userService.findById(offerDto.getSellerId())).thenReturn(seller);
+
+        offerService.addOffer(offerDto);
+
+        verify(offerRepository , times(1)).save(offerCaptor.capture());
+
+        Offer result = offerCaptor.getValue();
+
+        assertEquals(expected , result);
     }
 
     @Test
-    void getViewOfferByIdTest_returnsTheCorrectMappedView() {
+    void getViewOfferById_ValidId_returnsTheCorrectMappedView() {
         Offer offer = listOffer.get(0);
         when(offerRepository.findById(VALID_ID)).thenReturn(Optional.of(offer));
 
@@ -158,19 +176,74 @@ class OfferServiceImplTest {
     }
 
     @Test
-    void getViewOfferByIdTest_throwsNoSuchException() {
+    void getViewOfferById_InvalidId_throwsNoSuchException() {
         when(offerRepository.findById(NOT_VALID_ID)).thenReturn(Optional.empty());
 
         assertThrows(NoSuchElementException.class , () -> offerService.getViewOfferById(NOT_VALID_ID));
     }
 
     @Test
-    void updateOffer() {
-        //TODO::again save that returns void
+    void updateOffer_validParameters_SuccessfulUpdate() {
+        ViewOfferDto offerDto = listOfferViewDto.get(1);
+        Offer offerToBeChanges = listOffer.get(0);
+        Offer excepted = listOffer.get(1);
+        Model exceptedMo = excepted.getModel();
+        UserEntity exceptedSeller = excepted.getSeller();
+
+        when(offerRepository.findById(offerDto.getId())).thenReturn(Optional.of(offerToBeChanges));
+        when(modelService.findById(offerDto.getModelId())).thenReturn(exceptedMo);
+        when(userService.findById(offerDto.getSellerId())).thenReturn(exceptedSeller);
+
+        offerService.updateOffer(offerDto);
+
+        verify(offerRepository , times(1)).save(offerCaptor.capture());
+
+        Offer result = offerCaptor.getValue();
+
+        assertEquals(excepted.getMileage() , result.getMileage());
+        assertEquals(excepted.getYear() , result.getYear());
+        assertEquals(excepted.getEngine() , result.getEngine());
+        assertEquals(excepted.getDescription() , result.getDescription());
+        assertEquals(excepted.getModel() , result.getModel());
+        assertEquals(excepted.getSeller() , result.getSeller());
+        assertEquals(excepted.getImageUrl() , result.getImageUrl());
+        assertEquals(excepted.getTransmission() , result.getTransmission());
     }
 
     @Test
-    void deleteOffer() {
-        //TODO::again void
+    void updateOffer_invalidOfferDto_ThrowsException() {
+        ViewOfferDto offerDto = listOfferViewDto.get(1);
+
+        when(offerRepository.findById(offerDto.getId())).thenReturn(Optional.empty());
+
+        assertThrows(NoSuchElementException.class,() -> offerService.updateOffer(offerDto));
+    }
+
+    @Test
+    void deleteOffer_withValidParameters_SuccessfulDelete() {
+        Offer offer = new Offer();
+        offer.setId("sampleId");
+
+        UserEntity seller = new UserEntity();
+        seller.getOffers().add(offer);
+
+        offer.setSeller(seller);
+
+        when(offerRepository.findById("sampleId")).thenReturn(Optional.of(offer));
+
+        offerService.deleteOffer("sampleId");
+
+        verify(offerRepository , times(1)).delete(offer);
+
+        assertFalse(seller.getOffers().contains(offer));
+    }
+
+    @Test
+    void deleteOffer_withInvalidParameters_ThrowsException() {
+        when(offerRepository.findById("sampleId")).thenReturn(Optional.empty());
+
+
+
+        assertThrows(NoSuchElementException.class , () -> offerService.deleteOffer("sampleId"));
     }
 }

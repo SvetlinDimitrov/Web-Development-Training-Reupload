@@ -1,17 +1,13 @@
 package com.example.mobilelegraderebuild.service.Offer;
 
-import com.example.mobilelegraderebuild.domain.constants.Engine;
-import com.example.mobilelegraderebuild.domain.constants.Transmission;
 import com.example.mobilelegraderebuild.domain.entity.Offer;
 import com.example.mobilelegraderebuild.domain.viewDtos.ViewOfferDto;
 import com.example.mobilelegraderebuild.repo.OfferRepository;
 import com.example.mobilelegraderebuild.service.Model.ModelService;
 import com.example.mobilelegraderebuild.service.User.UserService;
-import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -24,40 +20,6 @@ public class OfferServiceImpl implements OfferService {
     private ModelService modelService;
     private UserService userService;
 
-
-    @PostConstruct
-    public void init(){
-        if(offerRepository.findAll().isEmpty()){
-            offerRepository.saveAll(
-                    List.of(
-                            Offer.builder()
-                                    .description("prodava sa ot pesho za x 4ovek koito vqrva 4e silata idva ot masata")
-                                    .engine(Engine.DIESEL)
-                                    .mileage(559)
-                                    .price(new BigDecimal("90000"))
-                                    .transmission(Transmission.AUTOMATIC)
-                                    .year(22)
-                                    .created(LocalDate.now())
-                                    .modified(LocalDate.now())
-                                    .model(modelService.getRandomModel())
-                                    .seller(userService.getUserByUsername("user"))
-                                    .build().setImgToModelImg(),
-                            Offer.builder()
-                                    .description("proda idva ot masata")
-                                    .engine(Engine.DIESEL)
-                                    .mileage(23232323)
-                                    .price(new BigDecimal("1231231231231231"))
-                                    .transmission(Transmission.AUTOMATIC)
-                                    .year(2323)
-                                    .created(LocalDate.now())
-                                    .modified(LocalDate.now())
-                                    .model(modelService.getRandomModel())
-                                    .seller(userService.getUserByUsername("admin"))
-                                    .build().setImgToModelImg()
-                    )
-            );
-        }
-    }
 
     @Override
     public List<ViewOfferDto> getAllOffers() {

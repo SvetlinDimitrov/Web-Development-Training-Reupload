@@ -3,11 +3,16 @@ package com.example.mobilelegraderebuild.service.User;
 import com.example.mobilelegraderebuild.domain.constants.Role;
 import com.example.mobilelegraderebuild.domain.entity.UserEntity;
 import com.example.mobilelegraderebuild.domain.entity.UserRole;
+import com.example.mobilelegraderebuild.domain.viewDtos.RegisterUserDto;
 import com.example.mobilelegraderebuild.repo.UserRepository;
 import com.example.mobilelegraderebuild.service.UserRole.UserRoleService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -20,7 +25,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -38,8 +44,13 @@ class UserServiceImplTest {
     private UserServiceImpl userService;
 
     private static UserEntity userEntity;
+
+    private static RegisterUserDto registerUserDto;
     private static final String EXISTING_USERNAME = "test1";
     private static final String NOT_EXISTING_USERNAME = "test999";
+
+    @Captor
+    private ArgumentCaptor<UserEntity> userEntityCaptor;
 
     private static final String LEGIT_ID = "legit";
     private static final String NOT_LEGIT_ID = "NOTlEGIT";
@@ -60,11 +71,32 @@ class UserServiceImplTest {
                 .setOffers(List.of());
         userEntity.setId("1");
 
+        registerUserDto = new RegisterUserDto()
+                .setFirstName(userEntity.getFirstName())
+                .setRole(userEntity.getRole().getRole())
+                .setPassword("123")
+                .setLastName(userEntity.getLastName())
+                .setUsername(userEntity.getUsername());
+
     }
 
     @Test
-    void register() {
-        //TODO: again void
+    void register_validRegisterDto_SuccessfullyRegister() {
+        when(passwordEncoder.encode(any())).thenReturn("12345");
+        when(userRoleService.findByRole(any())).thenReturn(userEntity.getRole());
+
+        userService.register(registerUserDto , mock(HttpServletRequest.class) , mock(HttpServletResponse.class));
+
+        verify(userRepository , times(1)).save(userEntityCaptor.capture());
+
+        UserEntity result = userEntityCaptor.getValue();
+
+        assertEquals(userEntity.getRole() , result.getRole());
+        assertEquals(userEntity.getUsername() , result.getUsername());
+        assertEquals(userEntity.getFirstName() , result.getFirstName());
+        assertEquals(userEntity.getLastName() , result.getLastName());
+        assertEquals(userEntity.getPassword() , result.getPassword());
+
     }
 
     @Test

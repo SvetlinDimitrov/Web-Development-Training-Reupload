@@ -9,6 +9,7 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @NoArgsConstructor
@@ -110,5 +111,18 @@ public class UserEntity extends BaseEntity {
     public UserEntity setOffers(List<Offer> offers) {
         this.offers = offers;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(isActive, that.isActive) && Objects.equals(role, that.role) && Objects.equals(imageUrl, that.imageUrl) && Objects.equals(created, that.created) && Objects.equals(modified, that.modified) && Objects.equals(offers, that.offers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, firstName, lastName, isActive, role, imageUrl, created, modified, offers);
     }
 }
