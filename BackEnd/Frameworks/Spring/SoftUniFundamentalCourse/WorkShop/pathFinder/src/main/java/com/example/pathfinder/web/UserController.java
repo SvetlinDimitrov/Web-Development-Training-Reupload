@@ -49,6 +49,6 @@ public class UserController extends BaseModel {
     }
     @GetMapping("/admin")
     public ModelAndView admin(){
-        return redirect("" , new ModelAndView());
+        return view("index.html" , new ModelAndView());
     }
 }

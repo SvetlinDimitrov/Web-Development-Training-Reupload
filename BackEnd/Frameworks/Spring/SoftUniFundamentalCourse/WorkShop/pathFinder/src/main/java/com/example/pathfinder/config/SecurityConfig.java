@@ -22,7 +22,12 @@ public class SecurityConfig {
                                     "/about",
                                     "/users/login",
                                     "/users/register",
-                                    "/routes/**",
+                                    "/routes",
+                                    "/routes/details/{id}",
+                                    "/routes/pedestrian/{level}",
+                                    "/routes/bicycle/{level}",
+                                    "/routes/motorcycle/{level}",
+                                    "/routes/car/{level}",
                                     "/comment/{routeId}").permitAll()
                             .requestMatchers("/users/admin").hasRole("ADMIN")
                             .anyRequest().authenticated();

@@ -1,10 +1,7 @@
 package com.example.pathfinder.domain.bindingViews;
 
 import com.example.pathfinder.domain.entity.Comment;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,6 +11,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ViewComment {
     private Long id;
     private Boolean approved;

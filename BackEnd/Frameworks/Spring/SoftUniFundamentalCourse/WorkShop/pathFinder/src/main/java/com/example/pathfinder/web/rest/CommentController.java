@@ -3,6 +3,7 @@ package com.example.pathfinder.web.rest;
 import com.example.pathfinder.domain.bindingViews.ViewComment;
 import com.example.pathfinder.domain.dtos.CreateCommendDto;
 import com.example.pathfinder.service.comment.CommentService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class CommentController {
     public ResponseEntity<HttpStatus> createCommand(@PathVariable(name = "routeId") Long routeId,
                                                     @PathVariable(name = "userId") Long userId,
                                                     @RequestBody CreateCommendDto dtoComment) {
-        return commentService.save(dtoComment, routeId,userId) ? ResponseEntity.accepted().build() : ResponseEntity.badRequest().build();
+        return commentService.save(dtoComment, routeId,userId) ?
+                ResponseEntity.accepted().build() : ResponseEntity.badRequest().build();
     }
 }

@@ -1,7 +1,6 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.domain.bindingViews.ViewRoute;
-import com.example.pathfinder.domain.bindingViews.ViewUser;
 import com.example.pathfinder.domain.dtos.LoginUserDto;
 import com.example.pathfinder.domain.dtos.RegisterRouteDto;
 import com.example.pathfinder.domain.dtos.UploadPictureDto;
@@ -48,8 +47,9 @@ public class RouteController extends BaseModel {
         ViewRoute route = routeService.getViewRouteById(id);
         modelAndView.addObject("route",route);
         modelAndView.addObject("routeId",id);
+        modelAndView.setViewName("route-details");
 
-        return view("route-details.html" , modelAndView);
+        return modelAndView;
 
     }
 
@@ -74,7 +74,8 @@ public class RouteController extends BaseModel {
         }
 
         routeService.saveRote(registerRouteDto , loginUser.getId());
-        return redirect("routes" , modelAndView);
+        modelAndView.setViewName("redirect:/routes");
+        return modelAndView;
 
     }
 
