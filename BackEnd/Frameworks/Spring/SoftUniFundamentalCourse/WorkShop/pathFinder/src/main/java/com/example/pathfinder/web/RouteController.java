@@ -1,6 +1,8 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.domain.bindingViews.ViewRoute;
+import com.example.pathfinder.domain.constants.CategoryConstant;
+import com.example.pathfinder.domain.constants.Level;
 import com.example.pathfinder.domain.dtos.LoginUserDto;
 import com.example.pathfinder.domain.dtos.RegisterRouteDto;
 import com.example.pathfinder.domain.dtos.UploadPictureDto;
@@ -44,10 +46,14 @@ public class RouteController extends BaseModel {
             modelAndView.addObject("userId" , user.getId());
         }
 
-        ViewRoute route = routeService.getViewRouteById(id);
-        modelAndView.addObject("route",route);
-        modelAndView.addObject("routeId",id);
-        modelAndView.setViewName("route-details");
+        try{
+            ViewRoute route = routeService.getViewRouteById(id);
+            modelAndView.addObject("route",route);
+            modelAndView.addObject("routeId",id);
+            modelAndView.setViewName("route-details");
+        }catch (RuntimeException e){
+            modelAndView.setViewName("error");
+        }
 
         return modelAndView;
 
@@ -79,18 +85,21 @@ public class RouteController extends BaseModel {
 
     }
 
-    @GetMapping(value = {"/pedestrian/{level}",
-            "/bicycle/{level}",
-            "/motorcycle/{level}",
-            "/car/{level}"})
+    @GetMapping(value = "/difficulty/{level}")
     public ModelAndView getUniqueCategorical(ModelAndView modelAndView, @PathVariable Integer level){
-        modelAndView.addObject("routes" ,routeService.getAllViewRoutesByCategoryConstOriginalId(level));
+
+        if(Level.values().length >= level){
+            modelAndView.addObject("routes" ,routeService.getAllViewRoutesByCategoryConstOriginalId(level));
+        }
+
         return switch (level) {
-            case 1 -> view("pedestrian.html", modelAndView);
-            case 2 -> view("bicycle.html", modelAndView);
-            case 3 -> view("motorcycle.html", modelAndView);
-            default -> view("car.html", modelAndView);
+            case 0 -> view("pedestrian.html", modelAndView);
+            case 1 -> view("bicycle.html", modelAndView);
+            case 2 -> view("motorcycle.html", modelAndView);
+            case 3 -> view("car.html", modelAndView);
+            default -> view("error",  modelAndView);
         };
+
     }
 
     @PostMapping("/picture/{routeId}/{userId}")

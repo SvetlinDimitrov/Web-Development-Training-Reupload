@@ -94,42 +94,42 @@ public class UserServiceImpl implements UserService {
         return new ViewUser(user);
     }
 
-    @PostConstruct
-    public void encodeTheHardCodedPasswords() {
-        if (userRepository.count() == 0) {
-            userRepository.saveAll(
-                    List.of(
-                            UserEntity.builder()
-                                    .age(28)
-                                    .fullName("Admin Adminov")
-                                    .level(Level.ADVANCED)
-                                    .password(passwordEncoder.encode("12345"))
-                                    .username("admin")
-                                    .build(),
-                            UserEntity.builder()
-                                    .age(29)
-                                    .fullName("Moderator Moderatorov")
-                                    .level(Level.INTERMEDIATE)
-                                    .password(passwordEncoder.encode("12345"))
-                                    .username("moderator")
-                                    .build(),
-                            UserEntity.builder()
-                                    .age(30)
-                                    .fullName("User Userov")
-                                    .level(Level.BEGINNER)
-                                    .password(passwordEncoder.encode("12345"))
-                                    .username("user")
-                                    .build(),
-                            UserEntity.builder()
-                                    .age(33)
-                                    .fullName("Ivan Ivanov")
-                                    .level(Level.BEGINNER)
-                                    .password(passwordEncoder.encode("12345"))
-                                    .username("ivan")
-                                    .build()
-                    )
-            );
-        }
-    }
+//    @PostConstruct
+//    public void encodeTheHardCodedPasswords() {
+//        if (userRepository.count() == 0) {
+//            userRepository.saveAll(
+//                    List.of(
+//                            UserEntity.builder()
+//                                    .age(28)
+//                                    .fullName("Admin Adminov")
+//                                    .level(Level.ADVANCED)
+//                                    .password(passwordEncoder.encode("12345"))
+//                                    .username("admin")
+//                                    .build(),
+//                            UserEntity.builder()
+//                                    .age(29)
+//                                    .fullName("Moderator Moderatorov")
+//                                    .level(Level.INTERMEDIATE)
+//                                    .password(passwordEncoder.encode("12345"))
+//                                    .username("moderator")
+//                                    .build(),
+//                            UserEntity.builder()
+//                                    .age(30)
+//                                    .fullName("User Userov")
+//                                    .level(Level.BEGINNER)
+//                                    .password(passwordEncoder.encode("12345"))
+//                                    .username("user")
+//                                    .build(),
+//                            UserEntity.builder()
+//                                    .age(33)
+//                                    .fullName("Ivan Ivanov")
+//                                    .level(Level.BEGINNER)
+//                                    .password(passwordEncoder.encode("12345"))
+//                                    .username("ivan")
+//                                    .build()
+//                    )
+//            );
+//        }
+//    }
 
 }

@@ -161,9 +161,9 @@ class RouteControllerTest {
     public void getUniqueCategorical_withNotLoggedUser_Successful() throws Exception {
         //TODO: fix the forward URL it says that is null , but the actual application is working correctly
         when(routeService.getAllViewRoutesByCategoryConstOriginalId(1)).thenReturn(List.of());
-        mockMvc.perform(get("/routes/pedestrian/1"))
+        mockMvc.perform(get("/routes/difficulty/1"))
                 .andExpect(status().isOk());
-//                .andExpect(forwardedUrl("/routes/pedestrian/1"));
+//                .andExpect(forwardedUrl("/routes/difficulty/1"));
 
     }
 

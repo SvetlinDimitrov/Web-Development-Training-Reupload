@@ -24,10 +24,7 @@ public class SecurityConfig {
                                     "/users/register",
                                     "/routes",
                                     "/routes/details/{id}",
-                                    "/routes/pedestrian/{level}",
-                                    "/routes/bicycle/{level}",
-                                    "/routes/motorcycle/{level}",
-                                    "/routes/car/{level}",
+                                    "/routes/difficulty/{level}",
                                     "/comment/{routeId}").permitAll()
                             .requestMatchers("/users/admin").hasRole("ADMIN")
                             .anyRequest().authenticated();
