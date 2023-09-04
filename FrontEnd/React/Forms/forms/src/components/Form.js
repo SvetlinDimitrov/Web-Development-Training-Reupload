@@ -1,10 +1,15 @@
-function Form({
-  closeHandler,
-  formOnChange,
-  formProp,
-  checkForError,
-  errorMessage,
-}) {
+import { AppContext } from "../AppContext";
+import { useContext } from "react";
+
+function Form() {
+  const {
+    closeHandler,
+    formOnChange,
+    formProp,
+    checkForError,
+    errorMessage,
+  } = useContext (AppContext);
+
   return (
     <form>
       <div className="form-row">

@@ -1,4 +1,9 @@
-function Header({closeHandler}){
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
+
+function Header(){
+    const {closeHandler} = useContext(AppContext);
+
     return (
         <header className="headers">
             <h2>Add User</h2>
