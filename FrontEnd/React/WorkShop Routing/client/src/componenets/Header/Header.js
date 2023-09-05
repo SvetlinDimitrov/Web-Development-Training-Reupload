@@ -20,7 +20,7 @@ export function Header() {
         {user._id ? (
           <div className="user">
             <Link to="/addAlbum">Add Album</Link>
-            <Link to="/">Logout</Link>
+            <Link to="/logout">Logout</Link>
           </div>
         ) : (
           <div className="guest">
