@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb37ffac-70af-4f86-8acb-379d4205a797" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Airline.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Airline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Deliverer.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Deliverer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Package.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/entities/Package.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/AirlinesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/AirlinesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/AirlinesManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/AirlinesManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/DeliveriesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/DeliveriesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/DeliveriesManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/Final_Exam/src/structures/DeliveriesManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/ArrayList/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/ArrayList/ArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/ArrayList/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/ArrayList/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Queue_03/AbstractQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Queue_03/AbstractQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Queue_03/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Queue_03/Queue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/SinglyLinkedList_04/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/SinglyLinkedList_04/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/SinglyLinkedList_04/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/SinglyLinkedList_04/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Stack_02/AbstractStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Stack_02/AbstractStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Stack_02/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/LinearDataStructures/src/Stack_02/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftUniFundamentalCourse/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SoftUniFundamentalCourse/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/BinarySearchAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_11.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_12.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_13.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/BinarySearch/src/Problem_8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Dynamic_Programming/06. Dynamic-Programming-Advanced-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Dynamic_Programming/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Dynamic_Programming/src/Knapsack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Dynamic_Programming/src/Longest_Common_Subsequence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/03. Exercise-Graphs-Bellman-Ford-Longest-Path-in-DAG-Exercises.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/src/Big_Trip.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/src/Cable_Network.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/src/Cheap_Town_Tour.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/src/Modified_Kruskal_Algorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/src/Most_Reliable_Path.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/GraphsBellman_FordLongest_Path_In_DAG_Exercise/src/Undefined.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/04. Graphs-Strongly-Connected-Components-Max-Flow-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/04. Graphs-Strongly-Connected-Components-Max-Flow-Presentation.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/05. Exercise-Graphs-Strongly-Connected-Components-Max-Flow-Exercises.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/src/ArticulationPoints.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/src/EdmondsKarp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/src/Find_BiConnected_Components.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/src/Maximum_Tasks_Assignment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/Graphs_Strongly_Connected_Components_Max_Flow/src/StronglyConnectedComponents.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniAdvanceCourse/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/02. Algorithms-Combinatorial-Problems-presentation.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/02. Combinatorial-Problems-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/src/Combinations_without_Repetition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/src/N_ChooseK_Count.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/src/Permutations_with_Repetitions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/src/Permutations_without_Repetition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/src/Variations_with_Repetition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Combinatorial_Problems/src/Variations_without_Repetitions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Dynamic_Programming_Exercise/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Dynamic_Programming_Exercise/src/Binomial_Coefficients.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Dynamic_Programming_Exercise/src/Longest_ZigZag_Subsequence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Dynamic_Programming_Exercise/src/Sum_with_Unlimited_Amount_of_Coins.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/01. Super Set_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/02. Paths_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/03. Climbing_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/src/Climbing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/src/Paths.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_09_Jan_2022/src/Super_Set.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/01. TBC_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/02. Socks_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/03.  Path Finder_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/src/Path_Finder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/src/Socks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_16_Jan_2022/src/TBC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/01. Trains_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/02. Stairs_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/03. Guards_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/src/Guards.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/src/Stairs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_24_July_2022/src/Trains.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_Preparation/01. Monkey Business_Problem-Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_Preparation/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_Preparation/src/Cluster_Border.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_Preparation/src/Molecules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/Exam_Preparation/src/Monkey_Business.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Exams/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/src/Areas_in_Matrix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/src/Break_Cycles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/src/Cycles_in_Graph.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/src/Distance_between_Vertices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_ShortestPaths_Exercise/src/Salaries.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_and_ShortestPaths_Lab/05. Graph-Theory-Traversal-and-Shortest-Paths-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_and_ShortestPaths_Lab/05. Graph-Theory-Traversal-and-Shortest-Paths-Presentation.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_and_ShortestPaths_Lab/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/GraphTheory_Traversal_and_ShortestPaths_Lab/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Introduction_to_Dynamic_Programming_Lab/01. Fibonacci_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Introduction_to_Dynamic_Programming_Lab/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Introduction_to_Dynamic_Programming_Lab/src/Fibonacci.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Introduction_to_Dynamic_Programming_Lab/src/Longest_Increasing_Subsequence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Introduction_to_Dynamic_Programming_Lab/src/Move_Down_Right.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Introduction_to_Dynamic_Programming_Lab/src/Rod_Cutting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/01. Recursion-and-Backtracking-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/src/Find_All_Paths_in_a_Labyrinth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/src/Generating_Vectors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/src/Recursive_Array_Sum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/src/Recursive_Drawing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/src/Recursive_Factorial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Backtracking_Lab/src/Recursive_Fibonacci.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/01. Reverse Array_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/Combinations_with_Repetition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/Combinations_without_Repetition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/Connected_Areas_in_Matrix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/Nested_Loops_To_Recursion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/Reverse_Array.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/School_Teams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Recursion_and_Combinatorial_Problems_Exercise/src/Towers_of_Hanoi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/04. Searching-Sorting-and-Greedy-Algorithms-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/04. Searching-Sorting-and-Greedy-Algprithms.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/src/Binary_Search.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/src/Bubble_Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/src/Insertion_Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/src/Merge_Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/src/Selection_Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/Searching_Sorting_and_Greedy_Algorithms/src/Sum_of_Coins.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/SoftUniFundamentalCourse/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Practice_10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/WindowSlidingTechnique/src/Problem_9.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithms/AlgorithmPracticeModule/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/01. B-Trees-2-3-Trees-and-AVL-Trees-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/01. B-Trees-2-3-Trees-and-AVL-Trees-Presentation.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/Data-Structures-Advanced-B-2-3-AVL-Trees.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/src/main/java/AVL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/src/main/java/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/B-Trees - 2-3 Trees and AVL Trees/AVL_Trees_Skeleton/src/test/java/AVLTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/01. RePlay - Correctness_Problem Descriptions (1).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/exam.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/core/RePlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/core/RePlayerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/core/VehicleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/core/VehicleRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/models/Track.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/java/models/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/main/main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/test/java/core/RePlayerTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/test/java/core/VehicleRepositoryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exam - 19 Sept 2021/Skeleton/src/test/test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/02. B-Trees-2-3-Trees-and-AVL-Trees-Exercises.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/Data-Structures-Advanced-B-2-3-AVL-Trees.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/AVL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/TwoThreeTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/main/Helper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/main/Hierarchy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/main/java/main/IHierarchy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/AVLTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/TwoThreeTreeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/HierarchyStructureInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/Add.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/Constructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/Contains.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/ForEach.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/GetChildren.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/GetCommonElements.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/GetParent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/correctness/Remove.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/helpers/BasePerformanceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/helpers/BaseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/helpers/IterableExtensions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/AddPerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/ContainsPerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/ForEachPerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/GetChildrenPerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/GetCommonElementsPerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/GetParentPerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/performance/RemovePerformance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/types/CorrectnessTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Exercise_2-3Tree/Data-Structures-Advanced-B-2-3-AVL-Trees-Exercises-Skeleton/src/test/java/test/types/PerformanceTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/03. Red-Black-Trees-and-AA-Trees-Lab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/03. Red-Black-Trees-and-AA-Trees-Presentation.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/Red-Black-Trees-and-AA-Trees-Lab-Skeleton.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/src/main/java/RedBlackTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Red-Black Trees and AA-Trees/src/test/java/RedBlackTreeTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/01. Discord - Correctness_Условие.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/core/Discord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/core/DiscordImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/core/MoovIt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/core/MoovItImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/models/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/main/java/models/Route.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/test/java/core/DiscordTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Regular Exam - 15 May 2022/src/test/java/core/MoovItTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/01. Movie Database - Correctness_Problem Descriptions.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/core/DoodleSearch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/core/DoodleSearchImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/core/MovieDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/core/MovieDatabaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/models/Doodle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/main/java/models/Movie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/test/java/core/DoodleSearchTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Advance/Retake Exam - 26 Sept 2021/src/test/java/core/MovieDatabaseTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/Data-Structires-Fund-Exam.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/core/MessagingSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/core/ProcessScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/model/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/model/ScheduledTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/model/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/model/TextMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/shared/DataTransferSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/main/java/shared/Scheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/test/java/core/MessagingSystemTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_05Apr2020/src/test/java/core/ProcessSchedulerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/.~lock.1. VaccOps_Problem Description (1).docx#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/1. VaccOps_Problem Description (1).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/Coupon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/CouponOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/ICouponOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/Website.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/couponsopsjava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/out/production/couponsopsjava/couponsopsjava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/out/production/couponsopsjava/couponsopsjava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/out/production/couponsopsjava/couponsopsjava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/out/production/couponsopsjava/couponsopsjava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/couponsopsjava/out/production/couponsopsjava/couponsopsjava/couponsopsjava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/src/vaccopsjava/Doctor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/src/vaccopsjava/IVaccOps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/src/vaccopsjava/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/src/vaccopsjava/Patient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/src/vaccopsjava/VaccOps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/sss/vaccopsjava/vaccopsjava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/Doctor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/IVaccOps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/Patient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/Tests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/VaccOps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/out/production/vaccopsjava/vaccopsjava11/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/out/production/vaccopsjava/vaccopsjava11/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/out/production/vaccopsjava/vaccopsjava11/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/out/production/vaccopsjava/vaccopsjava11/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/out/production/vaccopsjava/vaccopsjava11/vaccopsjava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_20March2022/vaccopsjava/vaccopsjava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Exam_Preparation/01. Loader_Problem-Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/src/test/java/org/softuni/exam/structures/AirlinesManagerTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/Final_Exam/Exam/src/test/java/org/softuni/exam/structures/DeliveriesManagerTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/1. Barber Shop_Problem Description (1).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/main/java/barbershopjava/Barber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/main/java/barbershopjava/BarberShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/main/java/barbershopjava/BarberShopImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/main/java/barbershopjava/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/main/java/barbershopjava/Gender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/main/java/barbershopjava/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test001.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test002.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test003.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test004.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test005.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test006.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test007.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Barber Shop/src/test/java/barbershopjava/Test008.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/main/java/tripadministratorjava/Company.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/main/java/tripadministratorjava/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/main/java/tripadministratorjava/Transportation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/main/java/tripadministratorjava/Trip.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/main/java/tripadministratorjava/TripAdministrator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/main/java/tripadministratorjava/TripAdministratorImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test001.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test002.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test003.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test004.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test005.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test006.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test007.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test008.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test009.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_27March2022/Тrip Аdministrator/src/test/java/tripadministratorjava/Test010.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/libraries/Board.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/libraries/BoardImpl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/HearthstoneJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/src/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/src/BoardImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/src/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest05.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest06.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest07.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest08.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest11.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest12.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest13.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/PTest14.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test05.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test06.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test07.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test08.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test11.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test12.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test13.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test14.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test15.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test16.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test17.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test19.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test20.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test21.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test22.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test23.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test24.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/HearthstoneJava/test/Test25.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/OlympicTestCorrect.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/OlympicsJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/Competition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/Competitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/Olympics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/OlympicsImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/OlympicsImplCorrectnessTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/OlympicsJava/src/OlympicsImplPerformanceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/01. Olympics - Correctness_Problem Description (1).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/02. Hearthstone - Correctness_Problem Description (1).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/libraries/Board.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/libraries/BoardImpl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/HearthstoneJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/src/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/src/BoardImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/src/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest05.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest06.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest07.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest08.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest11.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest12.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest13.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/PTest14.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test05.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test06.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test07.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test08.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test09.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test11.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test12.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test13.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test14.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test15.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test16.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test17.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test19.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test20.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test21.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test22.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test23.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test24.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/HearthstoneJava/test/Test25.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/OlympicTestCorrect.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/OlympicsJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/Competition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/Competitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/Olympics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/OlympicsImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/OlympicsImplCorrectnessTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Structure/SoftUniCourse/Fundamentals/RetakeExam_8August2021/again/OlympicsJava/src/OlympicsImplPerformanceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frameworks/Spring/SoftUniFundamentalCourse/Exams/SpringFundamentalsExam_17 Aug_2022/.~lock.LikeBook_Problem Description.docx#" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2Wn8LE1UnRBHP0bqKi3kKzScQzp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "D:/Web Development/GithubRepos/Web Development Reupload/BackEnd/Algorithms , Data Structures and Design Patterns/AlgorithmPracticeModule",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Web Development\GithubRepos\Web Development Reupload\BackEnd\Algorithms , Data Structures and Design Patterns\DataStrucutrePracticeModule\SoftUniFundamentalCourse\Final_Exam\src" />
+      <recent name="D:\Web Development\GithubRepos\Web Development Reupload\BackEnd\Algorithms , Data Structures and Design Patterns\DataStrucutrePracticeModule\SoftUniFundamentalCourse\BT_BST_MH_PQ" />
+      <recent name="D:\Web Development\GithubRepos\Web Development Reupload\BackEnd\Algorithms , Data Structures and Design Patterns\DataStrucutrePracticeModule\SoftUniFundamentalCourse\LinearDataStructures\src" />
+      <recent name="D:\Web Development\GithubRepos\Web Development Reupload\BackEnd\Algorithms , Data Structures and Design Patterns\DataStrucutrePracticeModule\SoftUniFundamentalCourse\LinearDataStructures" />
+      <recent name="D:\Web Development\GithubRepos\Web Development Reupload\BackEnd\Algorithms , Data Structures and Design Patterns\DataStrucutrePracticeModule\SoftUniFundamentalCourse\Tree" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb37ffac-70af-4f86-8acb-379d4205a797" name="Changes" comment="" />
+      <created>1697356927567</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697356927567</updated>
+      <workItem from="1697356928372" duration="5000" />
+      <workItem from="1697356990075" duration="1626000" />
+      <workItem from="1697362273097" duration="68000" />
+      <workItem from="1697374814694" duration="85000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
