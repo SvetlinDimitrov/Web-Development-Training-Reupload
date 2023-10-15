@@ -7,6 +7,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.function.Supplier;
 
 @Data
 public class OfferAddDto {
@@ -22,11 +23,11 @@ public class OfferAddDto {
     @NotNull
     private ConditionConstants condition;
 
-    public Offer toOffer(){
+    public Supplier<Offer> toOffer = () -> {
         Offer offer = new Offer();
         offer.setDescription(description);
         offer.setPrice(price);
         return offer;
-    }
+    };
 
 }

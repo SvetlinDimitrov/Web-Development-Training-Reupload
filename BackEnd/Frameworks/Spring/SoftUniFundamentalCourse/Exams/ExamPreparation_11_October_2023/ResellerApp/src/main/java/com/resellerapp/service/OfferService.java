@@ -14,6 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,26 +32,46 @@ public class OfferService {
     @Transactional
     public void saveOffer(Long id, OfferAddDto offerAddDto) {
         User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("not user was found"));
-        Offer offer = offerAddDto.toOffer();
+        Offer offer = offerAddDto.toOffer.get();
         offer.setCondition
                 (conditionRepository.findByName(offerAddDto.getCondition())
                         .orElseThrow((() -> new RuntimeException("няма такова нещо"))));
         offerRepository.save(offer);
+
         user.getOffers().add(offer);
         userRepository.save(user);
     }
 
+
     @Transactional
     public void buyOffer(Long offerId, Long sellerId, Long buyerId) {
-        User seller = userRepository.findById(sellerId).orElseThrow(() -> new RuntimeException("seller does not exist"));
-        User buyer = userRepository.findById(buyerId).orElseThrow(() -> new RuntimeException("buyer does not exist"));
-        Offer offer = offerRepository.findById(offerId).orElseThrow(() -> new RuntimeException("current offer does not exist"));
 
-        buyer.getBoughtOffers().add(offer);
-        userRepository.save(buyer);
+        Offer offer =
+                offerRepository
+                        .findById(offerId)
+                        .orElseThrow(() -> new RuntimeException("current offer does not exist"));
 
-        seller.getOffers().remove(offer);
-        userRepository.save(seller);
+        userRepository
+                .findById(sellerId)
+                .ifPresentOrElse(
+                        seller -> {
+                            seller.getOffers().remove(offer);
+                            userRepository.save(seller);
+                        },
+                        () -> {
+                            throw new RuntimeException("seller does not exist");
+                        }
+                );
+        userRepository.findById(buyerId)
+                .ifPresentOrElse(
+                        buyer -> {
+                            buyer.getOffers().add(offer);
+                            userRepository.save(buyer);
+                        },
+                        () -> {
+                            throw new RuntimeException("buyer does not exist");
+                        }
+                );
     }
 
     @Transactional
@@ -60,4 +85,6 @@ public class OfferService {
 
         offerRepository.delete(offer);
     }
+
 }
+

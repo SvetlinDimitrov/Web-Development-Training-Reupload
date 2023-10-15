@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public void register(RegisterUserDto registerUserDto) {
-        User user = registerUserDto.toUser();
+        User user = registerUserDto.toUser.get();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user);
