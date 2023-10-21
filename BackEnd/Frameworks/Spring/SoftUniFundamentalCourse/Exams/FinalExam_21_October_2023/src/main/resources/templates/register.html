@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Register</span></h1>
+    <hr class="hr-3 w-25 bg-white"/>
+
+    <form class="mx-auto w-25 bg-blur rounded" th:method="POST" th:action="@{/user/register}"
+          th:object="${userRegisterDto}">
+
+        <div class="form-group">
+            <div class="label-holder textCol d-flex justify-content-center">
+                <label for="username" class="h4 mb-2 text-white">Username</label>
+            </div>
+
+            <!--        Example: Render errors messages with th:errorclass "is-invalid" and class "invalid-feedback" - you can make it differently. -->
+            <!--        <input th:field="*{username}" th:errorclass="'is-invalid alert-danger'" type="text" class="form-control"-->
+            <!--               id="username" name="username"/>-->
+            <!--        <small class="invalid-feedback text-danger">Username error message</small>-->
+
+            <input th:field="*{username}"
+                   th:errorclass="'is-invalid alert-danger'"
+                   type="text" class="form-control"
+                   id="username"
+                   name="username"/>
+            <small th:if="${#fields.hasErrors('username')}"
+                   th:text="${#fields.errors('username')[0]}"
+                   class="text-danger">Username length must be between 3 and 20 characters
+            </small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="email" class="h4 mb-2">Email</label>
+            </div>
+            <input th:field="*{email}"
+                   th:errorclass="'is-invalid alert-danger'"
+                   type="email"
+                   class="form-control"
+                   id="email"
+                   name="email"/>
+            <small th:if="${#fields.hasErrors('email')}"
+                   th:text="${#fields.errors('email')[0]}"
+                   class="text-danger">Email cannot be empty
+            </small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="password" class="h4 mb-2">Password</label>
+            </div>
+            <input th:errorclass="'is-invalid alert-danger'"
+                   type="password"
+                   class="form-control"
+                   id="password"
+                   name="password"/>
+            <small th:if="${#fields.hasErrors('password')}"
+                   th:text="${#fields.errors('password')[0]}"
+                   class="text-danger">Password length must be between 3 and 20 characters
+            </small>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
+            </div>
+            <input th:field="*{confirmPassword}"
+                   th:errorclass="'is-invalid alert-danger'"
+                   type="password"
+                   class="form-control"
+                   id="confirmPassword"
+                   name="confirmPassword"/>
+            <small th:if="${#fields.hasErrors('confirmPassword')}"
+                   th:text="${#fields.errors('confirmPassword')[0]}"
+                   class="text-danger"></small>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Register">Register</button>
+        </div>
+
+    </form>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>
