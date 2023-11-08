@@ -1,28 +1,40 @@
-import { arc, easeLinear, easeCircleIn, pie, select, selectAll } from "d3";
+import { arc, easeCircleIn, pie, select } from "d3";
 import { useState, useEffect } from "react";
 
-const diameter = 300;
-const width = 500;
-const height = 500;
+
+const width = 250;
+const height = 250;
+const diameter = width / 2 + height / 2;
 const centerX = width / 2;
 const centerY = height / 2;
 
 function App() {
-  const [data, setData] = useState([50, 50]);
+  const [data, setData] = useState({ age: 19 });
 
   useEffect(() => {
-    
-    const colors = ["gray", "red"];
-    const pieGenerator = pie()(data);
-
     const svg = select("g");
     svg.selectAll("*").remove();
 
+    const pieData = pie()([data.age, 100 - data.age]);
+
     svg
-      .selectAll("path")
-      .data(pieGenerator)
-      .enter()
       .append("path")
+      .attr("d", (d) => {
+        return arc()
+          .innerRadius(diameter / 3.2)
+          .outerRadius(diameter / 2.2)
+          .startAngle(-0)
+          .endAngle(-100)();
+      })
+      .style("fill", "gray");
+
+    svg
+      .data(pieData)
+      .append("path")
+      .style("fill", "gray")
+      .transition()
+      .ease(easeCircleIn)
+      .duration(2000)
       .attr("d", (d) => {
         return arc()
           .innerRadius(diameter / 3.2)
@@ -30,15 +42,9 @@ function App() {
           .startAngle(-d.startAngle)
           .endAngle(-d.endAngle)();
       })
-      .style("fill", "gray")
-      .transition()
-      .ease(easeCircleIn)
-      .duration(1000)
-      .style("fill", (d, i) => colors[i]);
+      .style("fill", "red");
 
-    selectAll("path")
-      .append("title")
-      .text((d) => d.data);
+    select("path").append("title").text(data.age);
 
     svg
       .append("text")
@@ -46,12 +52,11 @@ function App() {
       .attr("transform", `translate(${0},${-20})`)
       .style("text-anchor", "middle")
       .style("font-size", "25px")
-      .text(data[1] + "%")
+      .text(data.age + "%")
       .transition()
-      .ease(easeLinear)
-      .duration(3000)
-      .style("fill", "black")
-      .delay();
+      .ease(easeCircleIn)
+      .duration(2000)
+      .style("fill", "black");
 
     svg
       .append("text")
@@ -61,10 +66,9 @@ function App() {
       .style("text-anchor", "middle")
       .style("font-size", "20px")
       .transition()
-      .ease(easeLinear)
-      .duration(3000)
-      .style("fill", "black")
-      .delay();
+      .ease(easeCircleIn)
+      .duration(2000)
+      .style("fill", "black");
   }, [data]);
 
   return (
