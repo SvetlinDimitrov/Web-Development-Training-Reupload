@@ -1,44 +1,32 @@
 package com.servlets;
 
+import com.HelloEntity;
 import com.HelloService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Map;
 
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet {
     private final HelloService service = new HelloService();
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Servlet say hello there");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setHeader("Content-Type", "application/json");
+        String countryParameter = req.getParameter("country");
+        HelloEntity country = service.getByCountry(countryParameter);
 
-        Map<String, String[]> parameterMap = req.getParameterMap();
-        String country1 = req.getParameter("country");
-        System.out.println(country1);
-        try {
-            String country = Arrays.stream(parameterMap.get("country")).findFirst().get();
-            System.out.println("The country that you want is " + country);
-            System.out.println(service.getByCountry(country));
-        }catch (Exception e){
-            System.out.println("There is no country with that name");
+        if (country == null) {
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        } else {
+            resp.setHeader("trace-country", country.getCountry());
+            resp.setStatus(HttpServletResponse.SC_OK);
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(resp.getWriter(), country);
         }
-//        Not providing the parameter =>
-//        Servlet say hello there
-//        null
-//        There is no country with that name
-
-//        Providing the valid parameter =>
-//        Servlet say hello there
-//        Bulgaria
-//        The country that you want is Bulgaria
-//        HelloEntity{country='Bulgaria', message='Здравейте!'}
-
     }
-
 }
