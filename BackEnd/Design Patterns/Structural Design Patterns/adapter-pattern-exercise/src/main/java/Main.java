@@ -12,8 +12,8 @@ public class Main {
     NorthAmericanCity portland = new NorthAmericanCity("Portland", 70);
     weatherWarnings.postWarning(portland);
 
-    AsianCity bangkok = new AdapterAsianCity("Bangkok", 50);
-    weatherWarnings.postWarning(bangkok);
+    AsianCity bangkok = new AsianCity("Bangkok", 50);
+    weatherWarnings.postWarning(new AdapterAsianCity(bangkok));
   }
 
 }
