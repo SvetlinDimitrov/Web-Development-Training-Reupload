@@ -1,0 +1,14 @@
+public class RadioButton extends Button {
+
+  private final SizeButton sizeButton;
+
+    public RadioButton(SizeButton sizeButton) {
+        this.sizeButton = sizeButton;
+    }
+
+    public void draw() {
+      sizeButton.draw();
+      System.out.println("Drawing a radio button.\n");
+  }
+
+}
