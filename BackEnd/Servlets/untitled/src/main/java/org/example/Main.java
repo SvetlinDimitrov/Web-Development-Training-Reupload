@@ -1,19 +1,23 @@
 package org.example;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        Integer i = stack.get(1);
-        System.out.println(i);
+        String s = "abc", t = "ahbgdc";
+        System.out.println(testArray(s , t));
+    }
 
+    private static boolean testArray(String s, String t){
+        int index = 0;
 
-
+        for (int i = 0; i < t.length(); i++) {
+            if(s.charAt(index) == t.charAt(i)){
+                index++;
+                if(index == s.length()){return true;}
+            }
+        }
+        return false;
     }
 }
 
