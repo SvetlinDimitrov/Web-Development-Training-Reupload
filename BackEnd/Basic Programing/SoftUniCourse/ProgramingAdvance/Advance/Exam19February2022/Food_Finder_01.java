@@ -20,7 +20,6 @@ public class Food_Finder_01 {
 
         while(!vowels.isEmpty() && !consonants.isEmpty()){
             char vowel = vowels.poll();
-
             char consonant = consonants.pop();
             ChangingArrays(vowel , consonant , firstWord);
             ChangingArrays(vowel , consonant , secondWord);
