@@ -1,0 +1,18 @@
+.header-container {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #ddd;
+}
