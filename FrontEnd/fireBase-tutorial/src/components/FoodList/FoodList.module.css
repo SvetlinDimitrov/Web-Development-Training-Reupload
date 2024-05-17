@@ -1,0 +1,8 @@
+/* src/components/FoodList/FoodList.module.css */
+
+.foodList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}

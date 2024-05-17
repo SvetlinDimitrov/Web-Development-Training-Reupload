@@ -10,8 +10,9 @@ function Header() {
             <header className={styles['header-container']}>
                 <nav className={styles['header-nav']}>
                     <Link to="/" className={styles['nav-link']}>Home</Link>
-                    <Link to="/toDoList" className={styles['nav-link']}>To Do List</Link>
+                    <Link to="/foods" className={styles['nav-link']}>Foods</Link>
                     <Link to="/logout" className={styles['nav-link']}>Logout</Link>
+                    <Link to="/tree" className={styles['nav-link']}>Tree</Link>
                 </nav>
             </header>
         )

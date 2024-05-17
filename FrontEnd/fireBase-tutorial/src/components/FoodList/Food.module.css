@@ -1,0 +1,19 @@
+/* src/components/FoodList/Food.module.css */
+
+.foodItem {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.foodItem h2 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.foodItem p {
+    margin: 0;
+    font-size: 0.9em;
+}

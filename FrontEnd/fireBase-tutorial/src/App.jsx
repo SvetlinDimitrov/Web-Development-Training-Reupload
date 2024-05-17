@@ -4,12 +4,12 @@ import Register from "./components/User/Register/Register.jsx";
 import NotFound from "./components/NotFoundPage/NotFoundPage.jsx";
 import Home from "./components/Home/Home.jsx";
 import Header from "./components/Header/Header.jsx";
-import ToDoList from "./components/ToDoList/ToDoList.jsx";
 import UserProvider from "./context/UserContext.jsx";
 import Logout from "./components/User/Logout/Logout.jsx";
 import UserAuthRequire from "./layouts/UserAuthRquire.jsx";
 import UserNoAuthRequire from "./layouts/UserNoAuthRequre.jsx";
 import AppProvider from "./context/AppContext.jsx";
+import FoodList from "./components/FoodList/FoodList.jsx";
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
                         <Route path="/register" element={<Register/>}/>
                     </Route>
                     <Route element={<UserAuthRequire/>}>
-                        <Route path="/toDoList" element={<ToDoList/>}/>
+                        <Route path="/foods" element={<FoodList/>}/>
                         <Route path="/logout" element={<Logout/>}/>
                     </Route>
                     <Route path={'*'} element={<NotFound/>}/>
