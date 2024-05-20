@@ -23,8 +23,10 @@ function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, g
     levels.forEach(level => {
         const rowData = data.filter(d => d.level === level);
         const totalWidth = rowData.length * (rectSizeX + gapSize) - gapSize;
-        const startX = (dimensions.width - totalWidth) / 2;
+        // const startX = 0;
         const y = yScale(level);
+        const startX = (dimensions.width - totalWidth) / 2; // Centering happens here
+
 
         coordinates[level] = {x: startX, y};
     });
@@ -63,10 +65,7 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
 
     const node = data.find(d => d.name === name);
     if (node && node.partner && drawnNames.has(node.partner)) {
-        if(node.link.length > 1){
-            coordinates[level].x += rectSizeX + gapSize + (70 * node.link.length);
-        }
-        coordinates[level].x += rectSizeX + gapSize + 100;
+        coordinates[level].x = coordinates[level + 1].x;
     } else {
         coordinates[level].x += rectSizeX + gapSize;
     }
