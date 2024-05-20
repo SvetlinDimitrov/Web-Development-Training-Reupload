@@ -1,0 +1,8 @@
+1) loop trow the array to see how many levels are there , and get the avaible cordinates for each level
+2) After having this now we can loop throw the data and start drawing rect .
+3) each time a rect is drawn the cordinates for the next avaible rect on this level needs to be updated
+4) each time when a rect is drawn the name should be saved in a set to not have dublications.
+5) when the current rect is drawn it should loop throw the link array that it has and draw each rect that is linked to it.
+
+This cpntinues until all the data is drawn.
+*/

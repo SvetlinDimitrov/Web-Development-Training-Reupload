@@ -9,43 +9,77 @@ function handleResize(setDimensions) {
     });
 }
 
-function drawElements(g, rects, data, rectSizeX, rectSizeY, yScale) {
-    data.forEach(d => {
-        if (d.link && rects[d.name]) {
-            d.link.forEach(link => {
-                if (rects[link]) {
-                    g.append('line')
-                        .attr('x1', rects[d.name].x)
-                        .attr('y1', rects[d.name].y + rectSizeY / 2)
-                        .attr('x2', rects[link].x)
-                        .attr('y2', rects[link].y - rectSizeY / 2)
-                        .attr('stroke', 'black')
-                        .attr('stroke-width', 1)
-                        .attr("marker-end", "url(#end)");
-                }
-            });
-        }
-    });
-}
-function createArrowMarker(svg) {
-    svg.append("defs").selectAll("marker")
-        .data(["end"])
-        .enter().append("marker")
-        .attr("id", String)
-        .attr("viewBox", "0 0 10 10")
-        .attr("refX", 10)
-        .attr("refY", 5)
-        .attr("markerWidth", 6)
-        .attr("markerHeight", 6)
-        .attr("orient", "auto")
-        .append("path")
-        .attr("d", "M0,0L10,5L0,10L5,5L0,0");
-}
-
 function addZooming(svg, g) {
     svg.call(d3.zoom().on("zoom", function (event) {
         g.attr("transform", event.transform)
     }));
+}
+
+function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, gapSize) {
+    const levels = [...new Set(data.map(d => d.level))];
+    const yScale = d3.scaleBand().domain(levels).range([0, dimensions.height]).padding(0.1);
+
+    const coordinates = {};
+    levels.forEach(level => {
+        const rowData = data.filter(d => d.level === level);
+        const totalWidth = rowData.length * (rectSizeX + gapSize) - gapSize;
+        const startX = (dimensions.width - totalWidth) / 2;
+        const y = yScale(level);
+
+        coordinates[level] = {x: startX, y};
+    });
+
+    return coordinates;
+}
+
+function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, name, drawnNames, data) {
+    const nextCoordinate = coordinates[level];
+
+    if (!nextCoordinate) {
+        throw new Error(`No available coordinates for level ${level}`);
+    }
+
+    if (drawnNames.has(name)) {
+        return;
+    }
+
+    g.append('rect')
+        .attr('x', nextCoordinate.x)
+        .attr('y', nextCoordinate.y)
+        .attr('width', rectSizeX)
+        .attr('height', rectSizeY)
+        .attr('fill', 'white')
+        .attr('stroke', 'black')
+        .attr('stroke-width', 1);
+
+    g.append('text')
+        .attr('x', nextCoordinate.x + rectSizeX / 2)
+        .attr('y', nextCoordinate.y + rectSizeY / 2)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .text(name);
+
+    drawnNames.add(name);
+
+    const node = data.find(d => d.name === name);
+    if (node && node.partner && drawnNames.has(node.partner)) {
+        if(node.link.length > 1){
+            coordinates[level].x += rectSizeX + gapSize + (70 * node.link.length);
+        }
+        coordinates[level].x += rectSizeX + gapSize + 100;
+    } else {
+        coordinates[level].x += rectSizeX + gapSize;
+    }
+
+    if (node && node.link) {
+        node.link.forEach(linkedName => {
+            const linkedNode = data.find(d => d.name === linkedName);
+            if (linkedNode) {
+                drawNextRectangle(linkedNode.level, g, coordinates, rectSizeX, rectSizeY, gapSize, linkedName, drawnNames, data);
+            }
+        });
+        coordinates[level + 1].x += 150;
+    }
 }
 
 function D3Component({data}) {
@@ -53,6 +87,13 @@ function D3Component({data}) {
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight
+    });
+
+    data.sort((a, b) => {
+        if (a.level === b.level) {
+            return b.link?.length - a.link?.length;
+        }
+        return a.level - b.level;
     });
 
     useEffect(() => {
@@ -69,8 +110,6 @@ function D3Component({data}) {
         const rectSizeX = 150;
         const rectSizeY = 60;
         const gapSize = 40;
-        const levels = [...new Set(data.map(d => d.level))];
-        const yScale = d3.scaleBand().domain(levels).range([0, dimensions.height]).padding(0.1);
 
         const svg = d3.select(ref.current)
             .append('svg')
@@ -81,39 +120,13 @@ function D3Component({data}) {
 
         addZooming(svg, g);
 
-        const rects = {};
+        const coordinates = calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, gapSize);
 
-        levels.forEach(level => {
-            const rowData = data.filter(d => d.level === level);
-            const totalWidth = rowData.length * (rectSizeX + gapSize) - gapSize;
-            const startX = (dimensions.width - totalWidth) / 2;
+        const drawnNames = new Set();
 
-            rowData.forEach((d, i) => {
-                const x = startX + i * (rectSizeX + gapSize);
-                const y = yScale(level);
-
-                rects[d.name] = {x: x + rectSizeX / 2, y: y + rectSizeY / 2};
-
-                g.append('rect')
-                    .attr('x', x)
-                    .attr('y', y)
-                    .attr('width', rectSizeX)
-                    .attr('height', rectSizeY)
-                    .attr('fill', 'white')
-                    .attr('stroke', 'black')
-                    .attr('stroke-width', 1);
-
-                g.append('text')
-                    .attr('x', x + rectSizeX / 2)
-                    .attr('y', y + rectSizeY / 2)
-                    .attr('text-anchor', 'middle')
-                    .attr('dominant-baseline', 'middle')
-                    .text(d.name);
-            });
+        data.forEach(node => {
+            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node.name, drawnNames, data);
         });
-
-        createArrowMarker(svg);
-        drawElements(g, rects, data, rectSizeX, rectSizeY, yScale);
     }, [data, dimensions]);
 
     return <div ref={ref} style={{width: '100%', height: '100%', overflow: 'auto'}}></div>;
@@ -123,6 +136,8 @@ D3Component.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
         level: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
+        link: PropTypes.arrayOf(PropTypes.string),
+        partner: PropTypes.string,
     })).isRequired,
 };
 
