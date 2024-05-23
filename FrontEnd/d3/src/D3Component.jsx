@@ -129,23 +129,6 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
 
             totalDrawnLines.current++;
             drawnLines[level] = drawnLines[level] + 1 || 1;
-
-            reRangeRectangles(minX, lineY, maxX);
-        }
-    }
-
-    function reRangeRectangles(minX, lineY, maxX) {
-        drawnLines[name] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
-        if (node.partner) {
-            drawnLines[node.partner] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
-        }
-        if (node.children && node.children.length > 0) {
-            node.children.forEach(childName => {
-                const childNode = data.find(d => d.name === childName);
-                if (childNode) {
-                    drawnLines[childName] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
-                }
-            });
         }
     }
 
@@ -188,7 +171,13 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
     }
 
     function getColor(index) {
-        const hue = index * 360 / 10; // Change this to the total number of lines
+        const partners = new Set();
+        data.forEach(item => {
+            if (item.partner) {
+                partners.add(item.partner);
+            }
+        });
+        const hue = index * 360 / partners.size; // Change this to the total number of lines
         return `hsl(${hue}, 100%, 50%)`;
     }
 }
