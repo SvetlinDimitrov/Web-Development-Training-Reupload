@@ -112,17 +112,17 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
                 .attr('stroke', currentColor)
                 .attr('stroke-width', 1);
 
-            drawVerticalLine(g, name, lineY, rectSizeY, rectSizeX, drawnRectCoordinates, currentColor);
+            drawVerticalLine(name, lineY, currentColor, rectSizeY);
 
             if (node.partner) {
-                drawVerticalLine(g, node.partner, lineY, rectSizeY, rectSizeX, drawnRectCoordinates, currentColor);
+                drawVerticalLine(node.partner, lineY, currentColor , rectSizeY);
             }
 
             if (node.children && node.children.length > 0) {
                 node.children.forEach(childName => {
                     const childNode = data.find(d => d.name === childName);
                     if (childNode) {
-                        drawVerticalLine(g, childName, lineY, 0, rectSizeX, drawnRectCoordinates, currentColor);
+                        drawVerticalLine(childName, lineY, currentColor , 0);
                     }
                 });
             }
@@ -177,22 +177,22 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
                 partners.add(item.partner);
             }
         });
-        const hue = index * 360 / partners.size; // Change this to the total number of lines
+        const hue = index * 360 / partners.size;
         return `hsl(${hue}, 100%, 50%)`;
     }
-}
 
-function drawVerticalLine(g, nodeName, lineY, rectSizeY, rectSizeX, drawnRectCoordinates, color) {
-    const nodeCenterX = drawnRectCoordinates[nodeName].x + rectSizeX / 2;
-    const nodeBottomY = drawnRectCoordinates[nodeName].y + rectSizeY;
+    function drawVerticalLine(nodeName, lineY, color , rectSizeY) {
+        const nodeCenterX = drawnRectCoordinates[nodeName].x + rectSizeX / 2;
+        const nodeBottomY = drawnRectCoordinates[nodeName].y + rectSizeY;
 
-    g.append('line')
-        .attr('x1', nodeCenterX)
-        .attr('y1', nodeBottomY)
-        .attr('x2', nodeCenterX)
-        .attr('y2', lineY)
-        .attr('stroke', color)
-        .attr('stroke-width', 1);
+        g.append('line')
+            .attr('x1', nodeCenterX)
+            .attr('y1', nodeBottomY)
+            .attr('x2', nodeCenterX)
+            .attr('y2', lineY)
+            .attr('stroke', color)
+            .attr('stroke-width', 1);
+    }
 }
 
 function D3Component({data}) {
