@@ -23,9 +23,9 @@ function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, g
     levels.forEach(level => {
         const rowData = data.filter(d => d.level === level);
         const totalWidth = rowData.length * (rectSizeX + gapSize) - gapSize;
-        // const startX = 0;
+        const startX = 0;
         const y = yScale(level);
-        const startX = (dimensions.width - totalWidth) / 2; // Centering happens here
+        // const startX = (dimensions.width - totalWidth) / 2; // Centering happens here
 
 
         coordinates[level] = {x: startX, y};
@@ -34,50 +34,84 @@ function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, g
     return coordinates;
 }
 
-function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, name, drawnNames, data) {
-    const nextCoordinate = coordinates[level];
+function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, data) {
 
-    if (!nextCoordinate) {
-        throw new Error(`No available coordinates for level ${level}`);
+    const name = node.name;
+    const partnerName = node.partner;
+
+    if (coordinates[level] && coordinates[level + 1]) {
+        if (coordinates[level].x < coordinates[level + 1].x) {
+            coordinates[level].x = coordinates[level + 1].x;
+        }
     }
 
-    if (drawnNames.has(name)) {
-        return;
+    if (!drawnNames.has(name)) {
+        g.append('rect')
+            .attr('x', coordinates[level].x)
+            .attr('y', coordinates[level].y)
+            .attr('width', rectSizeX)
+            .attr('height', rectSizeY)
+            .attr('fill', 'white')
+            .attr('stroke', 'black')
+            .attr('stroke-width', 1);
+
+        g.append('text')
+            .attr('x', coordinates[level].x + rectSizeX / 2)
+            .attr('y', coordinates[level].y + rectSizeY / 2)
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', 'middle')
+            .text(name);
+
+        drawnNames.add(name);
+        coordinates[level].x += rectSizeX + gapSize
     }
 
-    g.append('rect')
-        .attr('x', nextCoordinate.x)
-        .attr('y', nextCoordinate.y)
-        .attr('width', rectSizeX)
-        .attr('height', rectSizeY)
-        .attr('fill', 'white')
-        .attr('stroke', 'black')
-        .attr('stroke-width', 1);
+    if (partnerName && !drawnNames.has(partnerName)) {
+        g.append('rect')
+            .attr('x', coordinates[level].x)
+            .attr('y', coordinates[level].y)
+            .attr('width', rectSizeX)
+            .attr('height', rectSizeY)
+            .attr('fill', 'white')
+            .attr('stroke', 'black')
+            .attr('stroke-width', 1);
 
-    g.append('text')
-        .attr('x', nextCoordinate.x + rectSizeX / 2)
-        .attr('y', nextCoordinate.y + rectSizeY / 2)
-        .attr('text-anchor', 'middle')
-        .attr('dominant-baseline', 'middle')
-        .text(name);
+        g.append('text')
+            .attr('x', coordinates[level].x + rectSizeX / 2)
+            .attr('y', coordinates[level].y + rectSizeY / 2)
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', 'middle')
+            .text(partnerName);
 
-    drawnNames.add(name);
-
-    const node = data.find(d => d.name === name);
-    if (node && node.partner && drawnNames.has(node.partner)) {
-        coordinates[level].x = coordinates[level + 1].x;
-    } else {
-        coordinates[level].x += rectSizeX + gapSize;
+        drawnNames.add(partnerName);
+        coordinates[level].x += rectSizeX + gapSize
     }
 
-    if (node && node.link) {
-        node.link.forEach(linkedName => {
+    if (node && node.children && node.children.length > 0) {
+        node.children.forEach(linkedName => {
             const linkedNode = data.find(d => d.name === linkedName);
             if (linkedNode) {
-                drawNextRectangle(linkedNode.level, g, coordinates, rectSizeX, rectSizeY, gapSize, linkedName, drawnNames, data);
+                g.append('rect')
+                    .attr('x', coordinates[linkedNode.level].x)
+                    .attr('y', coordinates[linkedNode.level].y)
+                    .attr('width', rectSizeX)
+                    .attr('height', rectSizeY)
+                    .attr('fill', 'white')
+                    .attr('stroke', 'black')
+                    .attr('stroke-width', 1);
+
+                g.append('text')
+                    .attr('x', coordinates[linkedNode.level].x + rectSizeX / 2)
+                    .attr('y', coordinates[linkedNode.level].y + rectSizeY / 2)
+                    .attr('text-anchor', 'middle')
+                    .attr('dominant-baseline', 'middle')
+                    .text(linkedNode.name);
             }
+            drawnNames.add(linkedNode.name);
+            coordinates[linkedNode.level].x += rectSizeX + gapSize
         });
-        coordinates[level + 1].x += 150;
+
+        coordinates[level + 1].x += rectSizeX + gapSize
     }
 }
 
@@ -124,7 +158,7 @@ function D3Component({data}) {
         const drawnNames = new Set();
 
         data.forEach(node => {
-            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node.name, drawnNames, data);
+            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, data);
         });
     }, [data, dimensions]);
 
