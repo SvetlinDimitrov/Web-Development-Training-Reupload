@@ -16,17 +16,26 @@ function addZooming(svg, g) {
 }
 
 function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, gapSize) {
+
     const levels = [...new Set(data.map(d => d.level))];
-    const yScale = d3.scaleBand().domain(levels).range([0, dimensions.height]).padding(0.1);
-
+    let currentY = 120;
     const coordinates = {};
-    levels.forEach(level => {
-        const rowData = data.filter(d => d.level === level);
-        const totalWidth = rowData.length * (rectSizeX + gapSize) - gapSize;
-        const startX = 0;
-        const y = yScale(level);
-        // const startX = (dimensions.width - totalWidth) / 2; // Centering happens here
 
+    let totalPartners = 0;
+    levels.forEach(level => {
+
+        const startX = 0;
+        const rowData = data.filter(d => d.level === level-1);
+        totalPartners += rowData.reduce((acc, curr) => curr.partner ? acc + 1 : acc, 0);
+        let y = currentY * level;
+
+        if(totalPartners !== 0) {
+            y += (rectSizeY + gapSize) * totalPartners / 2;
+        }
+
+        // const rowData = data.filter(d => d.level === level);
+        // const totalWidth = rowData.length * (rectSizeX + gapSize) - gapSize;
+        // const startX = (dimensions.width - totalWidth) / 2; // Centering happens here
 
         coordinates[level] = {x: startX, y};
     });
@@ -84,7 +93,7 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
             .text(partnerName);
 
         drawnNames.add(partnerName);
-        coordinates[level].x += rectSizeX + gapSize
+        coordinates[level].x += rectSizeX * 2 + gapSize
     }
 
     if (node && node.children && node.children.length > 0) {
@@ -109,6 +118,7 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
             }
             drawnNames.add(linkedNode.name);
             coordinates[linkedNode.level].x += rectSizeX + gapSize
+
         });
 
         coordinates[level + 1].x += rectSizeX + gapSize
