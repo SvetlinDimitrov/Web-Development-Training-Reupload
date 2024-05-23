@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import * as d3 from 'd3';
+import {scaleLinear} from 'd3';
 import PropTypes from 'prop-types';
 
 function handleResize(setDimensions) {
@@ -64,7 +65,7 @@ function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, name, drawnN
     drawnRectCoordinates[name] = {x: coordinates[level].x, y: coordinates[level].y};
 }
 
-function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, drawnRectCoordinates, data, drawnLines) {
+function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, drawnRectCoordinates, data, drawnLines, totalDrawnLines) {
     const name = node.name;
     const partnerName = node.partner;
 
@@ -92,22 +93,63 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
                 coordinates[linkedNode.level].x += rectSizeX + gapSize;
             }
         });
-
         coordinates[level + 1].x += rectSizeX + gapSize;
     }
 
-    if (partnerName) {
-        const rowData = data.filter(d => d.level === level);
-        const totalLines = rowData.reduce((acc, curr) => curr.partner ? acc + 1 : acc, 0);
-        const totalLinesDrawn = drawnLines[level] || 0;
+    drawHorizontalAndVerticalLine();
 
-        let currentY = coordinates[level].y + rectSizeY;
-        let nextY = coordinates[level + 1] ? coordinates[level + 1].y : currentY;
-        let gap = nextY - currentY;
-        let availableSpace = gap - 2 * rectSizeY; // Subtract the height of the rectangles at both levels
-        let distancePerLine = availableSpace / totalLines; // Use the entire available space
-        let lineY = currentY + rectSizeY + distancePerLine * totalLinesDrawn;
+    function drawHorizontalAndVerticalLine() {
+        if (partnerName) {
+            const currentColor = getColor(totalDrawnLines.current);
+            let lineY = extractLineY();
+            const {minX, maxX} = extractMinAndMaxX();
 
+            g.append('line')
+                .attr('x1', minX)
+                .attr('y1', lineY)
+                .attr('x2', maxX)
+                .attr('y2', lineY)
+                .attr('stroke', currentColor)
+                .attr('stroke-width', 1);
+
+            drawVerticalLine(g, name, lineY, rectSizeY, rectSizeX, drawnRectCoordinates, currentColor);
+
+            if (node.partner) {
+                drawVerticalLine(g, node.partner, lineY, rectSizeY, rectSizeX, drawnRectCoordinates, currentColor);
+            }
+
+            if (node.children && node.children.length > 0) {
+                node.children.forEach(childName => {
+                    const childNode = data.find(d => d.name === childName);
+                    if (childNode) {
+                        drawVerticalLine(g, childName, lineY, 0, rectSizeX, drawnRectCoordinates, currentColor);
+                    }
+                });
+            }
+
+            totalDrawnLines.current++;
+            drawnLines[level] = drawnLines[level] + 1 || 1;
+
+            reRangeRectangles(minX, lineY, maxX);
+        }
+    }
+
+    function reRangeRectangles(minX, lineY, maxX) {
+        drawnLines[name] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
+        if (node.partner) {
+            drawnLines[node.partner] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
+        }
+        if (node.children && node.children.length > 0) {
+            node.children.forEach(childName => {
+                const childNode = data.find(d => d.name === childName);
+                if (childNode) {
+                    drawnLines[childName] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
+                }
+            });
+        }
+    }
+
+    function extractMinAndMaxX() {
         let xCoordinates = [];
 
         xCoordinates.push(drawnRectCoordinates[name].x + rectSizeX / 2);
@@ -127,48 +169,31 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
 
         const minX = Math.min(...xCoordinates);
         const maxX = Math.max(...xCoordinates);
+        return {minX, maxX};
+    }
 
-        g.append('line')
-            .attr('x1', minX)
-            .attr('y1', lineY)
-            .attr('x2', maxX)
-            .attr('y2', lineY)
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1);
+    function extractLineY() {
+        const rowData = data.filter(d => d.level === level);
+        const totalLines = rowData.reduce((acc, curr) => curr.partner ? acc + 1 : acc, 0);
+        const totalLinesDrawn = drawnLines[level] || 0;
 
-        drawnLines[level] = (drawnLines[level] || 0) + 1;
+        let currentY = coordinates[level].y + rectSizeY;
+        let nextY = coordinates[level + 1] ? coordinates[level + 1].y : currentY;
 
-        drawVerticalLine(g, name, lineY, rectSizeY, rectSizeX, drawnRectCoordinates);
+        const yScale = scaleLinear()
+            .domain([0, totalLines + 1])
+            .range([currentY, nextY]);
 
-        if (node.partner) {
-            drawVerticalLine(g, node.partner, lineY, rectSizeY, rectSizeX, drawnRectCoordinates);
-        }
-        if (node.children && node.children.length > 0) {
-            node.children.forEach(childName => {
-                const childNode = data.find(d => d.name === childName);
-                if (childNode) {
-                    drawVerticalLine(g, childName, lineY, 0, rectSizeX, drawnRectCoordinates);
-                }
-            });
-        }
+        return yScale(totalLinesDrawn + 1);
+    }
 
-        drawnLines[name] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
-
-        if (node.partner) {
-            drawnLines[node.partner] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
-        }
-        if (node.children && node.children.length > 0) {
-            node.children.forEach(childName => {
-                const childNode = data.find(d => d.name === childName);
-                if (childNode) {
-                    drawnLines[childName] = {x1: minX, y1: lineY, x2: maxX, y2: lineY};
-                }
-            });
-        }
+    function getColor(index) {
+        const hue = index * 360 / 10; // Change this to the total number of lines
+        return `hsl(${hue}, 100%, 50%)`;
     }
 }
 
-function drawVerticalLine(g, nodeName, lineY, rectSizeY, rectSizeX, drawnRectCoordinates) {
+function drawVerticalLine(g, nodeName, lineY, rectSizeY, rectSizeX, drawnRectCoordinates, color) {
     const nodeCenterX = drawnRectCoordinates[nodeName].x + rectSizeX / 2;
     const nodeBottomY = drawnRectCoordinates[nodeName].y + rectSizeY;
 
@@ -177,12 +202,13 @@ function drawVerticalLine(g, nodeName, lineY, rectSizeY, rectSizeX, drawnRectCoo
         .attr('y1', nodeBottomY)
         .attr('x2', nodeCenterX)
         .attr('y2', lineY)
-        .attr('stroke', 'black')
+        .attr('stroke', color)
         .attr('stroke-width', 1);
 }
 
 function D3Component({data}) {
     const ref = useRef();
+    const totalDrawnLines = useRef(0);
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight
@@ -224,9 +250,8 @@ function D3Component({data}) {
         const drawnNames = new Set();
         const drawnRectCoordinates = {};
         const drawnLines = {};
-
         data.forEach(node => {
-            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, drawnRectCoordinates, data, drawnLines);
+            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, drawnRectCoordinates, data, drawnLines, totalDrawnLines);
         });
     }, [data, dimensions]);
 
