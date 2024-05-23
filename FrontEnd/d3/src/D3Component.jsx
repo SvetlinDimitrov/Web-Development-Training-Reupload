@@ -1,6 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
 import * as d3 from 'd3';
-import {scaleLinear} from 'd3';
 import PropTypes from 'prop-types';
 
 function handleResize(setDimensions) {
@@ -44,7 +43,7 @@ function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, g
     return coordinates;
 }
 
-function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, name, drawnNames, drawnRectCoordinates) {
+function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds, drawnRectCoordinates, info) {
     g.append('rect')
         .attr('x', coordinates[level].x)
         .attr('y', coordinates[level].y)
@@ -59,15 +58,15 @@ function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, name, drawnN
         .attr('y', coordinates[level].y + rectSizeY / 2)
         .attr('text-anchor', 'middle')
         .attr('dominant-baseline', 'middle')
-        .text(name);
+        .text(info.name);
 
-    drawnNames.add(name);
-    drawnRectCoordinates[name] = {x: coordinates[level].x, y: coordinates[level].y};
+    drawnIds.add(id);
+    drawnRectCoordinates[id] = {x: coordinates[level].x, y: coordinates[level].y};
 }
 
-function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, drawnRectCoordinates, data, drawnLines, totalDrawnLines) {
-    const name = node.name;
-    const partnerName = node.partner;
+function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnIds, drawnRectCoordinates, data, drawnLines, totalDrawnLines) {
+    const id = node.id;
+    const partnerId = node.partner;
 
     if (coordinates[level] && coordinates[level + 1]) {
         if (coordinates[level].x < coordinates[level + 1].x) {
@@ -75,22 +74,23 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
         }
     }
 
-    if (!drawnNames.has(name)) {
-        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, name, drawnNames, drawnRectCoordinates);
+    if (!drawnIds.has(id)) {
+        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds, drawnRectCoordinates, node.info);
         coordinates[level].x += rectSizeX + gapSize;
     }
 
-    if (partnerName && !drawnNames.has(partnerName)) {
-        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, partnerName, drawnNames, drawnRectCoordinates);
+    if (partnerId && !drawnIds.has(partnerId)) {
+        const partner = data.find(d => d.id === partnerId);
+        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, partnerId, drawnIds, drawnRectCoordinates, partner.info);
         coordinates[level].x += rectSizeX * 2 + gapSize;
     }
 
     if (node && node.children && node.children.length > 0) {
-        node.children.forEach(linkedName => {
-            const linkedNode = data.find(d => d.name === linkedName);
-            if (linkedNode) {
-                drawRectangle(g, coordinates, linkedNode.level, rectSizeX, rectSizeY, linkedNode.name, drawnNames, drawnRectCoordinates);
-                coordinates[linkedNode.level].x += rectSizeX + gapSize;
+        node.children.forEach(childId => {
+            const child = data.find(d => d.id === childId);
+            if (child) {
+                drawRectangle(g, coordinates, child.level, rectSizeX, rectSizeY, childId, drawnIds, drawnRectCoordinates , child.info);
+                coordinates[child.level].x += rectSizeX + gapSize;
             }
         });
         coordinates[level + 1].x += rectSizeX + gapSize;
@@ -99,7 +99,7 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
     drawHorizontalAndVerticalLine();
 
     function drawHorizontalAndVerticalLine() {
-        if (partnerName) {
+        if (partnerId) {
             const currentColor = getColor(totalDrawnLines.current);
             let lineY = extractLineY();
             const {minX, maxX} = extractMinAndMaxX();
@@ -112,17 +112,17 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
                 .attr('stroke', currentColor)
                 .attr('stroke-width', 1);
 
-            drawVerticalLine(name, lineY, currentColor, rectSizeY);
+            drawVerticalLine(id, lineY, currentColor, rectSizeY);
 
             if (node.partner) {
-                drawVerticalLine(node.partner, lineY, currentColor , rectSizeY);
+                drawVerticalLine(node.partner, lineY, currentColor, rectSizeY);
             }
 
             if (node.children && node.children.length > 0) {
-                node.children.forEach(childName => {
-                    const childNode = data.find(d => d.name === childName);
+                node.children.forEach(childId => {
+                    const childNode = data.find(d => d.id === childId);
                     if (childNode) {
-                        drawVerticalLine(childName, lineY, currentColor , 0);
+                        drawVerticalLine(childId, lineY, currentColor, 0);
                     }
                 });
             }
@@ -135,17 +135,17 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
     function extractMinAndMaxX() {
         let xCoordinates = [];
 
-        xCoordinates.push(drawnRectCoordinates[name].x + rectSizeX / 2);
+        xCoordinates.push(drawnRectCoordinates[id].x + rectSizeX / 2);
 
-        if (node.partner) {
-            xCoordinates.push(drawnRectCoordinates[node.partner].x + rectSizeX / 2);
+        if (partnerId) {
+            xCoordinates.push(drawnRectCoordinates[partnerId].x + rectSizeX / 2);
         }
 
         if (node.children && node.children.length > 0) {
-            node.children.forEach(childName => {
-                const childNode = data.find(d => d.name === childName);
+            node.children.forEach(childId => {
+                const childNode = data.find(d => d.id === childId);
                 if (childNode) {
-                    xCoordinates.push(drawnRectCoordinates[childName].x + rectSizeX / 2);
+                    xCoordinates.push(drawnRectCoordinates[childId].x + rectSizeX / 2);
                 }
             });
         }
@@ -161,9 +161,9 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
         const totalLinesDrawn = drawnLines[level] || 0;
 
         let currentY = coordinates[level].y + rectSizeY;
-        let nextY = coordinates[level + 1] ? coordinates[level + 1].y : currentY;
+        let nextY = coordinates[level + 1] ? coordinates[level + 1].y : currentY*1.2;
 
-        const yScale = scaleLinear()
+        const yScale = d3.scaleLinear()
             .domain([0, totalLines + 1])
             .range([currentY, nextY]);
 
@@ -181,7 +181,7 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
         return `hsl(${hue}, 100%, 50%)`;
     }
 
-    function drawVerticalLine(nodeName, lineY, color , rectSizeY) {
+    function drawVerticalLine(nodeName, lineY, color, rectSizeY) {
         const nodeCenterX = drawnRectCoordinates[nodeName].x + rectSizeX / 2;
         const nodeBottomY = drawnRectCoordinates[nodeName].y + rectSizeY;
 
@@ -236,11 +236,11 @@ function D3Component({data}) {
 
         const coordinates = calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, gapSize);
 
-        const drawnNames = new Set();
+        const dataIds = new Set();
         const drawnRectCoordinates = {};
         const drawnLines = {};
         data.forEach(node => {
-            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnNames, drawnRectCoordinates, data, drawnLines, totalDrawnLines);
+            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, dataIds, drawnRectCoordinates, data, drawnLines, totalDrawnLines);
         });
     }, [data, dimensions]);
 
@@ -249,9 +249,10 @@ function D3Component({data}) {
 
 D3Component.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
+        info: PropTypes.object,
         level: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        link: PropTypes.arrayOf(PropTypes.string),
+        id: PropTypes.string.isRequired,
+        children: PropTypes.arrayOf(PropTypes.string),
         partner: PropTypes.string,
     })).isRequired,
 };
