@@ -1,6 +1,6 @@
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import * as d3 from 'd3';
-import PropTypes from 'prop-types';
+import {DataContext} from "./DataProvider.jsx";
 
 function handleResize(setDimensions) {
     setDimensions({
@@ -43,7 +43,7 @@ function calculateAvailableCoordinates(data, dimensions, rectSizeX, rectSizeY, g
     return coordinates;
 }
 
-function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds, drawnRectCoordinates, info) {
+function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds, drawnRectCoordinates, info , setData , data) {
     g.append('rect')
         .attr('x', coordinates[level].x)
         .attr('y', coordinates[level].y)
@@ -53,18 +53,41 @@ function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds
         .attr('stroke', 'black')
         .attr('stroke-width', 1);
 
-    g.append('text')
-        .attr('x', coordinates[level].x + rectSizeX / 2)
-        .attr('y', coordinates[level].y + rectSizeY / 2)
-        .attr('text-anchor', 'middle')
-        .attr('dominant-baseline', 'middle')
-        .text(info.name);
+    const buttonSize = 20; // Adjust as needed
+    const positions = [
+        { x: 0, y: rectSizeY / 2 - buttonSize / 2 }, // Left
+        { x: rectSizeX - buttonSize, y: rectSizeY / 2 - buttonSize / 2 }, // Right
+        { x: rectSizeX / 2 - buttonSize / 2, y: 0 }, // Top
+        { x: rectSizeX / 2 - buttonSize / 2, y: rectSizeY - buttonSize } // Bottom
+    ];
+    const emojis = ['🤦‍♀️', '🤦‍♂️', '💕', '😎'];
+
+    positions.forEach((pos, index) => {
+        g.append('foreignObject')
+            .attr('x', coordinates[level].x + pos.x)
+            .attr('y', coordinates[level].y + pos.y)
+            .attr('width', buttonSize)
+            .attr('height', buttonSize)
+            .append('xhtml:body')
+            .html('<button style="width:100%;height:100%">' + emojis[index] + '</button>')
+            .on('click', function() {
+                const objectWithId = data.find(item => item.id === id);
+
+                const newId = (Number(objectWithId.id) + 1).toString();
+                const newInfo = { name: (objectWithId.info.name + 1).toString()};
+                const newLevel = objectWithId.level + 1;
+                const newObject = { id: newId, children: [], info: newInfo, level: newLevel };
+
+                const newData = [...data, newObject];
+                setData(newData);
+            });
+    });
 
     drawnIds.add(id);
     drawnRectCoordinates[id] = {x: coordinates[level].x, y: coordinates[level].y};
 }
 
-function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnIds, drawnRectCoordinates, data, drawnLines, totalDrawnLines) {
+function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, drawnIds, drawnRectCoordinates, data, drawnLines, totalDrawnLines , setData) {
     const id = node.id;
     const partnerId = node.partner;
 
@@ -75,13 +98,13 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
     }
 
     if (!drawnIds.has(id)) {
-        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds, drawnRectCoordinates, node.info);
+        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds, drawnRectCoordinates, node.info , setData , data);
         coordinates[level].x += rectSizeX + gapSize;
     }
 
     if (partnerId && !drawnIds.has(partnerId)) {
         const partner = data.find(d => d.id === partnerId);
-        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, partnerId, drawnIds, drawnRectCoordinates, partner.info);
+        drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, partnerId, drawnIds, drawnRectCoordinates, partner.info , setData , data);
         coordinates[level].x += rectSizeX * 2 + gapSize;
     }
 
@@ -89,7 +112,7 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
         node.children.forEach(childId => {
             const child = data.find(d => d.id === childId);
             if (child) {
-                drawRectangle(g, coordinates, child.level, rectSizeX, rectSizeY, childId, drawnIds, drawnRectCoordinates , child.info);
+                drawRectangle(g, coordinates, child.level, rectSizeX, rectSizeY, childId, drawnIds, drawnRectCoordinates , child.info , setData , data);
                 coordinates[child.level].x += rectSizeX + gapSize;
             }
         });
@@ -195,9 +218,10 @@ function drawNextRectangle(level, g, coordinates, rectSizeX, rectSizeY, gapSize,
     }
 }
 
-function D3Component({data}) {
+function D3Component() {
     const ref = useRef();
     const totalDrawnLines = useRef(0);
+    const { data, setData } = React.useContext(DataContext);
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight
@@ -240,21 +264,10 @@ function D3Component({data}) {
         const drawnRectCoordinates = {};
         const drawnLines = {};
         data.forEach(node => {
-            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, dataIds, drawnRectCoordinates, data, drawnLines, totalDrawnLines);
+            drawNextRectangle(node.level, g, coordinates, rectSizeX, rectSizeY, gapSize, node, dataIds, drawnRectCoordinates, data, drawnLines, totalDrawnLines , setData);
         });
     }, [data, dimensions]);
 
     return <div ref={ref} style={{width: '100%', height: '100%', overflow: 'auto'}}></div>;
 }
-
-D3Component.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        info: PropTypes.object,
-        level: PropTypes.number.isRequired,
-        id: PropTypes.string.isRequired,
-        children: PropTypes.arrayOf(PropTypes.string),
-        partner: PropTypes.string,
-    })).isRequired,
-};
-
 export default D3Component;
