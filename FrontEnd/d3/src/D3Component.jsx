@@ -72,13 +72,16 @@ function drawRectangle(g, coordinates, level, rectSizeX, rectSizeY, id, drawnIds
             .html('<button style="width:100%;height:100%">' + emojis[index] + '</button>')
             .on('click', function() {
                 const objectWithId = data.find(item => item.id === id);
+                const maxId = data.reduce((max, item) => Math.max(max, parseInt(item.id)), 0);
 
-                const newId = (Number(objectWithId.id) + 1).toString();
+                const newId = (Number(maxId) + 1).toString();
                 const newInfo = { name: (objectWithId.info.name + 1).toString()};
                 const newLevel = objectWithId.level + 1;
                 const newObject = { id: newId, children: [], info: newInfo, level: newLevel };
 
+                objectWithId.children.push(newId);
                 const newData = [...data, newObject];
+                console.log(newData);
                 setData(newData);
             });
     });
