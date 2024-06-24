@@ -542,7 +542,7 @@ console.log(acc1.pin);
  */
 /*
 Encapsulation: Private Class Fields and Methods
- */
+
 // Not yet supported ( stage 3 )
 // It's a proposal for a new feature in JavaScript , and its not yet implemented in all the browsers
 const Account = class {
@@ -586,3 +586,63 @@ const Account = class {
     }
   }
 }
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+// acc1.#movements.push(250); // This will not work because #movements is private
+acc1.deposit(250);
+
+ */
+/*
+Chaining Methods
+
+const Account = class {
+
+  // Private fields (instances)
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.#pin = pin;
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // Public methods
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val);
+    return this;
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+    return this;
+  }
+
+  // Private methods
+  #approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.#approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan approved');
+      return this;
+    }
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+acc1.deposit(250)
+  .deposit(140)
+  .withdraw(75)
+  .requestLoan(1000)
+  .withdraw(10);
+
+ */
+

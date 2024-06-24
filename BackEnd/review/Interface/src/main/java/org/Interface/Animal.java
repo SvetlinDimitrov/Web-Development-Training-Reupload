@@ -54,4 +54,9 @@ public interface Animal {
   public default void sleep() throws CloneNotSupportedException {
     System.out.println("Animal is sleeping");
   }
+
+  static void sleep2(){
+    System.out.println("asdasdasd");
+  }
+
 }
