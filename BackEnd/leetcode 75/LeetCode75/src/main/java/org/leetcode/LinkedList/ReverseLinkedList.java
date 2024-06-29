@@ -37,18 +37,23 @@ public class ReverseLinkedList {
   * */
 
   public static void main(String[] args) {
+    ListNode listNode = reverseList(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))));
 
+    while (listNode != null) {
+      System.out.println(listNode.val);
+      listNode = listNode.next;
+    }
   }
 
-  public ListNode reverseList(ListNode head) {
-    Deque<Integer> deque = new ArrayDeque<>();
-
-    while (head.next != null) {
-
-      deque.push(head.val);
-      head = head.next;
-    }
-
-    return null;
+  public static ListNode reverseList(ListNode head) {
+    ListNode prev=null;
+    ListNode curr=head;
+    ListNode next=null;
+    while(curr!=null){
+      next=curr.next;
+      curr.next=prev;
+      prev=curr;
+      curr=next;
+    }return prev;
   }
 }
