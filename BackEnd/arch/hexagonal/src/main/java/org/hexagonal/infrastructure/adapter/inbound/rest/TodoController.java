@@ -1,6 +1,6 @@
-package org.hexagonal.infrastructure.adapter.in.rest;
+package org.hexagonal.infrastructure.adapter.inbound.rest;
 
-import org.hexagonal.application.port.in.TodoUseCase;
+import org.hexagonal.application.port.input.TodoUseCase;
 import org.hexagonal.core.domain.Todo;
 import org.springframework.web.bind.annotation.*;
 

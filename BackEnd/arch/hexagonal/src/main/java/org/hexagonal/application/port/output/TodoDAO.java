@@ -1,4 +1,4 @@
-package org.hexagonal.application.port.out;
+package org.hexagonal.application.port.output;
 
 import org.hexagonal.core.domain.Todo;
 

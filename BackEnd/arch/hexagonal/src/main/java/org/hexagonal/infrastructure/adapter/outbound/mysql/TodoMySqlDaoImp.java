@@ -1,10 +1,10 @@
-package org.hexagonal.infrastructure.adapter.out.mysql;
+package org.hexagonal.infrastructure.adapter.outbound.mysql;
 
 import lombok.RequiredArgsConstructor;
 import org.hexagonal.core.domain.Todo;
-import org.hexagonal.application.port.out.TodoDAO;
-import org.hexagonal.infrastructure.adapter.out.mysql.entity.TodoEntity;
-import org.hexagonal.infrastructure.adapter.out.mysql.repository.TodoJpaRepository;
+import org.hexagonal.application.port.output.TodoDAO;
+import org.hexagonal.infrastructure.adapter.outbound.mysql.entity.TodoEntity;
+import org.hexagonal.infrastructure.adapter.outbound.mysql.repository.TodoJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

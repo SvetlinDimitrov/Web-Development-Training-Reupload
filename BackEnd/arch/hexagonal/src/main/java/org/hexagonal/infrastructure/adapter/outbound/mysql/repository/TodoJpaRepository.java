@@ -1,6 +1,6 @@
-package org.hexagonal.infrastructure.adapter.out.mysql.repository;
+package org.hexagonal.infrastructure.adapter.outbound.mysql.repository;
 
-import org.hexagonal.infrastructure.adapter.out.mysql.entity.TodoEntity;
+import org.hexagonal.infrastructure.adapter.outbound.mysql.entity.TodoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

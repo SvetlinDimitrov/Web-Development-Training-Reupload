@@ -1,4 +1,4 @@
-package org.hexagonal.infrastructure.adapter.out.mysql.entity;
+package org.hexagonal.infrastructure.adapter.outbound.mysql.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
