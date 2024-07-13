@@ -1,4 +1,4 @@
-package org.arch.onion.domain.model;
+package org.arch.onion.core.domain.model;
 
 import java.time.LocalDateTime;
 

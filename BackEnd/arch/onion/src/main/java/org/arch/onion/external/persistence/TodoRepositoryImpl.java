@@ -1,8 +1,8 @@
-package org.arch.onion.infrastructure.persistence;
+package org.arch.onion.external.persistence;
 
 import lombok.RequiredArgsConstructor;
-import org.arch.onion.domain.model.TodoItem;
-import org.arch.onion.domain.repository.TodoRepository;
+import org.arch.onion.core.domain.model.TodoItem;
+import org.arch.onion.core.domain.repository.TodoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

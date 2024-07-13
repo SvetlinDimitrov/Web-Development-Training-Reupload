@@ -1,8 +1,8 @@
-package org.arch.onion.application;
+package org.arch.onion.core.application;
 
 import lombok.RequiredArgsConstructor;
-import org.arch.onion.domain.model.TodoItem;
-import org.arch.onion.domain.repository.TodoRepository;
+import org.arch.onion.core.domain.model.TodoItem;
+import org.arch.onion.core.domain.repository.TodoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class TodoUseCase {
+public class TodoService {
 
   private final TodoRepository todoRepository;
 

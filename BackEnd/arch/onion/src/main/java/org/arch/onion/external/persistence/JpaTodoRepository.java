@@ -1,4 +1,4 @@
-package org.arch.onion.infrastructure.persistence;
+package org.arch.onion.external.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

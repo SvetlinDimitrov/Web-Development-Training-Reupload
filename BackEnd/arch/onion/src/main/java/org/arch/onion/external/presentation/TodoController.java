@@ -1,8 +1,8 @@
-package org.arch.onion.presentation;
+package org.arch.onion.external.presentation;
 
 import lombok.RequiredArgsConstructor;
-import org.arch.onion.application.TodoUseCase;
-import org.arch.onion.domain.model.TodoItem;
+import org.arch.onion.core.application.TodoService;
+import org.arch.onion.core.domain.model.TodoItem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TodoController {
 
-  private final TodoUseCase todoUseCase;
+  private final TodoService todoUseCase;
 
   @PostMapping
   public ResponseEntity<TodoItem> createTodoItem(@RequestBody TodoItem todoItem) {
